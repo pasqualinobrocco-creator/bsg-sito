@@ -1250,3 +1250,10 @@ select, [type="submit"] { cursor: none; }
 
 /* ---------- Tweaks panel positioning override (panel itself is fixed) ---------- */
 .tweaks-anchor { position: relative; }
+
+.footer-logo {
+  height: 64px;
+  width: auto;
+  display: block;
+  margin-bottom: 16px;
+}
