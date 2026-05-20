@@ -1355,3 +1355,9 @@ body.nav-open { overflow: hidden; }
   .brand-logo { height: 34px; }
   .footer-logo { height: 52px; }
 }
+
+/* ---------- Tablet hero tweaks ---------- */
+@media (min-width: 721px) and (max-width: 1023px) {
+  .hero-title .row { padding: 0.14em 0 0.24em; }
+  .hero-title .row > span { transform: translateY(170%); }
+}
