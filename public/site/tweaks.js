@@ -318,3 +318,48 @@
     '</svg>';
   document.body.appendChild(a);
 })();
+
+/* ---------- Lenis smooth scroll (auto-inject) ---------- */
+(function(){
+  if (window.__lenisInit) return;
+  window.__lenisInit = true;
+
+  // Respect reduced motion
+  if (window.matchMedia && window.matchMedia('(prefers-reduced-motion: reduce)').matches) return;
+
+  function init() {
+    if (!window.Lenis) return;
+    var lenis = new window.Lenis({
+      duration: 1.15,
+      easing: function(t){ return Math.min(1, 1.001 - Math.pow(2, -10 * t)); },
+      smoothWheel: true,
+      smoothTouch: false,
+      wheelMultiplier: 1,
+      touchMultiplier: 1.2,
+    });
+    window.__lenis = lenis;
+
+    function raf(time){ lenis.raf(time); requestAnimationFrame(raf); }
+    requestAnimationFrame(raf);
+
+    // Anchor links integration
+    document.addEventListener('click', function(e){
+      var a = e.target && e.target.closest && e.target.closest('a[href^="#"]');
+      if (!a) return;
+      var href = a.getAttribute('href');
+      if (!href || href === '#' || href.length < 2) return;
+      var el = document.querySelector(href);
+      if (!el) return;
+      e.preventDefault();
+      lenis.scrollTo(el, { offset: -80 });
+    });
+
+    document.documentElement.classList.add('lenis-enabled');
+  }
+
+  var s = document.createElement('script');
+  s.src = 'https://cdn.jsdelivr.net/npm/lenis@1.1.20/dist/lenis.min.js';
+  s.defer = true;
+  s.onload = init;
+  document.head.appendChild(s);
+})();
