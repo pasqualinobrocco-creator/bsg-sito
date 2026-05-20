@@ -1,0 +1,265 @@
+/* =====================================================================
+   BSG Design System — Colors & Type
+   Source of truth for all color, type, and motion tokens.
+   Brand: BSG srl — Operazioni Pubblicitarie e Strategiche
+   ===================================================================== */
+
+/* Webfonts — Poppins + Lato + Montserrat (Google Fonts).
+   See README → CAVEATS: the brand PDF embeds these families directly. */
+@import url("https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700;800;900&family=Lato:ital,wght@0,100;0,300;0,400;0,700;0,900;1,400;1,900&family=Montserrat:ital,wght@0,300;0,400;0,700;0,900;1,400&display=swap");
+
+:root {
+  /* ===================== COLOR — PRIMITIVE TOKENS ===================== */
+
+  /* Brand green — present on every page of the corporate profile.
+     Used as the single dominant chromatic accent. */
+  --bsg-green-500: #639730;   /* Brand primary — buttons, headlines, logos */
+  --bsg-green-700: #4A7322;   /* Hover / pressed */
+  --bsg-green-300: #9CC76A;   /* Tints, illustration light */
+  --bsg-green-100: #E3E8D5;   /* Pale wash — cover bg, section bands */
+  --bsg-green-deep: #106B30;  /* Darker variant used in sector icons */
+
+  /* Sub-brand accents — appear only on the sectors page (p5).
+     Reserved for the Squisitus / Padel Best Village family + sector keys. */
+  --accent-burgundy: #A5143B; /* Squisitus */
+  --accent-navy:     #1D3D7E; /* Padel Best Village */
+  --accent-blue:     #046AB4; /* Strategic consulting */
+
+  /* Neutrals — black/gray scale lifted from the PDF body type colors */
+  --ink-1000: #000000;
+  --ink-900:  #1A1A1A;
+  --ink-800:  #3C3C3B;  /* Default body text */
+  --ink-700:  #575756;
+  --ink-600:  #706F6F;
+  --ink-500:  #878787;
+  --ink-400:  #9D9D9C;
+  --ink-300:  #B7BCC0;
+  --ink-200:  #C6C6C6;
+  --ink-100:  #E3E3E3;
+  --ink-50:   #EDEDED;
+  --ink-25:   #F6F6F6;
+  --ink-0:    #FFFFFF;
+
+  /* Semantic palette */
+  --bg-default:    var(--ink-0);
+  --bg-subtle:     var(--ink-25);
+  --bg-muted:      var(--ink-50);
+  --bg-inverse:    var(--ink-900);
+  --bg-brand-soft: var(--bsg-green-100);
+  --bg-brand:      var(--bsg-green-500);
+
+  --fg-default:    var(--ink-800);
+  --fg-muted:      var(--ink-600);
+  --fg-subtle:     var(--ink-500);
+  --fg-inverse:    var(--ink-0);
+  --fg-brand:      var(--bsg-green-500);
+  --fg-on-brand:   var(--ink-0);
+
+  --border-default: var(--ink-100);
+  --border-strong:  var(--ink-300);
+  --border-brand:   var(--bsg-green-500);
+
+  /* Status — derived to harmonize with brand */
+  --status-success: var(--bsg-green-deep);
+  --status-warning: #D4A21A;
+  --status-danger:  var(--accent-burgundy);
+  --status-info:    var(--accent-blue);
+
+  /* ===================== TYPOGRAPHY — PRIMITIVES ====================== */
+
+  --font-display: "Poppins", "Helvetica Neue", system-ui, sans-serif;
+  --font-body:    "Lato", "Helvetica Neue", system-ui, sans-serif;
+  --font-accent:  "Montserrat", "Helvetica Neue", system-ui, sans-serif;
+  --font-mono:    "JetBrains Mono", "SF Mono", Menlo, Consolas, monospace;
+
+  /* Scale — modest 1.20 ratio anchored at 16px body */
+  --fs-12: 0.75rem;   /* 12px — micro / tags */
+  --fs-14: 0.875rem;  /* 14px — caption */
+  --fs-16: 1rem;      /* 16px — body */
+  --fs-18: 1.125rem;  /* 18px — body-large */
+  --fs-22: 1.375rem;  /* 22px — h5 */
+  --fs-28: 1.75rem;   /* 28px — h4 */
+  --fs-36: 2.25rem;   /* 36px — h3 */
+  --fs-48: 3rem;      /* 48px — h2 */
+  --fs-64: 4rem;      /* 64px — h1 */
+  --fs-88: 5.5rem;    /* 88px — display */
+
+  /* Line heights */
+  --lh-tight:   1.05;
+  --lh-snug:    1.2;
+  --lh-normal:  1.45;
+  --lh-relaxed: 1.6;
+
+  /* Weights — what the brand actually uses */
+  --fw-thin:   300;   /* Poppins-Light / Lato-Light for taglines */
+  --fw-regular: 400;
+  --fw-medium:  500;
+  --fw-semi:    600;
+  --fw-bold:    700;
+  --fw-black:   900;  /* Poppins-Black — headlines, BSG wordmark */
+
+  /* Letter-spacing — Poppins display runs tight; small caps run wide */
+  --tracking-tight:   -0.04em;
+  --tracking-snug:    -0.02em;
+  --tracking-normal:  0;
+  --tracking-wide:    0.04em;
+  --tracking-eyebrow: 0.2em;
+
+  /* ===================== SPACING / RADII / SHADOWS ==================== */
+
+  --space-1:  4px;
+  --space-2:  8px;
+  --space-3:  12px;
+  --space-4:  16px;
+  --space-5:  24px;
+  --space-6:  32px;
+  --space-7:  48px;
+  --space-8:  64px;
+  --space-9:  96px;
+  --space-10: 128px;
+
+  --radius-xs: 2px;
+  --radius-sm: 4px;
+  --radius-md: 8px;
+  --radius-lg: 12px;
+  --radius-xl: 20px;
+  --radius-pill: 999px;
+
+  --shadow-xs:  0 1px 2px rgba(20, 26, 14, 0.04);
+  --shadow-sm:  0 2px 6px rgba(20, 26, 14, 0.06);
+  --shadow-md:  0 6px 18px rgba(20, 26, 14, 0.08);
+  --shadow-lg:  0 16px 40px rgba(20, 26, 14, 0.12);
+  --shadow-brand: 0 12px 32px rgba(99, 151, 48, 0.28);
+
+  /* Motion — restrained, no bounces */
+  --ease-out:    cubic-bezier(0.22, 0.61, 0.36, 1);
+  --ease-in-out: cubic-bezier(0.65, 0.05, 0.36, 1);
+  --dur-fast:    140ms;
+  --dur-base:    220ms;
+  --dur-slow:    420ms;
+}
+
+/* ===================== SEMANTIC ELEMENT STYLES ======================== */
+
+.bsg-display {
+  font-family: var(--font-display);
+  font-weight: var(--fw-black);
+  font-size: var(--fs-88);
+  line-height: var(--lh-tight);
+  letter-spacing: var(--tracking-tight);
+  color: var(--fg-default);
+}
+
+.bsg-h1 {
+  font-family: var(--font-display);
+  font-weight: var(--fw-black);
+  font-size: var(--fs-64);
+  line-height: var(--lh-tight);
+  letter-spacing: var(--tracking-tight);
+  color: var(--fg-default);
+}
+
+.bsg-h2 {
+  font-family: var(--font-display);
+  font-weight: var(--fw-black);
+  font-size: var(--fs-48);
+  line-height: var(--lh-snug);
+  letter-spacing: var(--tracking-snug);
+  color: var(--fg-default);
+}
+
+.bsg-h3 {
+  font-family: var(--font-display);
+  font-weight: var(--fw-bold);
+  font-size: var(--fs-36);
+  line-height: var(--lh-snug);
+  letter-spacing: var(--tracking-snug);
+  color: var(--fg-default);
+}
+
+.bsg-h4 {
+  font-family: var(--font-display);
+  font-weight: var(--fw-bold);
+  font-size: var(--fs-28);
+  line-height: var(--lh-snug);
+  color: var(--fg-default);
+}
+
+.bsg-h5 {
+  font-family: var(--font-display);
+  font-weight: var(--fw-semi);
+  font-size: var(--fs-22);
+  line-height: var(--lh-snug);
+  color: var(--fg-default);
+}
+
+/* Section eyebrow — small all-caps tag used over titles on every page */
+.bsg-eyebrow {
+  font-family: var(--font-display);
+  font-weight: var(--fw-thin);
+  font-size: var(--fs-12);
+  line-height: var(--lh-snug);
+  letter-spacing: var(--tracking-eyebrow);
+  text-transform: uppercase;
+  color: var(--fg-brand);
+}
+
+.bsg-tagline {
+  font-family: var(--font-display);
+  font-weight: var(--fw-thin);
+  font-size: var(--fs-22);
+  line-height: var(--lh-snug);
+  color: var(--fg-muted);
+}
+
+.bsg-body-lg {
+  font-family: var(--font-body);
+  font-weight: var(--fw-regular);
+  font-size: var(--fs-18);
+  line-height: var(--lh-relaxed);
+  color: var(--fg-default);
+}
+
+.bsg-body {
+  font-family: var(--font-body);
+  font-weight: var(--fw-regular);
+  font-size: var(--fs-16);
+  line-height: var(--lh-relaxed);
+  color: var(--fg-default);
+}
+
+.bsg-body-sm,
+.bsg-caption {
+  font-family: var(--font-body);
+  font-weight: var(--fw-regular);
+  font-size: var(--fs-14);
+  line-height: var(--lh-relaxed);
+  color: var(--fg-muted);
+}
+
+.bsg-micro {
+  font-family: var(--font-body);
+  font-weight: var(--fw-bold);
+  font-size: var(--fs-12);
+  letter-spacing: var(--tracking-wide);
+  text-transform: uppercase;
+  color: var(--fg-subtle);
+}
+
+.bsg-quote {
+  font-family: var(--font-accent);
+  font-weight: var(--fw-thin);
+  font-style: italic;
+  font-size: var(--fs-28);
+  line-height: var(--lh-snug);
+  color: var(--fg-default);
+}
+
+/* Underline accent — used under section eyebrows on each PDF page */
+.bsg-rule {
+  display: inline-block;
+  width: 48px;
+  height: 3px;
+  background: var(--bsg-green-500);
+  border-radius: var(--radius-pill);
+}

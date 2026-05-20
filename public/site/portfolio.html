@@ -1,0 +1,255 @@
+<!DOCTYPE html>
+<html lang="it">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Portfolio · BSG</title>
+  <link rel="stylesheet" href="assets/site.css">
+  <link rel="icon" type="image/svg+xml" href="assets/logo/bsg-mark.svg">
+  <style>
+    .filter-bar {
+      display: flex; flex-wrap: wrap; gap: 8px;
+      margin-bottom: 48px;
+    }
+    .filter-bar button {
+      padding: 10px 16px;
+      border: 1px solid var(--border-default);
+      border-radius: var(--radius-pill);
+      font-family: var(--font-display);
+      font-weight: 600;
+      font-size: 13px;
+      color: var(--fg-default);
+      transition: background var(--dur-base) var(--ease-out), color var(--dur-base) var(--ease-out), border-color var(--dur-base) var(--ease-out);
+    }
+    .filter-bar button:hover { border-color: var(--bsg-green-500); color: var(--bsg-green-500); }
+    .filter-bar button.is-active { background: var(--bsg-green-500); color: #0A0D08; border-color: var(--bsg-green-500); }
+
+    .pf-grid {
+      display: grid;
+      grid-template-columns: 1fr;
+      gap: 32px;
+    }
+    @media (min-width: 720px) { .pf-grid { grid-template-columns: repeat(2, 1fr); } }
+    @media (min-width: 1100px) { .pf-grid { grid-template-columns: repeat(3, 1fr); } }
+    .pf-card {
+      display: flex; flex-direction: column;
+      gap: 16px;
+      cursor: none;
+      transition: transform var(--dur-base) var(--ease-out);
+    }
+    .pf-card:hover { transform: translateY(-4px); }
+    .pf-cover {
+      aspect-ratio: 4/3;
+      border-radius: var(--radius-lg);
+      overflow: hidden;
+      background: var(--ink-50);
+      position: relative;
+    }
+    .pf-cover img {
+      width: 100%; height: 100%; object-fit: cover;
+      transition: transform .6s var(--ease-out), filter .4s var(--ease-out);
+    }
+    .pf-card:hover .pf-cover img { transform: scale(1.05); }
+    .pf-cover .badge {
+      position: absolute; top: 16px; left: 16px;
+      padding: 6px 12px;
+      border-radius: var(--radius-pill);
+      background: rgba(10,13,8,0.7);
+      color: #fff;
+      font-family: var(--font-display);
+      font-weight: 600;
+      font-size: 11px;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      backdrop-filter: blur(8px);
+    }
+    .pf-card h3 {
+      margin: 0;
+      font-family: var(--font-display);
+      font-weight: 700;
+      font-size: 22px;
+      line-height: 1.15;
+      letter-spacing: -0.015em;
+    }
+    .pf-card .meta {
+      display: flex; gap: 16px;
+      font-family: var(--font-display);
+      font-weight: 500;
+      font-size: 12px;
+      color: var(--fg-muted);
+      letter-spacing: 0.04em;
+      text-transform: uppercase;
+    }
+    .pf-card .meta b { color: var(--bsg-green-500); }
+  </style>
+</head>
+<body class="theme-light" data-screen-label="Portfolio">
+
+  <header class="site-header">
+    <a class="brand" href="index.html" aria-label="BSG home">
+      <span class="dot"></span>
+      <span>bsg<span style="color: var(--bsg-green-500)">.</span></span>
+      <span class="brand-meta">Centrale media · dal 1991</span>
+    </a>
+    <nav class="site-nav" aria-label="Navigazione principale">
+      <a href="chi-siamo.html">Chi siamo</a>
+      <a href="servizi.html">Servizi</a>
+      <a href="index.html#universo">Universo BSG</a>
+      <a href="portfolio.html" class="is-current">Portfolio</a>
+      <a href="news.html">News</a>
+    </nav>
+    <a class="header-cta" href="contatti.html" data-hover>
+      <span>Parliamone</span>
+      <svg class="arrow" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="4" y1="12" x2="20" y2="12"/><polyline points="14 6 20 12 14 18"/></svg>
+    </a>
+  </header>
+
+  <main>
+    <section class="page-hero">
+      <div class="wrap">
+        <div class="crumbs"><a href="index.html">Home</a> <span class="sep">/</span> <span class="current">Portfolio</span></div>
+        <h1>Progetti<br><em>realizzati</em>.</h1>
+        <p class="lede">Selezione di campagne integrate, OOH, eventi e format proprietari. Un campione di quello che intendiamo per <em>chiavi in mano</em>.</p>
+      </div>
+    </section>
+
+    <section class="section">
+      <div class="wrap">
+        <div class="filter-bar" role="tablist">
+          <button class="is-active" data-filter="all">Tutti</button>
+          <button data-filter="ooh">OOH &amp; DOOH</button>
+          <button data-filter="event">Eventi</button>
+          <button data-filter="atl">ATL</button>
+          <button data-filter="cultura">Cultura</button>
+          <button data-filter="format">Format BSG</button>
+        </div>
+
+        <div class="pf-grid">
+          <a class="pf-card reveal" href="#" data-cat="ooh" data-hover>
+            <div class="pf-cover"><span class="badge">OOH · 2025</span><img src="assets/imagery/case-finstral.jpg" alt="Finstral"></div>
+            <h3>Finstral — la finestra che arreda</h3>
+            <div class="meta"><span>OOH classico</span><span><b>+38%</b> awareness</span></div>
+          </a>
+
+          <a class="pf-card reveal" href="#" data-cat="atl ooh" data-hover>
+            <div class="pf-cover"><span class="badge">ATL · OOH</span><img src="assets/imagery/case-rds.jpg" alt="RDS Eros"></div>
+            <h3>RDS — Eros Ramazzotti</h3>
+            <div class="meta"><span>Lancio tour</span><span><b>4.2M</b> impression</span></div>
+          </a>
+
+          <a class="pf-card reveal" href="#" data-cat="cultura" data-hover>
+            <div class="pf-cover"><span class="badge">DOOH · 2024</span><img src="assets/imagery/case-quirino.jpg" alt="Teatro Quirino"></div>
+            <h3>Teatro Quirino — stagione 24/25</h3>
+            <div class="meta"><span>Cultura</span><span><b>+22%</b> abbonati</span></div>
+          </a>
+
+          <a class="pf-card reveal" href="#" data-cat="atl ooh" data-hover>
+            <div class="pf-cover"><span class="badge">ATL · OOH · DOOH</span><img src="assets/imagery/case-trombetta.jpg" alt="BCC Iccrea"></div>
+            <h3>Gruppo BCC Iccrea — istituzionale</h3>
+            <div class="meta"><span>Centro-Sud</span><span><b>1.450</b> impianti</span></div>
+          </a>
+
+          <a class="pf-card reveal" href="#" data-cat="event format" data-hover>
+            <div class="pf-cover"><span class="badge">Format · Evento</span><img src="assets/imagery/case-gros.jpg" alt="Padel Best Village"></div>
+            <h3>Padel Best Village — edizione zero</h3>
+            <div class="meta"><span>Roma EUR</span><span><b>17K</b> presenze</span></div>
+          </a>
+
+          <a class="pf-card reveal" href="#" data-cat="event format" data-hover>
+            <div class="pf-cover"><span class="badge">Format · Evento</span><img src="assets/imagery/case-sandro.jpg" alt="Squisitus"></div>
+            <h3>Squisitus — Roma Fiera del gusto</h3>
+            <div class="meta"><span>Food &amp; lifestyle</span><span><b>12K</b> visitatori</span></div>
+          </a>
+
+          <a class="pf-card reveal" href="#" data-cat="ooh" data-hover>
+            <div class="pf-cover"><span class="badge">OOH · 2024</span><img src="assets/imagery/case-finstral-bus.jpg" alt="Naima Bus"></div>
+            <h3>Naima — campagna bus &amp; tram</h3>
+            <div class="meta"><span>Mobilità urbana</span><span><b>620</b> mezzi</span></div>
+          </a>
+
+          <a class="pf-card reveal" href="#" data-cat="ooh" data-hover>
+            <div class="pf-cover"><span class="badge">OOH · 2023</span><img src="assets/imagery/case-rds-billboard.jpg" alt="RDS Billboard"></div>
+            <h3>RDS — palinsesto autunno</h3>
+            <div class="meta"><span>OOH metropolitano</span><span><b>3.8M</b> impression</span></div>
+          </a>
+
+          <a class="pf-card reveal" href="#" data-cat="atl" data-hover>
+            <div class="pf-cover"><span class="badge">ATL · 2024</span><img src="assets/imagery/case-finstral.jpg" alt="Casaidea"></div>
+            <h3>Casaidea — fiera del design</h3>
+            <div class="meta"><span>Lancio fiera</span><span><b>+18%</b> ingressi</span></div>
+          </a>
+        </div>
+      </div>
+    </section>
+
+    <section class="bigcta" style="background: var(--bsg-green-500); color: #0A0D08;">
+      <div class="wrap">
+        <h2 style="color: #0A0D08;">Il prossimo<br><em style="color: rgba(10,13,8,0.7);">è il tuo</em>?</h2>
+        <a class="button" href="contatti.html" data-magnet data-hover style="background: #0A0D08; color: var(--bsg-green-300);">
+          Raccontacelo
+          <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="13 6 19 12 13 18"/></svg>
+        </a>
+      </div>
+    </section>
+
+    <footer class="site-footer">
+      <div class="wrap">
+        <div class="footer-top">
+          <div class="footer-brand">
+            <div class="mark">bsg<span class="dotc">.</span></div>
+            <p>Centrale media indipendente. Operazioni pubblicitarie e strategiche dal 1991.</p>
+          </div>
+          <div class="footer-col">
+            <h5>Agenzia</h5>
+            <ul>
+              <li><a href="chi-siamo.html">Chi siamo</a></li>
+              <li><a href="servizi.html">Servizi</a></li>
+              <li><a href="portfolio.html">Portfolio</a></li>
+              <li><a href="news.html">News</a></li>
+              <li><a href="contatti.html">Contatti</a></li>
+            </ul>
+          </div>
+          <div class="footer-col">
+            <h5>Universo</h5>
+            <ul>
+              <li><a href="index.html#universo">BSG</a></li>
+              <li><a href="index.html#universo">Padel Media</a></li>
+              <li><a href="index.html#universo">Padel Best Village</a></li>
+              <li><a href="index.html#universo">Squisitus</a></li>
+              <li><a href="index.html#universo">Excellere</a></li>
+            </ul>
+          </div>
+          <div class="footer-col">
+            <h5>Sedi</h5>
+            <ul style="font-family: var(--font-body); font-weight: 400; font-size: 14px; line-height: 1.6;">
+              <li style="color: var(--fg-muted);"><strong style="display: block; color: var(--fg-default); font-family: var(--font-display); font-weight: 900; font-size: 16px; letter-spacing: -0.01em; margin-bottom: 4px;">Roma</strong>Via Appia Nuova 677<br>00179 Roma</li>
+              <li style="color: var(--fg-muted);"><strong style="display: block; color: var(--fg-default); font-family: var(--font-display); font-weight: 900; font-size: 16px; letter-spacing: -0.01em; margin-bottom: 4px;">Milano</strong>Via Alberto Mario 26<br>20149 Milano</li>
+            </ul>
+          </div>
+        </div>
+        <div class="footer-bottom">
+          <span>© 2026 BSG srl · P.IVA 04567890123 · Ateco 73.11.01</span>
+          <span>Sito · v1.0 · Roma + Milano</span>
+        </div>
+      </div>
+    </footer>
+  </main>
+
+  <script src="assets/motion.js"></script>
+  <script src="tweaks.js"></script>
+  <script>
+    // Portfolio filter
+    document.querySelectorAll('.filter-bar button').forEach((btn) => {
+      btn.addEventListener('click', () => {
+        document.querySelectorAll('.filter-bar button').forEach((b) => b.classList.remove('is-active'));
+        btn.classList.add('is-active');
+        const f = btn.dataset.filter;
+        document.querySelectorAll('.pf-card').forEach((c) => {
+          const cats = (c.dataset.cat || '').split(/\s+/);
+          c.style.display = (f === 'all' || cats.includes(f)) ? '' : 'none';
+        });
+      });
+    });
+  </script>
+</body>
+</html>

@@ -1,0 +1,293 @@
+<!DOCTYPE html>
+<html lang="it">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>News · BSG</title>
+  <link rel="stylesheet" href="assets/site.css">
+  <link rel="icon" type="image/svg+xml" href="assets/logo/bsg-mark.svg">
+  <style>
+    .news-hero-card {
+      display: grid;
+      grid-template-columns: 1fr;
+      gap: 32px;
+      padding: 32px;
+      border: 1px solid var(--border-default);
+      border-radius: var(--radius-xl);
+      background: var(--bg-default);
+      margin-bottom: 64px;
+      transition: background var(--dur-base) var(--ease-out);
+    }
+    .news-hero-card:hover { background: var(--bg-subtle); }
+    @media (min-width: 900px) {
+      .news-hero-card { grid-template-columns: 1fr 1fr; gap: 48px; align-items: center; padding: 48px; }
+    }
+    .news-hero-card .cover {
+      aspect-ratio: 4/3;
+      background-size: cover;
+      background-position: center;
+      border-radius: var(--radius-lg);
+    }
+    .news-hero-card h2 {
+      margin: 16px 0 16px;
+      font-family: var(--font-display);
+      font-weight: 900;
+      font-size: clamp(28px, 3.4vw, 48px);
+      line-height: 1.05;
+      letter-spacing: -0.02em;
+    }
+    .news-hero-card p {
+      font-size: 17px;
+      line-height: 1.55;
+      color: var(--fg-muted);
+      margin: 0 0 24px;
+    }
+
+    .news-row {
+      display: grid;
+      grid-template-columns: 1fr;
+      gap: 24px;
+      padding: 32px 0;
+      border-top: 1px solid var(--border-default);
+      transition: background var(--dur-base) var(--ease-out);
+    }
+    @media (min-width: 800px) {
+      .news-row { grid-template-columns: 160px 1fr auto; gap: 48px; align-items: baseline; padding: 36px 24px; }
+    }
+    .news-row:hover { background: var(--bg-subtle); }
+    .news-row:last-child { border-bottom: 1px solid var(--border-default); }
+    .news-row .date {
+      font-family: var(--font-display);
+      font-weight: 700;
+      font-size: 16px;
+      color: var(--bsg-green-500);
+      letter-spacing: -0.005em;
+    }
+    .news-row .date small {
+      display: block;
+      font-weight: 300;
+      font-size: 11px;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+      color: var(--fg-muted);
+      margin-top: 4px;
+    }
+    .news-row h3 {
+      margin: 0;
+      font-family: var(--font-display);
+      font-weight: 700;
+      font-size: 22px;
+      line-height: 1.2;
+      letter-spacing: -0.01em;
+    }
+    .news-row .category {
+      display: inline-block;
+      margin-top: 8px;
+      padding: 4px 10px;
+      border-radius: var(--radius-pill);
+      background: var(--bsg-green-100);
+      color: var(--bsg-green-deep);
+      font-family: var(--font-display);
+      font-weight: 600;
+      font-size: 10px;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+    }
+    .news-row .arrow {
+      width: 40px; height: 40px;
+      border-radius: 999px;
+      border: 1px solid var(--border-default);
+      display: inline-flex; align-items: center; justify-content: center;
+      transition: background var(--dur-base) var(--ease-out), border-color var(--dur-base) var(--ease-out), transform var(--dur-base) var(--ease-out);
+    }
+    .news-row:hover .arrow {
+      background: var(--bsg-green-500);
+      border-color: var(--bsg-green-500);
+      color: #fff;
+      transform: rotate(-45deg);
+    }
+  </style>
+</head>
+<body class="theme-light" data-screen-label="News">
+
+  <header class="site-header">
+    <a class="brand" href="index.html" aria-label="BSG home">
+      <span class="dot"></span>
+      <span>bsg<span style="color: var(--bsg-green-500)">.</span></span>
+      <span class="brand-meta">Centrale media · dal 1991</span>
+    </a>
+    <nav class="site-nav" aria-label="Navigazione principale">
+      <a href="chi-siamo.html">Chi siamo</a>
+      <a href="servizi.html">Servizi</a>
+      <a href="index.html#universo">Universo BSG</a>
+      <a href="portfolio.html">Portfolio</a>
+      <a href="news.html" class="is-current">News</a>
+    </nav>
+    <a class="header-cta" href="contatti.html" data-hover>
+      <span>Parliamone</span>
+      <svg class="arrow" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="4" y1="12" x2="20" y2="12"/><polyline points="14 6 20 12 14 18"/></svg>
+    </a>
+  </header>
+
+  <main>
+    <section class="page-hero">
+      <div class="wrap">
+        <div class="crumbs"><a href="index.html">Home</a> <span class="sep">/</span> <span class="current">News &amp; comunicati</span></div>
+        <h1>News <em>&amp;</em><br>comunicati.</h1>
+        <p class="lede">Articoli stampa, lanci di campagna, comunicati ufficiali e contenuti editoriali. La voce della casa, aggiornata di settimana in settimana.</p>
+      </div>
+    </section>
+
+    <section class="section">
+      <div class="wrap">
+
+        <a class="news-hero-card reveal" href="#" data-hover>
+          <div class="cover" style="background-image: url('assets/imagery/case-quirino.jpg');"></div>
+          <div>
+            <span class="news-cat" style="background: var(--bsg-green-100); color: var(--bsg-green-deep);">In evidenza · Comunicato</span>
+            <h2>BSG firma la nuova edizione di Padel Best Village 2026 a Roma EUR.</h2>
+            <p>La seconda edizione del format esperienziale di BSG torna a maggio. Otto campi, area expo raddoppiata, otto sponsor main partner. Il villaggio del padel apre per dieci giorni a Roma EUR.</p>
+            <div style="display: flex; align-items: center; gap: 16px;">
+              <span style="font-family: var(--font-display); font-weight: 600; font-size: 13px;">04 Maggio 2026</span>
+              <span style="font-family: var(--font-display); font-weight: 600; font-size: 13px; color: var(--bsg-green-500);">Leggi →</span>
+            </div>
+          </div>
+        </a>
+
+        <div style="display: grid; grid-template-columns: 1fr; gap: 0;">
+
+          <a class="news-row reveal" href="#" data-hover>
+            <div class="date">22 Apr 2026 <small>Campagna</small></div>
+            <div>
+              <h3>Finstral × BSG: la finestra come elemento d'arredo, ora anche in DOOH.</h3>
+              <span class="category">Campagna</span>
+            </div>
+            <span class="arrow"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="13 6 19 12 13 18"/></svg></span>
+          </a>
+
+          <a class="news-row reveal" href="#" data-hover>
+            <div class="date">11 Apr 2026 <small>Editoriale</small></div>
+            <div>
+              <h3>Stretching marketing: come BSG estende il know-how ai format verticali.</h3>
+              <span class="category">Editoriale</span>
+            </div>
+            <span class="arrow"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="13 6 19 12 13 18"/></svg></span>
+          </a>
+
+          <a class="news-row reveal" href="#" data-hover>
+            <div class="date">28 Mar 2026 <small>Stampa</small></div>
+            <div>
+              <h3>Intervista su Sole 24 Ore: «L'OOH è tornato dove appartiene, in mezzo alle persone».</h3>
+              <span class="category">Articolo stampa</span>
+            </div>
+            <span class="arrow"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="13 6 19 12 13 18"/></svg></span>
+          </a>
+
+          <a class="news-row reveal" href="#" data-hover>
+            <div class="date">14 Mar 2026 <small>Comunicato</small></div>
+            <div>
+              <h3>Squisitus 2026: aperte le iscrizioni per produttori e brand del food.</h3>
+              <span class="category">Comunicato</span>
+            </div>
+            <span class="arrow"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="13 6 19 12 13 18"/></svg></span>
+          </a>
+
+          <a class="news-row reveal" href="#" data-hover>
+            <div class="date">02 Mar 2026 <small>Campagna</small></div>
+            <div>
+              <h3>RDS — palinsesto primavera: 4.2M di impression OOH stimate sull'area metropolitana.</h3>
+              <span class="category">Case in lancio</span>
+            </div>
+            <span class="arrow"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="13 6 19 12 13 18"/></svg></span>
+          </a>
+
+          <a class="news-row reveal" href="#" data-hover>
+            <div class="date">14 Feb 2026 <small>Editoriale</small></div>
+            <div>
+              <h3>Eyes tracking e psicologia della percezione: come decidiamo dove va un impianto.</h3>
+              <span class="category">Editoriale</span>
+            </div>
+            <span class="arrow"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="13 6 19 12 13 18"/></svg></span>
+          </a>
+
+          <a class="news-row reveal" href="#" data-hover>
+            <div class="date">28 Gen 2026 <small>Comunicato</small></div>
+            <div>
+              <h3>Padel Media debutta: nasce il network editoriale del padel italiano.</h3>
+              <span class="category">Comunicato</span>
+            </div>
+            <span class="arrow"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="13 6 19 12 13 18"/></svg></span>
+          </a>
+
+          <a class="news-row reveal" href="#" data-hover>
+            <div class="date">12 Gen 2026 <small>Editoriale</small></div>
+            <div>
+              <h3>Trend 2026: cosa cambia nell'OOH ora che il programmatic incontra la legalità.</h3>
+              <span class="category">Editoriale</span>
+            </div>
+            <span class="arrow"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="13 6 19 12 13 18"/></svg></span>
+          </a>
+
+        </div>
+
+        <div style="margin-top: 64px; display: flex; gap: 12px; justify-content: center; align-items: center; font-family: var(--font-display); font-weight: 500; font-size: 14px; color: var(--fg-muted);">
+          <button style="padding: 12px 18px; border: 1px solid var(--border-default); border-radius: var(--radius-pill); color: var(--fg-default);">← Più recenti</button>
+          <span style="color: var(--bsg-green-500); font-weight: 700;">1</span>
+          <span>·</span>
+          <span>2</span>
+          <span>·</span>
+          <span>3</span>
+          <span>·</span>
+          <span>12</span>
+          <button style="padding: 12px 18px; border: 1px solid var(--border-default); border-radius: var(--radius-pill); color: var(--fg-default);">Più vecchi →</button>
+        </div>
+      </div>
+    </section>
+
+    <footer class="site-footer">
+      <div class="wrap">
+        <div class="footer-top">
+          <div class="footer-brand">
+            <div class="mark">bsg<span class="dotc">.</span></div>
+            <p>Centrale media indipendente. Operazioni pubblicitarie e strategiche dal 1991.</p>
+          </div>
+          <div class="footer-col">
+            <h5>Agenzia</h5>
+            <ul>
+              <li><a href="chi-siamo.html">Chi siamo</a></li>
+              <li><a href="servizi.html">Servizi</a></li>
+              <li><a href="portfolio.html">Portfolio</a></li>
+              <li><a href="news.html">News</a></li>
+              <li><a href="contatti.html">Contatti</a></li>
+            </ul>
+          </div>
+          <div class="footer-col">
+            <h5>Universo</h5>
+            <ul>
+              <li><a href="index.html#universo">BSG</a></li>
+              <li><a href="index.html#universo">Padel Media</a></li>
+              <li><a href="index.html#universo">Padel Best Village</a></li>
+              <li><a href="index.html#universo">Squisitus</a></li>
+              <li><a href="index.html#universo">Excellere</a></li>
+            </ul>
+          </div>
+          <div class="footer-col">
+            <h5>Sedi</h5>
+            <ul style="font-family: var(--font-body); font-weight: 400; font-size: 14px; line-height: 1.6;">
+              <li style="color: var(--fg-muted);"><strong style="display: block; color: var(--fg-default); font-family: var(--font-display); font-weight: 900; font-size: 16px; letter-spacing: -0.01em; margin-bottom: 4px;">Roma</strong>Via Appia Nuova 677<br>00179 Roma</li>
+              <li style="color: var(--fg-muted);"><strong style="display: block; color: var(--fg-default); font-family: var(--font-display); font-weight: 900; font-size: 16px; letter-spacing: -0.01em; margin-bottom: 4px;">Milano</strong>Via Alberto Mario 26<br>20149 Milano</li>
+            </ul>
+          </div>
+        </div>
+        <div class="footer-bottom">
+          <span>© 2026 BSG srl · P.IVA 04567890123 · Ateco 73.11.01</span>
+          <span>Sito · v1.0 · Roma + Milano</span>
+        </div>
+      </div>
+    </footer>
+  </main>
+
+  <script src="assets/motion.js"></script>
+  <script src="tweaks.js"></script>
+</body>
+</html>
