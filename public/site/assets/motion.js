@@ -102,18 +102,65 @@
   }
 
   // ---------- Magnetic CTA ----------
-  const magnets = document.querySelectorAll("[data-magnet]");
-  magnets.forEach((el) => {
-    el.addEventListener("mousemove", (e) => {
-      const r = el.getBoundingClientRect();
-      const x = e.clientX - r.left - r.width / 2;
-      const y = e.clientY - r.top - r.height / 2;
-      el.style.transform = `translate(${x * 0.18}px, ${y * 0.22}px)`;
-    });
-    el.addEventListener("mouseleave", () => {
-      el.style.transform = "";
-    });
+  // Auto-tag common interactive buttons so the magnetic effect applies broadly.
+  const MAGNET_AUTO_SEL = [
+    ".button",
+    ".submit-btn",
+    ".header-cta",
+    ".header-cta .button",
+    ".brand-cta",
+    ".wa-float",
+    ".pill",
+    ".cta",
+    ".more-btn",
+    "button.primary",
+    "a.primary",
+  ].join(",");
+  document.querySelectorAll(MAGNET_AUTO_SEL).forEach((el) => {
+    if (!el.hasAttribute("data-magnet")) el.setAttribute("data-magnet", "");
   });
+
+  const canHover = !window.matchMedia || window.matchMedia("(hover: hover) and (pointer: fine)").matches;
+  const reduced = window.matchMedia && window.matchMedia("(prefers-reduced-motion: reduce)").matches;
+
+  if (canHover && !reduced) {
+    const magnets = document.querySelectorAll("[data-magnet]");
+    magnets.forEach((el) => {
+      // Strength scales down for bigger elements so the motion stays subtle.
+      const customStrength = parseFloat(el.getAttribute("data-magnet-strength"));
+      el.style.transition = el.style.transition || "transform 400ms cubic-bezier(0.22, 1, 0.36, 1)";
+      el.style.willChange = "transform";
+
+      let raf = 0;
+      let tx = 0, ty = 0;
+
+      const apply = () => {
+        raf = 0;
+        el.style.transform = `translate3d(${tx.toFixed(2)}px, ${ty.toFixed(2)}px, 0)`;
+      };
+
+      el.addEventListener("mouseenter", () => {
+        el.style.transition = "transform 250ms cubic-bezier(0.22, 1, 0.36, 1)";
+      });
+      el.addEventListener("mousemove", (e) => {
+        const r = el.getBoundingClientRect();
+        const x = e.clientX - r.left - r.width / 2;
+        const y = e.clientY - r.top - r.height / 2;
+        // Auto strength: smaller buttons pull more, large CTAs less.
+        const base = Number.isFinite(customStrength)
+          ? customStrength
+          : Math.max(0.08, Math.min(0.28, 60 / Math.max(r.width, r.height)));
+        tx = x * base;
+        ty = y * base * 0.9;
+        if (!raf) raf = requestAnimationFrame(apply);
+      });
+      el.addEventListener("mouseleave", () => {
+        tx = 0; ty = 0;
+        el.style.transition = "transform 500ms cubic-bezier(0.22, 1, 0.36, 1)";
+        el.style.transform = "";
+      });
+    });
+  }
 
   // ---------- Marquee duplication (clones content so loop is seamless) ----------
   document.querySelectorAll(".marquee__track, .clients-band__track").forEach((tr) => {
