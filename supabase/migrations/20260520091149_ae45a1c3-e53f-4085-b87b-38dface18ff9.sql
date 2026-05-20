@@ -1,0 +1,3 @@
+INSERT INTO public.news (slug, title, excerpt, content, category, author, published, published_at) VALUES
+('trend-2026-ooh-programmatic', 'Trend 2026: cosa cambia nell''OOH ora che il programmatic incontra la legalità.', 'Editoriale sui trend OOH del 2026, dal programmatic al rapporto con la normativa.', E'Il 2026 segna un punto di svolta per l''Out-Of-Home: il programmatic DOOH diventa mainstream e si confronta con un quadro normativo più chiaro su privacy, misurazione e trasparenza.\n\nUn editoriale della direzione BSG su cosa cambia, davvero, per chi pianifica e per chi vende spazi.', 'Editoriale', 'Direzione BSG', true, '2026-01-12 09:00:00+00'::timestamptz)
+ON CONFLICT (slug) DO NOTHING;
