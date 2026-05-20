@@ -252,10 +252,14 @@ select, [type="submit"] { cursor: none; }
   color: var(--fg-default);
   margin: 24px 0 0;
 }
-.hero-title .row { display: block; overflow: hidden; }
+.hero-title .row {
+  display: block;
+  overflow: hidden;
+  padding: 0.12em 0 0.22em;
+}
 .hero-title .row > span {
   display: inline-block;
-  transform: translateY(110%);
+  transform: translateY(160%);
   animation: rise 1s var(--ease-out) forwards;
 }
 .hero-title .row:nth-child(1) > span { animation-delay: .05s; }
