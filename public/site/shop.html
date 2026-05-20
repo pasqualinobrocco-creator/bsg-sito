@@ -1,0 +1,341 @@
+<!DOCTYPE html>
+<html lang="it">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Shop — BSG | Merchandising ufficiale</title>
+  <meta name="description" content="Lo shop ufficiale BSG: capi e accessori in edizione limitata. Scegli taglia e colore tra 10 articoli selezionati.">
+  <link rel="canonical" href="https://www.bsgsrl.com/shop">
+  <meta property="og:type" content="website">
+  <meta property="og:site_name" content="BSG">
+  <meta property="og:title" content="Shop — BSG | Merchandising ufficiale">
+  <meta property="og:description" content="Lo shop ufficiale BSG: capi e accessori in edizione limitata. Scegli taglia e colore tra 10 articoli selezionati.">
+  <meta property="og:url" content="https://www.bsgsrl.com/shop">
+  <meta property="og:locale" content="it_IT">
+  <link rel="stylesheet" href="assets/site.css">
+  <link rel="icon" type="image/svg+xml" href="/favicons/favicon.svg">
+  <meta name="theme-color" content="#629630">
+
+  <style>
+    .shop-grid{
+      display:grid;
+      grid-template-columns:repeat(auto-fill, minmax(280px, 1fr));
+      gap:28px;
+      margin-top:40px;
+    }
+    .shop-card{
+      display:flex; flex-direction:column;
+      background:var(--bg-elevated, #fff);
+      border:1px solid var(--border-subtle, rgba(0,0,0,.08));
+      border-radius:18px;
+      overflow:hidden;
+      transition:transform .35s ease, box-shadow .35s ease;
+    }
+    .shop-card:hover{ transform:translateY(-4px); box-shadow:0 18px 40px -22px rgba(0,0,0,.25); }
+    .shop-thumb{
+      aspect-ratio:1/1;
+      position:relative;
+      display:flex; align-items:center; justify-content:center;
+      transition:background .3s ease;
+    }
+    .shop-thumb svg{ width:62%; height:62%; }
+    .shop-tag{
+      position:absolute; top:12px; left:12px;
+      font-family:var(--font-display);
+      font-weight:700; font-size:11px; letter-spacing:.1em; text-transform:uppercase;
+      background:rgba(0,0,0,.78); color:#fff;
+      padding:6px 10px; border-radius:999px;
+    }
+    .shop-body{ padding:20px 22px 22px; display:flex; flex-direction:column; gap:14px; }
+    .shop-head{ display:flex; justify-content:space-between; align-items:baseline; gap:12px; }
+    .shop-head h3{
+      margin:0;
+      font-family:var(--font-display);
+      font-weight:800; font-size:20px; line-height:1.15; letter-spacing:-.015em;
+    }
+    .shop-price{
+      font-family:var(--font-display); font-weight:700; font-size:18px;
+      color:var(--bsg-green-600, #4f7a26);
+      white-space:nowrap;
+    }
+    .shop-desc{
+      margin:0;
+      font-family:var(--font-body); font-size:13.5px; line-height:1.5;
+      color:var(--fg-muted);
+    }
+    .opt-row{ display:flex; flex-direction:column; gap:6px; }
+    .opt-label{
+      display:flex; justify-content:space-between;
+      font-family:var(--font-display); font-weight:600;
+      font-size:11px; letter-spacing:.08em; text-transform:uppercase;
+      color:var(--fg-muted);
+    }
+    .opt-label b{ color:var(--fg-default); font-weight:700; letter-spacing:.02em; text-transform:none; }
+    .opt-colors{ display:flex; gap:8px; flex-wrap:wrap; }
+    .opt-color{
+      width:26px; height:26px; border-radius:50%;
+      border:2px solid rgba(0,0,0,.08); cursor:pointer; padding:0;
+      transition:transform .2s ease, box-shadow .2s ease;
+      position:relative;
+    }
+    .opt-color:hover{ transform:scale(1.08); }
+    .opt-color[aria-pressed="true"]{
+      box-shadow:0 0 0 2px #fff, 0 0 0 4px var(--bsg-green-500, #629630);
+    }
+    .opt-sizes{ display:flex; gap:6px; flex-wrap:wrap; }
+    .opt-size{
+      min-width:38px; padding:7px 10px;
+      font-family:var(--font-display); font-weight:700; font-size:12px;
+      background:transparent;
+      border:1.5px solid rgba(0,0,0,.15);
+      border-radius:10px;
+      cursor:pointer;
+      transition:all .2s ease;
+    }
+    .opt-size:hover{ border-color:rgba(0,0,0,.4); }
+    .opt-size[aria-pressed="true"]{
+      background:var(--fg-default, #111);
+      color:#fff;
+      border-color:var(--fg-default, #111);
+    }
+    .shop-cta{
+      margin-top:6px;
+      display:flex; align-items:center; justify-content:center; gap:8px;
+      padding:12px 16px;
+      background:var(--bsg-green-500, #629630);
+      color:#0A0D08;
+      border:0; border-radius:12px;
+      font-family:var(--font-display); font-weight:800; font-size:13px;
+      letter-spacing:.04em; text-transform:uppercase;
+      cursor:pointer;
+      transition:filter .2s ease, transform .2s ease;
+    }
+    .shop-cta:hover{ filter:brightness(1.05); transform:translateY(-1px); }
+    .shop-cta:disabled{ opacity:.5; cursor:not-allowed; transform:none; filter:none; }
+
+    .cart-bar{
+      position:fixed; left:50%; bottom:24px; transform:translateX(-50%);
+      background:#0A0D08; color:#fff;
+      padding:14px 22px; border-radius:999px;
+      display:flex; align-items:center; gap:16px;
+      font-family:var(--font-display); font-weight:600; font-size:13px;
+      box-shadow:0 18px 40px -10px rgba(0,0,0,.4);
+      opacity:0; pointer-events:none; transition:opacity .25s ease, transform .25s ease;
+      z-index:50;
+    }
+    .cart-bar.is-visible{ opacity:1; pointer-events:auto; transform:translateX(-50%) translateY(0); }
+    .cart-bar .count{
+      background:var(--bsg-green-500, #629630); color:#0A0D08;
+      padding:3px 10px; border-radius:999px; font-weight:800;
+    }
+  </style>
+</head>
+<body class="theme-light" data-screen-label="Shop">
+
+  <header class="site-header">
+    <a class="brand" href="index.html" aria-label="BSG home">
+      <img class="brand-logo" src="assets/logo/bsg-mark.svg" alt="BSG" width="40" height="40">
+      <span class="brand-meta">Centrale media · dal 1991</span>
+    </a>
+    <nav class="site-nav" aria-label="Navigazione principale">
+      <a href="chi-siamo.html">Chi siamo</a>
+      <a href="servizi.html">Servizi</a>
+      <a href="universo.html">Universo BSG</a>
+      <a href="portfolio.html">Portfolio</a>
+      <a href="news.html">News</a>
+      <a href="shop.html" class="is-current">Shop</a>
+    </nav>
+    <a class="header-cta" href="contatti.html" data-hover>
+      <span>Parliamone</span>
+      <svg class="arrow" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="4" y1="12" x2="20" y2="12"/><polyline points="14 6 20 12 14 18"/></svg>
+    </a>
+    <button class="nav-toggle" type="button" aria-label="Apri menu" aria-expanded="false" data-nav-toggle>
+      <span></span>
+    </button>
+  </header>
+
+  <nav class="mobile-nav" id="mobile-nav" aria-label="Navigazione mobile" data-mobile-nav>
+    <a href="chi-siamo.html">Chi siamo</a>
+    <a href="servizi.html">Servizi</a>
+    <a href="universo.html">Universo BSG</a>
+    <a href="portfolio.html">Portfolio</a>
+    <a href="news.html">News</a>
+    <a href="shop.html">Shop</a>
+    <a href="contatti.html">Contatti</a>
+  </nav>
+
+  <main>
+    <section class="page-hero">
+      <div class="wrap">
+        <div class="crumbs"><a href="index.html">Home</a> <span class="sep">/</span> <span class="current">Shop</span></div>
+        <h1>Indossa<br><em>l'idea</em>.</h1>
+        <p class="lede">Capi e accessori in edizione limitata pensati per chi vive la centrale media come una community. Scegli taglia e colore: 10 pezzi selezionati.</p>
+      </div>
+    </section>
+
+    <section class="section">
+      <div class="wrap">
+        <div class="shop-grid" id="shop-grid"><!-- injected by JS --></div>
+      </div>
+    </section>
+  </main>
+
+  <div class="cart-bar" id="cart-bar" role="status" aria-live="polite">
+    <span><span class="count" id="cart-count">0</span> articoli nel carrello</span>
+    <span style="opacity:.6">·</span>
+    <span id="cart-total">€ 0</span>
+  </div>
+
+  <footer class="site-footer">
+    <div class="wrap">
+      <div class="footer-bottom" style="padding:32px 0;">
+        <span>© 2026 BSG srl · P.IVA 04567890123</span>
+        <span>Shop · Edizioni limitate</span>
+      </div>
+    </div>
+  </footer>
+
+  <script src="assets/motion.js"></script>
+  <script src="tweaks.js"></script>
+  <script>
+  (function(){
+    var btn = document.querySelector('[data-nav-toggle]');
+    var nav = document.querySelector('[data-mobile-nav]');
+    if(btn && nav){
+      function close(){ btn.setAttribute('aria-expanded','false'); nav.classList.remove('is-open'); document.body.classList.remove('nav-open'); }
+      function open(){ btn.setAttribute('aria-expanded','true'); nav.classList.add('is-open'); document.body.classList.add('nav-open'); }
+      btn.addEventListener('click', function(){
+        if(btn.getAttribute('aria-expanded')==='true') close(); else open();
+      });
+      nav.querySelectorAll('a').forEach(function(a){ a.addEventListener('click', close); });
+    }
+  })();
+  </script>
+
+  <script>
+  (function(){
+    var products = [
+      { id:'tee-manifesto',   name:'Tee Manifesto',          tag:'T-Shirt',  price:38, desc:'Cotone organico 220g, stampa serigrafica del manifesto BSG.',         sizes:['XS','S','M','L','XL','XXL'], colors:[{n:'Verde BSG',h:'#629630'},{n:'Nero',h:'#0A0D08'},{n:'Bianco',h:'#F5F2EA'}] },
+      { id:'hoodie-1991',     name:'Hoodie 1991',            tag:'Felpa',    price:89, desc:'Felpa heavyweight 480g, cappuccio foderato. Numero anniversario ricamato.', sizes:['S','M','L','XL','XXL'],     colors:[{n:'Verde Bosco',h:'#3D5A2A'},{n:'Antracite',h:'#2A2D28'},{n:'Avena',h:'#D9CFB7'}] },
+      { id:'cap-mark',        name:'Cap Mark',               tag:'Cappello', price:32, desc:'Cappellino 6 pannelli con logo BSG ricamato, chiusura strap.',          sizes:['Unica'],                     colors:[{n:'Nero',h:'#0A0D08'},{n:'Verde BSG',h:'#629630'},{n:'Sabbia',h:'#C9B98A'},{n:'Bordeaux',h:'#6B1F2A'}] },
+      { id:'tote-claim',      name:'Tote Claim',             tag:'Borsa',    price:18, desc:'Tote in canvas 320g con claim editoriale stampato su entrambi i lati.', sizes:['Unica'],                     colors:[{n:'Naturale',h:'#E8DFC4'},{n:'Nero',h:'#0A0D08'}] },
+      { id:'crew-padel',      name:'Crewneck Padel Best',    tag:'Felpa',    price:74, desc:'Girocollo collo alto, cotone garzato. Capsule Padel Best Village.',     sizes:['XS','S','M','L','XL'],       colors:[{n:'Verde Lime',h:'#A8D047'},{n:'Bianco',h:'#F5F2EA'},{n:'Notte',h:'#1B2540'}] },
+      { id:'polo-monaco',     name:'Polo Monaco',            tag:'Polo',     price:62, desc:'Polo in piqué con bordino tono su tono. Edizione Monte-Carlo.',         sizes:['S','M','L','XL','XXL'],      colors:[{n:'Bianco',h:'#F5F2EA'},{n:'Blu Riviera',h:'#1F3A6E'},{n:'Verde BSG',h:'#629630'}] },
+      { id:'beanie-night',    name:'Beanie Notte',           tag:'Cuffia',   price:28, desc:'Cuffia in maglia rib con patch tessile BSG.',                            sizes:['Unica'],                     colors:[{n:'Nero',h:'#0A0D08'},{n:'Grigio',h:'#6B6E66'},{n:'Verde Oliva',h:'#6A7340'}] },
+      { id:'jacket-ooh',      name:'Coach Jacket OOH',       tag:'Giacca',   price:148,desc:'Coach jacket impermeabile, fodera in mesh, stampa retro 6x3.',          sizes:['S','M','L','XL'],            colors:[{n:'Nero',h:'#0A0D08'},{n:'Verde Bosco',h:'#3D5A2A'}] },
+      { id:'socks-stat',      name:'Socks Stat Pack',        tag:'Calze',    price:22, desc:'Set di 3 paia di calze con dati BSG ricamati al polpaccio.',             sizes:['39-42','43-46'],             colors:[{n:'Mix Verde',h:'#629630'},{n:'Mix Nero',h:'#0A0D08'}] },
+      { id:'notebook-brief',  name:'Notebook Briefing',      tag:'Editoria', price:24, desc:'Quaderno A5 cartonato, carta avorio 100g, template di briefing media.', sizes:['A5'],                        colors:[{n:'Verde BSG',h:'#629630'},{n:'Crema',h:'#F0E8D0'},{n:'Nero',h:'#0A0D08'}] }
+    ];
+
+    function productSvg(color){
+      // generic apparel-like silhouette filled with selected color
+      return '<svg viewBox="0 0 200 200" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">'
+        + '<path d="M60 40 L40 60 L52 76 L70 64 L70 160 L130 160 L130 64 L148 76 L160 60 L140 40 L120 40 Q100 56 80 40 Z" fill="'+color+'" stroke="rgba(0,0,0,.25)" stroke-width="2" stroke-linejoin="round"/>'
+        + '<circle cx="100" cy="50" r="6" fill="rgba(255,255,255,.6)"/>'
+        + '</svg>';
+    }
+    function thumbBg(color){
+      return 'linear-gradient(160deg, ' + color + '14, ' + color + '33)';
+    }
+
+    var state = {}; // id -> {color, size}
+    var cart = {};  // id+variant -> qty
+
+    var grid = document.getElementById('shop-grid');
+    var cartBar = document.getElementById('cart-bar');
+    var cartCount = document.getElementById('cart-count');
+    var cartTotal = document.getElementById('cart-total');
+
+    function render(){
+      grid.innerHTML = products.map(function(p){
+        var sel = state[p.id] || { color: p.colors[0].h, colorName: p.colors[0].n, size: p.sizes[0] };
+        state[p.id] = sel;
+        return ''
+        + '<article class="shop-card reveal" data-id="'+p.id+'">'
+        +   '<div class="shop-thumb" style="background:'+thumbBg(sel.color)+'">'
+        +     '<span class="shop-tag">'+p.tag+'</span>'
+        +     productSvg(sel.color)
+        +   '</div>'
+        +   '<div class="shop-body">'
+        +     '<div class="shop-head"><h3>'+p.name+'</h3><span class="shop-price">€ '+p.price+'</span></div>'
+        +     '<p class="shop-desc">'+p.desc+'</p>'
+        +     '<div class="opt-row">'
+        +       '<span class="opt-label">Colore <b data-color-name>'+sel.colorName+'</b></span>'
+        +       '<div class="opt-colors">'
+        +         p.colors.map(function(c){
+                    var on = c.h === sel.color;
+                    return '<button type="button" class="opt-color" data-color="'+c.h+'" data-color-name="'+c.n+'" aria-label="'+c.n+'" aria-pressed="'+on+'" style="background:'+c.h+'"></button>';
+                  }).join('')
+        +       '</div>'
+        +     '</div>'
+        +     '<div class="opt-row">'
+        +       '<span class="opt-label">Taglia <b data-size-name>'+sel.size+'</b></span>'
+        +       '<div class="opt-sizes">'
+        +         p.sizes.map(function(s){
+                    var on = s === sel.size;
+                    return '<button type="button" class="opt-size" data-size="'+s+'" aria-pressed="'+on+'">'+s+'</button>';
+                  }).join('')
+        +       '</div>'
+        +     '</div>'
+        +     '<button type="button" class="shop-cta" data-add>Aggiungi al carrello</button>'
+        +   '</div>'
+        + '</article>';
+      }).join('');
+    }
+
+    function updateCart(){
+      var count = 0, total = 0;
+      Object.keys(cart).forEach(function(k){
+        count += cart[k].qty;
+        total += cart[k].qty * cart[k].price;
+      });
+      cartCount.textContent = count;
+      cartTotal.textContent = '€ ' + total;
+      cartBar.classList.toggle('is-visible', count > 0);
+    }
+
+    grid.addEventListener('click', function(e){
+      var card = e.target.closest('.shop-card');
+      if(!card) return;
+      var id = card.dataset.id;
+      var p = products.find(function(x){ return x.id === id; });
+      var sel = state[id];
+
+      var colorBtn = e.target.closest('.opt-color');
+      if(colorBtn){
+        sel.color = colorBtn.dataset.color;
+        sel.colorName = colorBtn.dataset.colorName;
+        card.querySelectorAll('.opt-color').forEach(function(b){ b.setAttribute('aria-pressed', b === colorBtn ? 'true' : 'false'); });
+        card.querySelector('[data-color-name]').textContent = sel.colorName;
+        var thumb = card.querySelector('.shop-thumb');
+        thumb.style.background = thumbBg(sel.color);
+        thumb.querySelector('svg path').setAttribute('fill', sel.color);
+        return;
+      }
+
+      var sizeBtn = e.target.closest('.opt-size');
+      if(sizeBtn){
+        sel.size = sizeBtn.dataset.size;
+        card.querySelectorAll('.opt-size').forEach(function(b){ b.setAttribute('aria-pressed', b === sizeBtn ? 'true' : 'false'); });
+        card.querySelector('[data-size-name]').textContent = sel.size;
+        return;
+      }
+
+      var add = e.target.closest('[data-add]');
+      if(add){
+        var key = id + '|' + sel.color + '|' + sel.size;
+        if(!cart[key]) cart[key] = { qty:0, price:p.price };
+        cart[key].qty++;
+        updateCart();
+        var orig = add.textContent;
+        add.textContent = '✓ Aggiunto';
+        add.disabled = true;
+        setTimeout(function(){ add.textContent = orig; add.disabled = false; }, 1100);
+      }
+    });
+
+    render();
+  })();
+  </script>
+</body>
+</html>
