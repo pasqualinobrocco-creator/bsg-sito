@@ -247,7 +247,7 @@ select, [type="submit"] { cursor: none; }
   font-family: var(--font-display);
   font-weight: var(--fw-black);
   font-size: clamp(64px, 13vw, 220px);
-  line-height: 0.88;
+  line-height: 1.05;
   letter-spacing: -0.045em;
   color: var(--fg-default);
   margin: 24px 0 0;
@@ -255,11 +255,12 @@ select, [type="submit"] { cursor: none; }
 .hero-title .row {
   display: block;
   overflow: hidden;
-  padding: 0.15em 0 0.3em;
+  padding: 0.05em 0 0.05em;
 }
 .hero-title .row > span {
   display: inline-block;
-  transform: translateY(180%);
+  line-height: 1.05;
+  transform: translateY(110%);
   animation: rise 1s var(--ease-out) forwards;
 }
 .hero-title .row:nth-child(1) > span { animation-delay: .05s; }
