@@ -808,14 +808,14 @@ select, [type="submit"] { cursor: none; }
   font-size: 18px;
 }
 .clients-band__item img {
-  max-height: 36px;
+  max-height: 44px;
   width: auto;
-  filter: invert(1) brightness(2) contrast(0.4);
-  opacity: 0.7;
+  filter: brightness(0) invert(1);
+  opacity: 0.78;
   transition: opacity var(--dur-base) var(--ease-out), filter var(--dur-base) var(--ease-out);
 }
-.clients-band__item:hover img { opacity: 1; filter: invert(0) brightness(1) contrast(1); }
-.theme-light .clients-band__item img { filter: grayscale(1) contrast(0.7); opacity: 0.65; }
+.clients-band__item:hover img { opacity: 1; filter: none; }
+.theme-light .clients-band__item img { filter: brightness(0); opacity: 0.75; }
 .theme-light .clients-band__item:hover img { filter: none; opacity: 1; }
 
 /* ---------- News ---------- */
