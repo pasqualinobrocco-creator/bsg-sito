@@ -66,6 +66,14 @@
 
     .b-tags { display: flex; flex-wrap: wrap; gap: 8px; margin-top: 28px; }
     .b-tag { font-family: var(--font-display); font-weight: 600; font-size: 11px; letter-spacing: 0.1em; text-transform: uppercase; padding: 6px 12px; border: 1px solid currentColor; border-radius: 999px; opacity: 0.6; }
+
+    /* Brand logo plaque */
+    .b-logo { display: inline-flex; align-items: center; justify-content: center; background: #fff; border: 1px solid rgba(10,13,8,0.08); border-radius: 12px; padding: 18px 24px; margin-bottom: 24px; box-shadow: 0 8px 24px rgba(0,0,0,0.18); max-width: 280px; min-height: 96px; }
+    .b-logo img { display: block; max-width: 100%; max-height: 80px; width: auto; height: auto; object-fit: contain; }
+    .b-logo--wide { max-width: 340px; }
+    .b-logo--tall img { max-height: 110px; }
+    .brand-section.invert .b-logo { background: #fff; box-shadow: 0 6px 18px rgba(10,13,8,0.08); }
+    @media (max-width: 900px) { .b-logo { max-width: 220px; min-height: 80px; padding: 14px 18px; } .b-logo img { max-height: 60px; } }
   </style>
 </head>
 <body class="theme-dark" data-screen-label="Universo BSG">
@@ -165,6 +173,7 @@
       <div class="wrap">
         <div class="b-head">
           <div>
+            <div class="b-logo b-logo--wide"><img src="assets/brand-logos/padel-best.png" alt="Padel Best Village" loading="lazy"></div>
             <span class="b-num">02 / 05</span>
             <span class="b-eyebrow">Format eventi · The Big Show</span>
             <h2 class="b-title">Padel <em>Best Village</em></h2>
@@ -176,11 +185,13 @@
           <div>
             <p style="font-size: 17px; line-height: 1.7; max-width: 60ch;">Un poliedro di emozioni: campi da gioco, FIP Rise, Cupra FIP Tour, Givova Five Padel Cup, area expo per brand del settore e degli sponsor crossmerceologici, talk, intrattenimento e community building. È il format con cui BSG mette in scena il padel come <em>media a tutti gli effetti</em>: un'occasione in cui pubblico, atleti e marchi vivono insieme l'esperienza.</p>
             <ul class="b-list">
-              <li>Tornei FIP Rise &amp; Cupra FIP Tour internazionali</li>
+              <li>Tornei FIP Rise Monaco &amp; Cupra FIP Tour internazionali</li>
+              <li>Givova Five Padel Cup: Vip Man · Vip Woman · Inclusive · Italy-France · Gen Z</li>
               <li>Area expo per main partner e sponsor crossmerceologici</li>
               <li>Format itinerante: Roma EUR · Monte-Carlo · città italiane</li>
               <li>17.000 presenze già registrate nell'edizione zero</li>
-              <li>Hospitality, talk show, intrattenimento dal vivo</li>
+              <li>Padel Forum: talk con esperti, aziende, atleti, coach e celebrities</li>
+              <li>Hospitality, networking serale, intrattenimento dal vivo</li>
             </ul>
             <div class="b-tags">
               <span class="b-tag">B2B + B2C</span>
@@ -248,6 +259,7 @@
       <div class="wrap">
         <div class="b-head">
           <div>
+            <div class="b-logo b-logo--tall"><img src="assets/brand-logos/squisitus.png" alt="Squisitus — Healthy · Sport · Tasty" loading="lazy"></div>
             <span class="b-num">04 / 05</span>
             <span class="b-eyebrow">Food &amp; lifestyle · Hub esperienziale</span>
             <h2 class="b-title"><em>Squisitus</em></h2>
@@ -289,21 +301,23 @@
       <div class="wrap">
         <div class="b-head">
           <div>
+            <div class="b-logo b-logo--wide"><img src="assets/brand-logos/excellere.svg" alt="Excellere BSG — La Rosa dell'Eccellenza" loading="lazy"></div>
             <span class="b-num">05 / 05</span>
             <span class="b-eyebrow">Network eventi · Advisory</span>
             <h2 class="b-title">Excellere<em> BSG</em></h2>
           </div>
-          <p class="b-desc">Dall'esperienza trentennale di BSG nasce <strong>Excellere — your event here</strong>: il primo network di organizzazione di eventi che riunisce partner scelti per l'eccellenza dei beni e dei servizi offerti. Un unico interlocutore che seleziona e mette a disposizione i migliori specialisti del settore eventi e della comunicazione live — dalla scenografia all'hospitality, dalla regia tecnica al catering.</p>
+          <p class="b-desc">Dall'esperienza trentennale di BSG nasce <strong>Excellere — La Rosa dell'Eccellenza</strong>: il primo network italiano che raggruppa i professionisti del mondo degli eventi. Una selezione accurata di specialisti, servizi, prodotti e tutto ciò che serve per organizzare eventi di successo per aziende e privati. <em>L'eccellenza a portata di click.</em></p>
         </div>
 
         <div class="b-grid">
           <div>
-            <p style="font-size: 17px; line-height: 1.7; color: var(--fg-muted); max-width: 60ch;">Una rosa dell'eccellenza che mette a sistema fornitori, professionisti, location e prodotti per organizzare eventi corporate, istituzionali e privati di altissimo livello. Excellere è anche cultura del marketing: workshop, advisory e programmi executive che mettono in circolo il know-how della casa madre. Sedi operative a Roma, Milano e <strong>Roquebrune-Cap-Martin</strong>.</p>
+            <p style="font-size: 17px; line-height: 1.7; color: var(--fg-muted); max-width: 60ch;">Una rosa di partner che mette a sistema fornitori, professionisti, location e prodotti per organizzare eventi corporate, istituzionali e privati di altissimo livello. Excellere è anche cultura del marketing: workshop, advisory e programmi executive che mettono in circolo il know-how della casa madre. Sedi operative a Roma, Milano e <strong>Roquebrune-Cap-Martin</strong>.</p>
             <ul class="b-list">
-              <li>Network di partner selezionati — eccellenza eventi &amp; live</li>
-              <li>Single point of contact per eventi corporate e privati</li>
+              <li>Network di partner selezionati — la rosa dell'eccellenza eventi &amp; live</li>
+              <li>Single point of contact per eventi corporate, istituzionali e privati</li>
+              <li>11 categorie: Location, Food &amp; Catering, Allestimenti, Intrattenimento, Foto &amp; Video, Tecnologia, Beauty, Outfit, Cadeau &amp; Gadget, Trasporti, Agenzie</li>
+              <li>Iscrizione gratuita per aziende del settore eventi</li>
               <li>Workshop, formazione e advisory di marketing</li>
-              <li>Catalogo prodotti e servizi per organizzatori</li>
               <li>Presidio internazionale: Roma · Milano · Roquebrune-Cap-Martin</li>
             </ul>
             <div class="b-tags">
