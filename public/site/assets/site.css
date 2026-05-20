@@ -255,11 +255,11 @@ select, [type="submit"] { cursor: none; }
 .hero-title .row {
   display: block;
   overflow: hidden;
-  padding: 0.12em 0 0.22em;
+  padding: 0.15em 0 0.3em;
 }
 .hero-title .row > span {
   display: inline-block;
-  transform: translateY(160%);
+  transform: translateY(180%);
   animation: rise 1s var(--ease-out) forwards;
 }
 .hero-title .row:nth-child(1) > span { animation-delay: .05s; }
