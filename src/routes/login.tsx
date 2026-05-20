@@ -9,12 +9,10 @@ export const Route = createFileRoute("/login")({
 
 function LoginPage() {
   const navigate = useNavigate();
-  const [mode, setMode] = useState<"signin" | "signup">("signin");
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const [loading, setLoading] = useState(false);
   const [error, setError] = useState<string | null>(null);
-  const [info, setInfo] = useState<string | null>(null);
 
   useEffect(() => {
     supabase.auth.getSession().then(({ data }) => {
@@ -25,23 +23,11 @@ function LoginPage() {
   const submit = async (e: React.FormEvent) => {
     e.preventDefault();
     setError(null);
-    setInfo(null);
     setLoading(true);
     try {
-      if (mode === "signup") {
-        const { error } = await supabase.auth.signUp({
-          email,
-          password,
-          options: { emailRedirectTo: `${window.location.origin}/admin` },
-        });
-        if (error) throw error;
-        setInfo("Account creato. Controlla la mail per confermare, poi accedi.");
-        setMode("signin");
-      } else {
-        const { error } = await supabase.auth.signInWithPassword({ email, password });
-        if (error) throw error;
-        navigate({ to: "/admin" });
-      }
+      const { error } = await supabase.auth.signInWithPassword({ email, password });
+      if (error) throw error;
+      navigate({ to: "/admin" });
     } catch (err: any) {
       setError(err?.message ?? "Errore");
     } finally {
@@ -55,7 +41,7 @@ function LoginPage() {
         <Link to="/" style={styles.brand}>
           bsg<span style={{ color: "#639730" }}>.</span>
         </Link>
-        <h1 style={styles.h1}>{mode === "signin" ? "Accedi" : "Crea account"}</h1>
+        <h1 style={styles.h1}>Accedi</h1>
         <p style={styles.sub}>Pannello redazione BSG</p>
 
         <form onSubmit={submit} style={styles.form}>
@@ -79,29 +65,16 @@ function LoginPage() {
               value={password}
               onChange={(e) => setPassword(e.target.value)}
               style={styles.input}
-              autoComplete={mode === "signin" ? "current-password" : "new-password"}
+              autoComplete="current-password"
             />
           </label>
 
           {error && <div style={styles.err}>{error}</div>}
-          {info && <div style={styles.info}>{info}</div>}
 
           <button type="submit" disabled={loading} style={styles.btn}>
-            {loading ? "…" : mode === "signin" ? "Accedi" : "Registrati"}
+            {loading ? "…" : "Accedi"}
           </button>
         </form>
-
-        <button
-          type="button"
-          onClick={() => {
-            setError(null);
-            setInfo(null);
-            setMode(mode === "signin" ? "signup" : "signin");
-          }}
-          style={styles.switch}
-        >
-          {mode === "signin" ? "Non hai un account? Registrati" : "Hai già un account? Accedi"}
-        </button>
       </div>
     </div>
   );
