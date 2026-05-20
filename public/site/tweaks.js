@@ -363,3 +363,82 @@
   s.onload = init;
   document.head.appendChild(s);
 })();
+
+/* ---------- Parallax (backgrounds & cards) ---------- */
+(function(){
+  if (window.__parallaxInit) return;
+  window.__parallaxInit = true;
+  if (window.matchMedia && window.matchMedia('(prefers-reduced-motion: reduce)').matches) return;
+
+  function setup() {
+    // Auto-tag common backgrounds/cards if not already opted in
+    document.querySelectorAll('.case-preview').forEach(function(el){
+      if (!el.hasAttribute('data-parallax')) el.setAttribute('data-parallax', '0.12');
+    });
+    document.querySelectorAll('.news-card, .service-card, .client-card').forEach(function(el){
+      if (!el.hasAttribute('data-parallax')) el.setAttribute('data-parallax', '0.06');
+    });
+
+    var items = Array.prototype.slice.call(document.querySelectorAll('[data-parallax]'));
+    if (!items.length) return;
+
+    items.forEach(function(el){
+      el.style.willChange = 'transform';
+      // For background-image elements, scale slightly to avoid edge gaps
+      var cs = window.getComputedStyle(el);
+      if (cs && cs.backgroundImage && cs.backgroundImage !== 'none') {
+        el.style.backgroundSize = el.style.backgroundSize || 'cover';
+        el.style.backgroundPosition = el.style.backgroundPosition || 'center';
+      }
+    });
+
+    var vh = window.innerHeight;
+    var ticking = false;
+
+    function update() {
+      ticking = false;
+      var viewportCenter = window.scrollY + vh / 2;
+      for (var i = 0; i < items.length; i++) {
+        var el = items[i];
+        var rect = el.getBoundingClientRect();
+        // Skip far-off elements
+        if (rect.bottom < -vh || rect.top > vh * 2) continue;
+        var speed = parseFloat(el.getAttribute('data-parallax')) || 0;
+        var elCenter = window.scrollY + rect.top + rect.height / 2;
+        var delta = (elCenter - viewportCenter) * speed * -1;
+        el.style.transform = 'translate3d(0,' + delta.toFixed(2) + 'px,0)';
+      }
+    }
+
+    function onScroll() {
+      if (!ticking) {
+        ticking = true;
+        requestAnimationFrame(update);
+      }
+    }
+
+    window.addEventListener('scroll', onScroll, { passive: true });
+    window.addEventListener('resize', function(){ vh = window.innerHeight; onScroll(); });
+    // Hook into Lenis if available for buttery sync
+    var hookLenis = function(){
+      if (window.__lenis && window.__lenis.on) {
+        window.__lenis.on('scroll', onScroll);
+        return true;
+      }
+      return false;
+    };
+    if (!hookLenis()) {
+      var tries = 0;
+      var iv = setInterval(function(){
+        if (hookLenis() || ++tries > 20) clearInterval(iv);
+      }, 250);
+    }
+    update();
+  }
+
+  if (document.readyState === 'loading') {
+    document.addEventListener('DOMContentLoaded', setup);
+  } else {
+    setup();
+  }
+})();
