@@ -1,0 +1,193 @@
+<!DOCTYPE html>
+<html lang="it">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Contatti · BSG</title>
+  <link rel="stylesheet" href="assets/site.css">
+  <link rel="icon" type="image/svg+xml" href="assets/logo/bsg-mark.svg">
+</head>
+<body class="theme-light" data-screen-label="Contatti">
+
+  <header class="site-header">
+    <a class="brand" href="index.html" aria-label="BSG home">
+      <span class="dot"></span>
+      <span>bsg<span style="color: var(--bsg-green-500)">.</span></span>
+      <span class="brand-meta">Centrale media · dal 1991</span>
+    </a>
+    <nav class="site-nav" aria-label="Navigazione principale">
+      <a href="chi-siamo.html">Chi siamo</a>
+      <a href="servizi.html">Servizi</a>
+      <a href="index.html#universo">Universo BSG</a>
+      <a href="portfolio.html">Portfolio</a>
+      <a href="news.html">News</a>
+    </nav>
+    <a class="header-cta" href="contatti.html" data-hover style="background: var(--bsg-green-500); color: #0A0D08; border-color: var(--bsg-green-500);">
+      <span>Sei qui</span>
+      <svg class="arrow" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="4"/></svg>
+    </a>
+  </header>
+
+  <main>
+    <section class="page-hero">
+      <div class="wrap">
+        <div class="crumbs"><a href="index.html">Home</a> <span class="sep">/</span> <span class="current">Contatti</span></div>
+        <h1>Iniziamo<br><em>dal briefing</em>.</h1>
+        <p class="lede">Compila il modulo, scrivici una mail o chiama una delle nostre sedi. Rispondiamo entro 24 ore lavorative — sempre con una persona vera.</p>
+      </div>
+    </section>
+
+    <section class="section">
+      <div class="wrap">
+        <div class="contact">
+          <div>
+            <div class="contact-display">
+              Una<br>buona idea<br>parte sempre<br><em>da un buon</em><br><em>briefing</em>.
+            </div>
+
+            <div class="contact-cities">
+              <div class="city">
+                <div class="name">Roma</div>
+                <div class="addr">
+                  Via Appia Nuova 677<br>
+                  00179 Roma<br>
+                  <span style="display: inline-block; margin-top: 10px;">+39 06 1234 5678</span><br>
+                  <a href="mailto:roma@bsg.it" style="color: var(--bsg-green-500); font-family: var(--font-display); font-weight: 600;" data-hover>roma@bsg.it</a>
+                </div>
+              </div>
+              <div class="city">
+                <div class="name">Milano</div>
+                <div class="addr">
+                  Via Alberto Mario 26<br>
+                  20149 Milano<br>
+                  <span style="display: inline-block; margin-top: 10px;">+39 02 8765 4321</span><br>
+                  <a href="mailto:milano@bsg.it" style="color: var(--bsg-green-500); font-family: var(--font-display); font-weight: 600;" data-hover>milano@bsg.it</a>
+                </div>
+              </div>
+            </div>
+
+            <div style="margin-top: 48px; padding-top: 32px; border-top: 1px solid var(--border-default);">
+              <div style="font-family: var(--font-display); font-weight: 500; font-size: 11px; letter-spacing: 0.12em; text-transform: uppercase; color: var(--fg-muted); margin-bottom: 12px;">Stampa &amp; PR</div>
+              <a href="mailto:press@bsg.it" style="font-family: var(--font-display); font-weight: 600; font-size: 18px; color: var(--fg-default);" data-hover>press@bsg.it</a>
+            </div>
+            <div style="margin-top: 24px;">
+              <div style="font-family: var(--font-display); font-weight: 500; font-size: 11px; letter-spacing: 0.12em; text-transform: uppercase; color: var(--fg-muted); margin-bottom: 12px;">Lavora con noi</div>
+              <a href="mailto:people@bsg.it" style="font-family: var(--font-display); font-weight: 600; font-size: 18px; color: var(--fg-default);" data-hover>people@bsg.it</a>
+            </div>
+          </div>
+
+          <form class="contact-form reveal" onsubmit="event.preventDefault(); this.querySelector('.submit-btn').textContent = 'Inviato ✓';">
+            <h4>Raccontaci il progetto</h4>
+
+            <div class="field-row">
+              <div class="field">
+                <label for="name">Nome &amp; cognome</label>
+                <input id="name" type="text" placeholder="Mario Rossi" required>
+              </div>
+              <div class="field">
+                <label for="company">Azienda</label>
+                <input id="company" type="text" placeholder="Brand spa">
+              </div>
+            </div>
+
+            <div class="field-row">
+              <div class="field">
+                <label for="email">Email</label>
+                <input id="email" type="email" placeholder="mario@brand.it" required>
+              </div>
+              <div class="field">
+                <label for="phone">Telefono</label>
+                <input id="phone" type="tel" placeholder="+39 …">
+              </div>
+            </div>
+
+            <div class="field">
+              <label for="scope">Mi interessa</label>
+              <select id="scope">
+                <option>Pianificazione media</option>
+                <option>Campagna OOH / DOOH</option>
+                <option>Evento o format</option>
+                <option>Consulenza strategica</option>
+                <option>Stampa &amp; PR</option>
+                <option>Altro / non lo so ancora</option>
+              </select>
+            </div>
+
+            <div class="field">
+              <label for="budget">Budget indicativo</label>
+              <select id="budget">
+                <option>Sotto 25k €</option>
+                <option>25k – 75k €</option>
+                <option>75k – 250k €</option>
+                <option>250k – 1M €</option>
+                <option>Oltre 1M €</option>
+                <option>Da definire</option>
+              </select>
+            </div>
+
+            <div class="field">
+              <label for="msg">Briefing breve</label>
+              <textarea id="msg" rows="4" placeholder="Cosa devi comunicare, a chi, in che città, entro quando…"></textarea>
+            </div>
+
+            <label style="display: flex; gap: 10px; align-items: flex-start; font-family: var(--font-body); font-size: 12px; color: var(--fg-muted); line-height: 1.45; margin-top: 8px;">
+              <input type="checkbox" required style="margin-top: 3px;">
+              <span>Ho letto l'informativa privacy e acconsento al trattamento dei dati per essere ricontattato.</span>
+            </label>
+
+            <button class="submit-btn" type="submit" data-magnet data-hover>
+              Invia briefing
+              <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="13 6 19 12 13 18"/></svg>
+            </button>
+          </form>
+        </div>
+      </div>
+    </section>
+
+    <footer class="site-footer">
+      <div class="wrap">
+        <div class="footer-top">
+          <div class="footer-brand">
+            <div class="mark">bsg<span class="dotc">.</span></div>
+            <p>Centrale media indipendente. Operazioni pubblicitarie e strategiche dal 1991.</p>
+          </div>
+          <div class="footer-col">
+            <h5>Agenzia</h5>
+            <ul>
+              <li><a href="chi-siamo.html">Chi siamo</a></li>
+              <li><a href="servizi.html">Servizi</a></li>
+              <li><a href="portfolio.html">Portfolio</a></li>
+              <li><a href="news.html">News</a></li>
+              <li><a href="contatti.html">Contatti</a></li>
+            </ul>
+          </div>
+          <div class="footer-col">
+            <h5>Universo</h5>
+            <ul>
+              <li><a href="index.html#universo">BSG</a></li>
+              <li><a href="index.html#universo">Padel Media</a></li>
+              <li><a href="index.html#universo">Padel Best Village</a></li>
+              <li><a href="index.html#universo">Squisitus</a></li>
+              <li><a href="index.html#universo">Excellere</a></li>
+            </ul>
+          </div>
+          <div class="footer-col">
+            <h5>Sedi</h5>
+            <ul style="font-family: var(--font-body); font-weight: 400; font-size: 14px; line-height: 1.6;">
+              <li style="color: var(--fg-muted);"><strong style="display: block; color: var(--fg-default); font-family: var(--font-display); font-weight: 900; font-size: 16px; letter-spacing: -0.01em; margin-bottom: 4px;">Roma</strong>Via Appia Nuova 677<br>00179 Roma</li>
+              <li style="color: var(--fg-muted);"><strong style="display: block; color: var(--fg-default); font-family: var(--font-display); font-weight: 900; font-size: 16px; letter-spacing: -0.01em; margin-bottom: 4px;">Milano</strong>Via Alberto Mario 26<br>20149 Milano</li>
+            </ul>
+          </div>
+        </div>
+        <div class="footer-bottom">
+          <span>© 2026 BSG srl · P.IVA 04567890123 · Ateco 73.11.01</span>
+          <span>Sito · v1.0 · Roma + Milano</span>
+        </div>
+      </div>
+    </footer>
+  </main>
+
+  <script src="assets/motion.js"></script>
+  <script src="tweaks.js"></script>
+</body>
+</html>
