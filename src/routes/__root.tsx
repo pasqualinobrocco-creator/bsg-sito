@@ -72,14 +72,18 @@ export const Route = createRootRouteWithContext<{ queryClient: QueryClient }>()(
     meta: [
       { charSet: "utf-8" },
       { name: "viewport", content: "width=device-width, initial-scale=1" },
-      { title: "Lovable App" },
-      { name: "description", content: "Lovable Generated Project" },
+      { title: "bsg" },
+      { name: "description", content: "Sito BSG transforms HTML into a dynamic, functional website with database integration and advanced SEO features." },
       { name: "author", content: "Lovable" },
-      { property: "og:title", content: "Lovable App" },
-      { property: "og:description", content: "Lovable Generated Project" },
+      { property: "og:title", content: "bsg" },
+      { property: "og:description", content: "Sito BSG transforms HTML into a dynamic, functional website with database integration and advanced SEO features." },
       { property: "og:type", content: "website" },
       { name: "twitter:card", content: "summary" },
       { name: "twitter:site", content: "@Lovable" },
+      { name: "twitter:title", content: "bsg" },
+      { name: "twitter:description", content: "Sito BSG transforms HTML into a dynamic, functional website with database integration and advanced SEO features." },
+      { property: "og:image", content: "https://pub-bb2e103a32db4e198524a2e9ed8f35b4.r2.dev/8c5f2dea-6024-47bd-99db-f0f3f035e536/id-preview-553e623b--33be75fb-f683-4318-8249-88f6474f29af.lovable.app-1779279737927.png" },
+      { name: "twitter:image", content: "https://pub-bb2e103a32db4e198524a2e9ed8f35b4.r2.dev/8c5f2dea-6024-47bd-99db-f0f3f035e536/id-preview-553e623b--33be75fb-f683-4318-8249-88f6474f29af.lovable.app-1779279737927.png" },
     ],
     links: [
       {
