@@ -66,6 +66,14 @@
 
     .b-tags { display: flex; flex-wrap: wrap; gap: 8px; margin-top: 28px; }
     .b-tag { font-family: var(--font-display); font-weight: 600; font-size: 11px; letter-spacing: 0.1em; text-transform: uppercase; padding: 6px 12px; border: 1px solid currentColor; border-radius: 999px; opacity: 0.6; }
+
+    /* Brand logo plaque */
+    .b-logo { display: inline-flex; align-items: center; justify-content: center; background: #fff; border: 1px solid rgba(10,13,8,0.08); border-radius: 12px; padding: 18px 24px; margin-bottom: 24px; box-shadow: 0 8px 24px rgba(0,0,0,0.18); max-width: 280px; min-height: 96px; }
+    .b-logo img { display: block; max-width: 100%; max-height: 80px; width: auto; height: auto; object-fit: contain; }
+    .b-logo--wide { max-width: 340px; }
+    .b-logo--tall img { max-height: 110px; }
+    .brand-section.invert .b-logo { background: #fff; box-shadow: 0 6px 18px rgba(10,13,8,0.08); }
+    @media (max-width: 900px) { .b-logo { max-width: 220px; min-height: 80px; padding: 14px 18px; } .b-logo img { max-height: 60px; } }
   </style>
 </head>
 <body class="theme-dark" data-screen-label="Universo BSG">
