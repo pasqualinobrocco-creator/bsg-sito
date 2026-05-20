@@ -133,6 +133,11 @@ select, [type="submit"] { cursor: none; }
   background: var(--bsg-green-500);
   box-shadow: 0 0 24px var(--bsg-green-500);
 }
+.brand-logo {
+  height: 40px;
+  width: auto;
+  display: block;
+}
 .brand-meta {
   display: none;
   font-family: var(--font-body);
