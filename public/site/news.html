@@ -133,9 +133,21 @@
       <span>Parliamone</span>
       <svg class="arrow" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="4" y1="12" x2="20" y2="12"/><polyline points="14 6 20 12 14 18"/></svg>
     </a>
-  </header>
+      <button class="nav-toggle" type="button" aria-label="Apri menu" aria-expanded="false" data-nav-toggle>
+      <span></span>
+    </button>
+</header>
 
-  <main>
+  
+  <nav class="mobile-nav" id="mobile-nav" aria-label="Navigazione mobile" data-mobile-nav>
+    <a href="chi-siamo.html">Chi siamo</a>
+    <a href="servizi.html">Servizi</a>
+    <a href="universo.html">Universo BSG</a>
+    <a href="portfolio.html">Portfolio</a>
+    <a href="news.html">News</a>
+    <a href="contatti.html">Contatti</a>
+  </nav>
+<main>
     <section class="page-hero">
       <div class="wrap">
         <div class="crumbs"><a href="index.html">Home</a> <span class="sep">/</span> <span class="current">News &amp; comunicati</span></div>
@@ -295,5 +307,19 @@
 
   <script src="assets/motion.js"></script>
   <script src="tweaks.js"></script>
+<script>
+(function(){
+  var btn = document.querySelector('[data-nav-toggle]');
+  var nav = document.querySelector('[data-mobile-nav]');
+  if(!btn || !nav) return;
+  function close(){ btn.setAttribute('aria-expanded','false'); nav.classList.remove('is-open'); document.body.classList.remove('nav-open'); btn.setAttribute('aria-label','Apri menu'); }
+  function open(){ btn.setAttribute('aria-expanded','true'); nav.classList.add('is-open'); document.body.classList.add('nav-open'); btn.setAttribute('aria-label','Chiudi menu'); }
+  btn.addEventListener('click', function(){
+    if(btn.getAttribute('aria-expanded')==='true') close(); else open();
+  });
+  nav.querySelectorAll('a').forEach(function(a){ a.addEventListener('click', close); });
+  window.addEventListener('resize', function(){ if(window.innerWidth >= 1024) close(); });
+})();
+</script>
 </body>
 </html>
