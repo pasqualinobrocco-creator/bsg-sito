@@ -23,7 +23,8 @@ export const Route = createFileRoute("/news/$slug")({
       links: [
         { rel: "stylesheet", href: "/site/assets/tokens.css" },
         { rel: "stylesheet", href: "/site/assets/site.css" },
-        { rel: "icon", type: "image/svg+xml", href: "/site/assets/logo/bsg-mark.svg" },
+        { rel: "icon", type: "image/svg+xml", href: "/favicons/favicon.svg" },
+        { rel: "apple-touch-icon", sizes: "180x180", href: "/favicons/apple-touch-icon.png" },
       ],
     };
   },
