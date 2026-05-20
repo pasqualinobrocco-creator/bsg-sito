@@ -81,7 +81,7 @@ function NewsArticle() {
       </header>
 
       <main>
-        <article className="section" style={{ paddingTop: 48 }}>
+        <article className="section news-detail">
           <div className="wrap" style={{ maxWidth: 880 }}>
             <div className="crumbs" style={{ marginBottom: 32 }}>
               <a href="/site/index.html">Home</a> <span className="sep">/</span>{" "}
