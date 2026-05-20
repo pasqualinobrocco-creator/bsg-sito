@@ -1,0 +1,372 @@
+<!DOCTYPE html>
+<html lang="it">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Universo BSG · Un gruppo, cinque anime</title>
+  <meta name="description" content="L'universo BSG: agenzia madre e quattro format verticali — Padel Best Village, Padel Media Communication, Squisitus, Excellere.">
+  <link rel="stylesheet" href="assets/site.css">
+  <link rel="icon" type="image/svg+xml" href="/favicons/favicon.svg">
+  <link rel="icon" type="image/png" sizes="32x32" href="/favicons/favicon-32x32.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="/favicons/favicon-16x16.png">
+  <link rel="shortcut icon" href="/favicons/favicon.ico">
+  <link rel="apple-touch-icon" sizes="180x180" href="/favicons/apple-touch-icon.png">
+  <link rel="manifest" href="/favicons/site.webmanifest">
+  <meta name="theme-color" content="#629630">
+  <meta name="apple-mobile-web-app-title" content="BSG">
+  <style>
+    html { scroll-behavior: smooth; scroll-padding-top: 96px; }
+    .uni-hero { padding: 140px 0 60px; }
+    .uni-hero h1 { font-family: var(--font-display); font-weight: 900; font-size: clamp(48px, 8vw, 128px); line-height: 0.92; letter-spacing: -0.04em; margin: 24px 0 32px; }
+    .uni-hero h1 em { font-family: var(--font-accent); font-style: italic; font-weight: 300; color: var(--bsg-green-300); }
+    .uni-hero .lede { font-size: clamp(16px, 1.2vw, 20px); line-height: 1.6; color: var(--fg-muted); max-width: 70ch; }
+    .uni-toc { display: grid; grid-template-columns: repeat(5, 1fr); gap: 1px; background: rgba(255,255,255,0.08); border-top: 1px solid rgba(255,255,255,0.08); border-bottom: 1px solid rgba(255,255,255,0.08); margin: 64px 0 0; }
+    .uni-toc a { display: flex; flex-direction: column; gap: 6px; padding: 24px 20px; background: var(--bg-default); color: var(--fg-default); text-decoration: none; transition: background .25s ease, color .25s ease; }
+    .uni-toc a:hover { background: var(--bsg-green-500); color: #0A0D08; }
+    .uni-toc a:hover .toc-num, .uni-toc a:hover .toc-meta { color: rgba(10,13,8,0.7); }
+    .uni-toc .toc-num { font-family: var(--font-display); font-weight: 700; font-size: 11px; letter-spacing: 0.12em; text-transform: uppercase; color: var(--bsg-green-300); }
+    .uni-toc .toc-name { font-family: var(--font-display); font-weight: 900; font-size: 22px; letter-spacing: -0.02em; }
+    .uni-toc .toc-meta { font-size: 12px; color: var(--fg-muted); }
+    @media (max-width: 900px) { .uni-toc { grid-template-columns: repeat(2, 1fr); } }
+
+    .brand-section { padding: 96px 0; border-top: 1px solid rgba(255,255,255,0.08); position: relative; }
+    .brand-section.invert { background: #F4F2EC; color: #0A0D08; }
+    .brand-section.invert .b-eyebrow { color: #4a6b22; }
+    .brand-section.invert .b-num { color: rgba(10,13,8,0.45); }
+    .brand-section.invert .b-desc, .brand-section.invert .b-stat .lbl, .brand-section.invert .b-list li { color: rgba(10,13,8,0.7); }
+    .brand-section.invert .b-list li::before { background: #4a6b22; }
+    .brand-section.invert .b-card { background: #fff; border-color: rgba(10,13,8,0.1); }
+    .brand-section.invert .b-cta { background: #0A0D08; color: var(--bsg-green-300); }
+
+    .b-head { display: grid; grid-template-columns: 1fr 1.4fr; gap: 64px; align-items: end; margin-bottom: 56px; }
+    .b-num { font-family: var(--font-display); font-weight: 700; font-size: 13px; letter-spacing: 0.18em; text-transform: uppercase; color: var(--fg-muted); margin-bottom: 16px; display: block; }
+    .b-eyebrow { font-family: var(--font-display); font-weight: 700; font-size: 12px; letter-spacing: 0.16em; text-transform: uppercase; color: var(--bsg-green-300); display: block; margin-bottom: 12px; }
+    .b-title { font-family: var(--font-display); font-weight: 900; font-size: clamp(48px, 7vw, 104px); line-height: 0.92; letter-spacing: -0.04em; margin: 0; }
+    .b-title em { font-family: var(--font-accent); font-style: italic; font-weight: 300; color: var(--bsg-green-300); }
+    .b-desc { font-size: clamp(15px, 1.1vw, 18px); line-height: 1.65; max-width: 60ch; }
+    .b-desc strong { font-weight: 700; }
+
+    .b-grid { display: grid; grid-template-columns: 1.3fr 1fr; gap: 48px; align-items: start; }
+    @media (max-width: 900px) { .b-head, .b-grid { grid-template-columns: 1fr; gap: 32px; } }
+
+    .b-list { list-style: none; padding: 0; margin: 24px 0 0; display: grid; gap: 14px; }
+    .b-list li { position: relative; padding-left: 22px; font-size: 15px; line-height: 1.55; }
+    .b-list li::before { content: ''; position: absolute; left: 0; top: 10px; width: 10px; height: 2px; background: var(--bsg-green-300); }
+
+    .b-card { background: rgba(255,255,255,0.04); border: 1px solid rgba(255,255,255,0.08); border-radius: 4px; padding: 32px; display: grid; gap: 24px; }
+    .b-card h4 { font-family: var(--font-display); font-weight: 900; font-size: 13px; letter-spacing: 0.12em; text-transform: uppercase; margin: 0 0 4px; }
+    .b-stat { display: grid; grid-template-columns: auto 1fr; gap: 16px; align-items: baseline; padding: 16px 0; border-top: 1px solid rgba(255,255,255,0.08); }
+    .brand-section.invert .b-stat { border-color: rgba(10,13,8,0.1); }
+    .b-stat:first-of-type { border-top: 0; padding-top: 0; }
+    .b-stat .num { font-family: var(--font-display); font-weight: 900; font-size: 36px; line-height: 1; letter-spacing: -0.03em; color: var(--bsg-green-300); }
+    .b-stat .lbl { font-size: 13px; line-height: 1.4; color: var(--fg-muted); }
+
+    .b-cta { display: inline-flex; align-items: center; gap: 12px; margin-top: 32px; padding: 16px 24px; background: var(--bsg-green-500); color: #0A0D08; text-decoration: none; font-family: var(--font-display); font-weight: 700; font-size: 14px; letter-spacing: 0.04em; text-transform: uppercase; border-radius: 999px; transition: transform .25s ease; }
+    .b-cta:hover { transform: translateX(4px); }
+
+    .b-tags { display: flex; flex-wrap: wrap; gap: 8px; margin-top: 28px; }
+    .b-tag { font-family: var(--font-display); font-weight: 600; font-size: 11px; letter-spacing: 0.1em; text-transform: uppercase; padding: 6px 12px; border: 1px solid currentColor; border-radius: 999px; opacity: 0.6; }
+  </style>
+</head>
+<body class="theme-dark" data-screen-label="Universo BSG">
+
+  <header class="site-header">
+    <a class="brand" href="index.html" aria-label="BSG home">
+      <img class="brand-logo" src="assets/logo/bsg-mark.svg" alt="BSG" width="40" height="40">
+      <span class="brand-meta">Centrale media · dal 1991</span>
+    </a>
+    <nav class="site-nav" aria-label="Navigazione principale">
+      <a href="chi-siamo.html">Chi siamo</a>
+      <a href="servizi.html">Servizi</a>
+      <a href="universo.html" class="is-current">Universo BSG</a>
+      <a href="portfolio.html">Portfolio</a>
+      <a href="news.html">News</a>
+    </nav>
+    <a class="header-cta" href="contatti.html" data-hover>
+      <span>Parliamone</span>
+      <svg class="arrow" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="4" y1="12" x2="20" y2="12"/><polyline points="14 6 20 12 14 18"/></svg>
+    </a>
+  </header>
+
+  <main>
+    <section class="uni-hero">
+      <div class="wrap">
+        <div class="crumbs"><a href="index.html">Home</a> <span class="sep">/</span> <span class="current">Universo BSG</span></div>
+        <span class="eyebrow">Universo BSG</span>
+        <h1>Un gruppo,<br><em>cinque anime</em>.</h1>
+        <p class="lede">Dall'agenzia madre — centrale media indipendente attiva dal 1991 — nasce un'operazione di <strong>stretching marketing</strong>: BSG estende il proprio know-how a quattro format verticali, ciascuno con un'identità autonoma ma una stessa regia strategica. Sotto un solo tetto, cinque marchi che parlano la stessa lingua a pubblici diversi.</p>
+
+        <nav class="uni-toc" aria-label="Sezioni dell'universo">
+          <a href="#bsg"><span class="toc-num">01</span><span class="toc-name">BSG</span><span class="toc-meta">Agenzia madre</span></a>
+          <a href="#padel-best"><span class="toc-num">02</span><span class="toc-name">Padel Best</span><span class="toc-meta">Format eventi</span></a>
+          <a href="#padel-media"><span class="toc-num">03</span><span class="toc-name">Padel Media</span><span class="toc-meta">Network media</span></a>
+          <a href="#squisitus"><span class="toc-num">04</span><span class="toc-name">Squisitus</span><span class="toc-meta">Food &amp; lifestyle</span></a>
+          <a href="#excellere"><span class="toc-num">05</span><span class="toc-name">Excellere</span><span class="toc-meta">Network eventi</span></a>
+        </nav>
+      </div>
+    </section>
+
+    <!-- 01 BSG -->
+    <section class="brand-section" id="bsg">
+      <div class="wrap">
+        <div class="b-head">
+          <div>
+            <span class="b-num">01 / 05</span>
+            <span class="b-eyebrow">Agenzia madre</span>
+            <h2 class="b-title">BSG <em>Srl</em></h2>
+          </div>
+          <p class="b-desc">Centrale media indipendente con sedi a <strong>Roma e Milano</strong>, attiva dal 1991. Strategia, pianificazione, OOH/DOOH, eventi e produzione esecutiva: tutto sotto lo stesso tetto, con un approccio dichiaratamente <em>chiavi in mano</em>. Trentacinque anni di campagne con clienti che continuano a tornare — dal Gruppo BCC Iccrea a Finstral, da Regione Lazio al Teatro Quirino.</p>
+        </div>
+
+        <div class="b-grid">
+          <div>
+            <p style="font-size: 17px; line-height: 1.7; color: var(--fg-muted); max-width: 60ch;">Non vendiamo spazi: costruiamo strategie che fanno succedere le cose, dalla prima idea fino all'ultimo touch point per strada. Lavoriamo crossmediale (ATL, BTL, TTL) e misuriamo ogni passo. La nostra firma è la verifica preventiva: per ogni installazione outdoor controlliamo autorizzazioni, conformità e sopralluoghi — un dettaglio che il cliente non vede mai, ma di cui beneficia ogni giorno.</p>
+            <ul class="b-list">
+              <li>Marketing strategico, posizionamento, scenari competitivi</li>
+              <li>Pianificazione media ATL / BTL / TTL</li>
+              <li>OOH e DOOH — sopralluoghi, autorizzazioni, allestimento</li>
+              <li>Produzione esecutiva di eventi corporate</li>
+              <li>Creatività, copy, art direction integrata</li>
+            </ul>
+            <div class="b-tags">
+              <span class="b-tag">Indipendenti</span>
+              <span class="b-tag">Chiavi in mano</span>
+              <span class="b-tag">Roma · Milano</span>
+            </div>
+            <a class="b-cta" href="chi-siamo.html">Scopri l'agenzia
+              <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="13 6 19 12 13 18"/></svg>
+            </a>
+          </div>
+          <aside class="b-card">
+            <div><h4>I numeri</h4></div>
+            <div class="b-stat"><span class="num">35</span><span class="lbl">anni sul mercato della comunicazione</span></div>
+            <div class="b-stat"><span class="num">2</span><span class="lbl">sedi operative — Roma &amp; Milano</span></div>
+            <div class="b-stat"><span class="num">360°</span><span class="lbl">approccio crossmediale integrato</span></div>
+            <div class="b-stat"><span class="num">4</span><span class="lbl">format verticali nell'universo BSG</span></div>
+          </aside>
+        </div>
+      </div>
+    </section>
+
+    <!-- 02 PADEL BEST -->
+    <section class="brand-section invert" id="padel-best">
+      <div class="wrap">
+        <div class="b-head">
+          <div>
+            <span class="b-num">02 / 05</span>
+            <span class="b-eyebrow">Format eventi · The Big Show</span>
+            <h2 class="b-title">Padel <em>Best Village</em></h2>
+          </div>
+          <p class="b-desc">Il grande show del padel. Un format esperienziale e itinerante che porta in un unico luogo competizione, intrattenimento, brand activation e community. Dopo l'edizione zero a Roma EUR, la special edition Roma 2026 e la prima edizione internazionale al <strong>Grimaldi Forum di Monte-Carlo</strong>, Padel Best è la più grande exhibition globale B2B/B2C interamente dedicata al padel.</p>
+        </div>
+
+        <div class="b-grid">
+          <div>
+            <p style="font-size: 17px; line-height: 1.7; max-width: 60ch;">Un poliedro di emozioni: campi da gioco, FIP Rise, Cupra FIP Tour, Givova Five Padel Cup, area expo per brand del settore e degli sponsor crossmerceologici, talk, intrattenimento e community building. È il format con cui BSG mette in scena il padel come <em>media a tutti gli effetti</em>: un'occasione in cui pubblico, atleti e marchi vivono insieme l'esperienza.</p>
+            <ul class="b-list">
+              <li>Tornei FIP Rise &amp; Cupra FIP Tour internazionali</li>
+              <li>Area expo per main partner e sponsor crossmerceologici</li>
+              <li>Format itinerante: Roma EUR · Monte-Carlo · città italiane</li>
+              <li>17.000 presenze già registrate nell'edizione zero</li>
+              <li>Hospitality, talk show, intrattenimento dal vivo</li>
+            </ul>
+            <div class="b-tags">
+              <span class="b-tag">B2B + B2C</span>
+              <span class="b-tag">Itinerante</span>
+              <span class="b-tag">Sponsor activation</span>
+            </div>
+            <a class="b-cta" href="https://www.padelbest.net" target="_blank" rel="noopener">Vai a padelbest.net
+              <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round"><line x1="7" y1="17" x2="17" y2="7"/><polyline points="8 7 17 7 17 16"/></svg>
+            </a>
+          </div>
+          <aside class="b-card">
+            <div><h4>Edizione 2026</h4></div>
+            <div class="b-stat"><span class="num">MC</span><span class="lbl">Monte-Carlo · Grimaldi Forum — prima edizione internazionale</span></div>
+            <div class="b-stat"><span class="num">8</span><span class="lbl">campi e otto main partner nell'edizione raddoppiata</span></div>
+            <div class="b-stat"><span class="num">17k</span><span class="lbl">presenze stimate nel weekend di apertura</span></div>
+            <div class="b-stat"><span class="num">2°</span><span class="lbl">edizione consecutiva del format</span></div>
+          </aside>
+        </div>
+      </div>
+    </section>
+
+    <!-- 03 PADEL MEDIA -->
+    <section class="brand-section" id="padel-media">
+      <div class="wrap">
+        <div class="b-head">
+          <div>
+            <span class="b-num">03 / 05</span>
+            <span class="b-eyebrow">Network media · Comunicazione</span>
+            <h2 class="b-title">Padel <em>Media Communication</em></h2>
+          </div>
+          <p class="b-desc">La <strong>prima agenzia di comunicazione italiana interamente dedicata al mondo del padel</strong>. Un team di professionisti del marketing, della comunicazione e dello sport che trasforma il padel in un vero e proprio mezzo di comunicazione: una grande opportunità per i brand di creare valore parlando a una community che gioca, guarda e condivide.</p>
+        </div>
+
+        <div class="b-grid">
+          <div>
+            <p style="font-size: 17px; line-height: 1.7; color: var(--fg-muted); max-width: 60ch;">Proponiamo un approccio a 360° alla comunicazione sul padel, con iniziative che si integrano secondo il brief del brand e con un servizio chiavi in mano. Produzione editoriale, regia video, social, OOH dedicato ai circuiti dei club, sponsorship management e attivazioni sui tornei: ogni canale parla la lingua di chi vive il padel, dentro e fuori dal campo.</p>
+            <ul class="b-list">
+              <li>Produzione editoriale &amp; storytelling sportivo</li>
+              <li>Regia e produzione video — match, format, branded content</li>
+              <li>Social media management e creator partnership</li>
+              <li>OOH dedicato sui circuiti dei club padel</li>
+              <li>Sponsorship strategy e attivazione tornei</li>
+            </ul>
+            <div class="b-tags">
+              <span class="b-tag">Vertical media</span>
+              <span class="b-tag">Sport &amp; brand</span>
+              <span class="b-tag">Chiavi in mano</span>
+            </div>
+            <a class="b-cta" href="https://www.padelmediacommunication.it" target="_blank" rel="noopener">Vai a padelmediacommunication.it
+              <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round"><line x1="7" y1="17" x2="17" y2="7"/><polyline points="8 7 17 7 17 16"/></svg>
+            </a>
+          </div>
+          <aside class="b-card">
+            <div><h4>Posizionamento</h4></div>
+            <div class="b-stat"><span class="num">1ª</span><span class="lbl">agenzia di comunicazione italiana 100% padel</span></div>
+            <div class="b-stat"><span class="num">360°</span><span class="lbl">canali integrati: editoriale, video, social, OOH</span></div>
+            <div class="b-stat"><span class="num">B2B</span><span class="lbl">brand &amp; sponsor del settore sport, lifestyle, lusso</span></div>
+          </aside>
+        </div>
+      </div>
+    </section>
+
+    <!-- 04 SQUISITUS -->
+    <section class="brand-section invert" id="squisitus">
+      <div class="wrap">
+        <div class="b-head">
+          <div>
+            <span class="b-num">04 / 05</span>
+            <span class="b-eyebrow">Food &amp; lifestyle · Hub esperienziale</span>
+            <h2 class="b-title"><em>Squisitus</em></h2>
+          </div>
+          <p class="b-desc">Un nuovo <strong>hub esperienziale dedicato al mondo food &amp; lifestyle</strong>, che segna un'evoluzione strategica dell'agenzia attraverso un'operazione di stretching marketing. Squisitus mette insieme i migliori brand dell'agroalimentare italiano sotto un unico payoff: sport, benessere e tradizione che si incontrano. Debutto ufficiale a <strong>Marca 2026 — BolognaFiere</strong>, il 14 e 15 gennaio.</p>
+        </div>
+
+        <div class="b-grid">
+          <div>
+            <p style="font-size: 17px; line-height: 1.7; max-width: 60ch;">Un format espositivo in cui storytelling, marchio e prodotto si incontrano davvero: l'esperienza è prima di tutto degustazione e contenuto. Squisitus connette la GDO, l'horeca e il pubblico finale attraverso un percorso che mette il cibo al centro come <em>linguaggio di connessione</em> — fra produttori, distribuzione, comunicazione e consumo consapevole.</p>
+            <ul class="b-list">
+              <li>Format espositivo per brand agroalimentari italiani</li>
+              <li>Hub esperienziale — degustazione, storytelling, attivazione</li>
+              <li>Debutto Marca 2026 · BolognaFiere — 14/15 gennaio</li>
+              <li>Posizionamento crossover: food + benessere + sport</li>
+              <li>Bridge fra produttori, GDO, horeca e consumatore</li>
+            </ul>
+            <div class="b-tags">
+              <span class="b-tag">Food</span>
+              <span class="b-tag">Lifestyle</span>
+              <span class="b-tag">Marca 2026</span>
+            </div>
+            <a class="b-cta" href="contatti.html">Richiedi info sul format
+              <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="13 6 19 12 13 18"/></svg>
+            </a>
+          </div>
+          <aside class="b-card">
+            <div><h4>Debutto 2026</h4></div>
+            <div class="b-stat"><span class="num">14·15</span><span class="lbl">gennaio 2026 — Marca BolognaFiere</span></div>
+            <div class="b-stat"><span class="num">F&amp;L</span><span class="lbl">food &amp; lifestyle — un payoff trasversale</span></div>
+            <div class="b-stat"><span class="num">GDO</span><span class="lbl">interlocutori: grande distribuzione, horeca, retail</span></div>
+          </aside>
+        </div>
+      </div>
+    </section>
+
+    <!-- 05 EXCELLERE -->
+    <section class="brand-section" id="excellere">
+      <div class="wrap">
+        <div class="b-head">
+          <div>
+            <span class="b-num">05 / 05</span>
+            <span class="b-eyebrow">Network eventi · Advisory</span>
+            <h2 class="b-title">Excellere<em> BSG</em></h2>
+          </div>
+          <p class="b-desc">Dall'esperienza trentennale di BSG nasce <strong>Excellere — your event here</strong>: il primo network di organizzazione di eventi che riunisce partner scelti per l'eccellenza dei beni e dei servizi offerti. Un unico interlocutore che seleziona e mette a disposizione i migliori specialisti del settore eventi e della comunicazione live — dalla scenografia all'hospitality, dalla regia tecnica al catering.</p>
+        </div>
+
+        <div class="b-grid">
+          <div>
+            <p style="font-size: 17px; line-height: 1.7; color: var(--fg-muted); max-width: 60ch;">Una rosa dell'eccellenza che mette a sistema fornitori, professionisti, location e prodotti per organizzare eventi corporate, istituzionali e privati di altissimo livello. Excellere è anche cultura del marketing: workshop, advisory e programmi executive che mettono in circolo il know-how della casa madre. Sedi operative a Roma, Milano e <strong>Roquebrune-Cap-Martin</strong>.</p>
+            <ul class="b-list">
+              <li>Network di partner selezionati — eccellenza eventi &amp; live</li>
+              <li>Single point of contact per eventi corporate e privati</li>
+              <li>Workshop, formazione e advisory di marketing</li>
+              <li>Catalogo prodotti e servizi per organizzatori</li>
+              <li>Presidio internazionale: Roma · Milano · Roquebrune-Cap-Martin</li>
+            </ul>
+            <div class="b-tags">
+              <span class="b-tag">Network</span>
+              <span class="b-tag">Advisory</span>
+              <span class="b-tag">Eventi live</span>
+            </div>
+            <a class="b-cta" href="https://excellerebsg.com" target="_blank" rel="noopener">Vai a excellerebsg.com
+              <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round"><line x1="7" y1="17" x2="17" y2="7"/><polyline points="8 7 17 7 17 16"/></svg>
+            </a>
+          </div>
+          <aside class="b-card">
+            <div><h4>La rosa dell'eccellenza</h4></div>
+            <div class="b-stat"><span class="num">1°</span><span class="lbl">network italiano di partner per eventi premium</span></div>
+            <div class="b-stat"><span class="num">3</span><span class="lbl">sedi — Roma · Milano · Roquebrune-Cap-Martin</span></div>
+            <div class="b-stat"><span class="num">30+</span><span class="lbl">anni di know-how ereditati dalla casa madre</span></div>
+          </aside>
+        </div>
+      </div>
+    </section>
+
+    <section class="bigcta" style="background: var(--bsg-green-500); color: #0A0D08;">
+      <div class="wrap">
+        <h2 style="color: #0A0D08;">Vuoi entrare<br><em style="color: rgba(10,13,8,0.7);">nell'universo BSG?</em></h2>
+        <a class="button" href="contatti.html" data-magnet data-hover style="background: #0A0D08; color: var(--bsg-green-300);">
+          Parliamone
+          <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="13 6 19 12 13 18"/></svg>
+        </a>
+      </div>
+    </section>
+
+    <footer class="site-footer">
+      <div class="wrap">
+        <div class="footer-top">
+          <div class="footer-brand">
+            <a href="index.html" aria-label="BSG home" style="display:inline-block"><img class="footer-logo" src="/favicons/favicon.svg" alt="BSG" width="64" height="64"></a>
+            <p>Centrale media indipendente. Operazioni pubblicitarie e strategiche dal 1991.</p>
+          </div>
+          <div class="footer-col">
+            <h5>Agenzia</h5>
+            <ul>
+              <li><a href="chi-siamo.html">Chi siamo</a></li>
+              <li><a href="servizi.html">Servizi</a></li>
+              <li><a href="portfolio.html">Portfolio</a></li>
+              <li><a href="news.html">News</a></li>
+              <li><a href="contatti.html">Contatti</a></li>
+            </ul>
+          </div>
+          <div class="footer-col">
+            <h5>Universo</h5>
+            <ul>
+              <li><a href="universo.html#bsg">BSG</a></li>
+              <li><a href="universo.html#padel-media">Padel Media</a></li>
+              <li><a href="universo.html#padel-best">Padel Best Village</a></li>
+              <li><a href="universo.html#squisitus">Squisitus</a></li>
+              <li><a href="universo.html#excellere">Excellere</a></li>
+            </ul>
+          </div>
+          <div class="footer-col">
+            <h5>Sedi</h5>
+            <ul style="font-family: var(--font-body); font-weight: 400; font-size: 14px; line-height: 1.6;">
+              <li style="color: var(--fg-muted);"><strong style="display: block; color: var(--fg-default); font-family: var(--font-display); font-weight: 900; font-size: 16px; letter-spacing: -0.01em; margin-bottom: 4px;">Roma</strong>Via Appia Nuova 677<br>00179 Roma</li>
+              <li style="color: var(--fg-muted);"><strong style="display: block; color: var(--fg-default); font-family: var(--font-display); font-weight: 900; font-size: 16px; letter-spacing: -0.01em; margin-bottom: 4px;">Milano</strong>Via Alberto Mario 26<br>20149 Milano</li>
+            </ul>
+          </div>
+        </div>
+        <div class="footer-bottom">
+          <span>© 2026 BSG srl · P.IVA 04567890123 · Ateco 73.11.01</span>
+          <span>Sito · v1.0 · Roma + Milano</span>
+        </div>
+      </div>
+    </footer>
+  </main>
+
+  <script src="assets/motion.js"></script>
+  <script src="tweaks.js"></script>
+</body>
+</html>
