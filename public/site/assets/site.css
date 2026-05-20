@@ -1476,3 +1476,15 @@ html.lenis-enabled { scroll-behavior: auto; }
 .lenis.lenis-smooth [data-lenis-prevent] { overscroll-behavior: contain; }
 .lenis.lenis-stopped { overflow: hidden; }
 .lenis.lenis-scrolling iframe { pointer-events: none; }
+
+/* FAQ */
+.faq-item{background:var(--bg-subtle,#f5f3ee);border:1px solid rgba(10,13,8,0.08);border-radius:14px;padding:18px 22px;transition:background .25s ease,border-color .25s ease}
+.faq-item[open]{background:#fff;border-color:rgba(10,13,8,0.18);box-shadow:0 8px 24px rgba(0,0,0,.06)}
+.faq-item>summary{cursor:pointer;list-style:none;font-weight:600;font-size:1.05rem;line-height:1.4;display:flex;justify-content:space-between;align-items:center;gap:16px}
+.faq-item>summary::-webkit-details-marker{display:none}
+.faq-item>summary::after{content:"+";font-weight:300;font-size:1.6rem;line-height:1;transition:transform .25s ease;color:var(--bsg-green-500,#629630)}
+.faq-item[open]>summary::after{content:"–"}
+.faq-item>p{margin:14px 0 4px;color:rgba(10,13,8,.72);line-height:1.6}
+.theme-dark .faq-item{background:rgba(255,255,255,.04);border-color:rgba(255,255,255,.08)}
+.theme-dark .faq-item[open]{background:rgba(255,255,255,.06);border-color:rgba(255,255,255,.16)}
+.theme-dark .faq-item>p{color:rgba(255,255,255,.7)}
