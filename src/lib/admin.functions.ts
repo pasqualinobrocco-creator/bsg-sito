@@ -1,6 +1,7 @@
 import { createServerFn } from "@tanstack/react-start";
 import { z } from "zod";
 import { requireSupabaseAuth } from "@/integrations/supabase/auth-middleware";
+import { supabaseAdmin } from "@/integrations/supabase/client.server";
 
 // ---------- helpers ----------
 async function assertAdmin(supabase: any, userId: string) {
@@ -26,8 +27,6 @@ export const claimFirstAdmin = createServerFn({ method: "POST" })
     if ((count ?? 0) > 0) {
       throw new Error("Un amministratore esiste già. Chiedi a chi è admin di assegnarti il ruolo.");
     }
-    // Use admin client to bypass RLS for this one-time bootstrap insert.
-    const { supabaseAdmin } = await import("@/integrations/supabase/client.server");
     const { error } = await supabaseAdmin
       .from("user_roles")
       .insert({ user_id: userId, role: "admin" });
