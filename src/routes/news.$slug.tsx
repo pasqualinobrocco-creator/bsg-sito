@@ -64,8 +64,7 @@ function NewsArticle() {
     <>
       <header className="site-header">
         <a className="brand" href="/site/index.html" aria-label="BSG home">
-          <span className="dot"></span>
-          <span>bsg<span style={{ color: "var(--bsg-green-500)" }}>.</span></span>
+          <img className="brand-logo" src="/site/assets/logo/bsg-mark.svg" alt="BSG" width={40} height={40} />
           <span className="brand-meta">Centrale media · dal 1991</span>
         </a>
         <nav className="site-nav" aria-label="Navigazione principale">
