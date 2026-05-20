@@ -251,7 +251,7 @@
         var sel = state[p.id] || { color: p.colors[0].h, colorName: p.colors[0].n, size: p.sizes[0] };
         state[p.id] = sel;
         return ''
-        + '<article class="shop-card reveal" data-id="'+p.id+'">'
+        + '<article class="shop-card" data-id="'+p.id+'">'
         +   '<div class="shop-thumb" style="background:'+thumbBg(sel.color)+'">'
         +     '<span class="shop-tag">'+p.tag+'</span>'
         +     productSvg(sel.color)
