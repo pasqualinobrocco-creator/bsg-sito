@@ -68,19 +68,30 @@
   // ---------- Manifesto: word-by-word reveal tied to scroll ----------
   const manifestos = document.querySelectorAll("[data-words]");
   manifestos.forEach((el) => {
-    // wrap each word
-    const text = el.textContent.trim();
-    el.textContent = "";
-    text.split(/(\s+)/).forEach((tok) => {
-      if (tok.match(/^\s+$/)) {
-        el.appendChild(document.createTextNode(" "));
-      } else {
-        const s = document.createElement("span");
-        s.className = "reveal-word";
-        s.textContent = tok;
-        el.appendChild(s);
+    // wrap each word, preserving inline elements like <strong>/<em>
+    const wrapNode = (node, parent) => {
+      if (node.nodeType === Node.TEXT_NODE) {
+        const text = node.textContent;
+        text.split(/(\s+)/).forEach((tok) => {
+          if (!tok) return;
+          if (/^\s+$/.test(tok)) {
+            parent.appendChild(document.createTextNode(" "));
+          } else {
+            const s = document.createElement("span");
+            s.className = "reveal-word";
+            s.textContent = tok;
+            parent.appendChild(s);
+          }
+        });
+      } else if (node.nodeType === Node.ELEMENT_NODE) {
+        const clone = node.cloneNode(false);
+        Array.from(node.childNodes).forEach((c) => wrapNode(c, clone));
+        parent.appendChild(clone);
       }
-    });
+    };
+    const children = Array.from(el.childNodes);
+    el.textContent = "";
+    children.forEach((c) => wrapNode(c, el));
   });
 
   const wordEls = Array.from(document.querySelectorAll(".reveal-word"));
