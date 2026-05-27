@@ -15,6 +15,7 @@ import { Route as IndexRouteImport } from './routes/index'
 import { Route as NewsSlugRouteImport } from './routes/news.$slug'
 import { Route as AuthenticatedAdminRouteImport } from './routes/_authenticated/admin'
 import { Route as AuthenticatedAdminIndexRouteImport } from './routes/_authenticated/admin/index'
+import { Route as ApiPublicNewsRouteImport } from './routes/api/public/news'
 import { Route as ApiPublicContactRouteImport } from './routes/api/public/contact'
 import { Route as AuthenticatedAdminServicesRouteImport } from './routes/_authenticated/admin/services'
 import { Route as AuthenticatedAdminNewsRouteImport } from './routes/_authenticated/admin/news'
@@ -50,6 +51,11 @@ const AuthenticatedAdminIndexRoute = AuthenticatedAdminIndexRouteImport.update({
   id: '/',
   path: '/',
   getParentRoute: () => AuthenticatedAdminRoute,
+} as any)
+const ApiPublicNewsRoute = ApiPublicNewsRouteImport.update({
+  id: '/api/public/news',
+  path: '/api/public/news',
+  getParentRoute: () => rootRouteImport,
 } as any)
 const ApiPublicContactRoute = ApiPublicContactRouteImport.update({
   id: '/api/public/contact',
@@ -96,6 +102,7 @@ export interface FileRoutesByFullPath {
   '/admin/news': typeof AuthenticatedAdminNewsRoute
   '/admin/services': typeof AuthenticatedAdminServicesRoute
   '/api/public/contact': typeof ApiPublicContactRoute
+  '/api/public/news': typeof ApiPublicNewsRoute
   '/admin/': typeof AuthenticatedAdminIndexRoute
 }
 export interface FileRoutesByTo {
@@ -108,6 +115,7 @@ export interface FileRoutesByTo {
   '/admin/news': typeof AuthenticatedAdminNewsRoute
   '/admin/services': typeof AuthenticatedAdminServicesRoute
   '/api/public/contact': typeof ApiPublicContactRoute
+  '/api/public/news': typeof ApiPublicNewsRoute
   '/admin': typeof AuthenticatedAdminIndexRoute
 }
 export interface FileRoutesById {
@@ -123,6 +131,7 @@ export interface FileRoutesById {
   '/_authenticated/admin/news': typeof AuthenticatedAdminNewsRoute
   '/_authenticated/admin/services': typeof AuthenticatedAdminServicesRoute
   '/api/public/contact': typeof ApiPublicContactRoute
+  '/api/public/news': typeof ApiPublicNewsRoute
   '/_authenticated/admin/': typeof AuthenticatedAdminIndexRoute
 }
 export interface FileRouteTypes {
@@ -138,6 +147,7 @@ export interface FileRouteTypes {
     | '/admin/news'
     | '/admin/services'
     | '/api/public/contact'
+    | '/api/public/news'
     | '/admin/'
   fileRoutesByTo: FileRoutesByTo
   to:
@@ -150,6 +160,7 @@ export interface FileRouteTypes {
     | '/admin/news'
     | '/admin/services'
     | '/api/public/contact'
+    | '/api/public/news'
     | '/admin'
   id:
     | '__root__'
@@ -164,6 +175,7 @@ export interface FileRouteTypes {
     | '/_authenticated/admin/news'
     | '/_authenticated/admin/services'
     | '/api/public/contact'
+    | '/api/public/news'
     | '/_authenticated/admin/'
   fileRoutesById: FileRoutesById
 }
@@ -173,6 +185,7 @@ export interface RootRouteChildren {
   LoginRoute: typeof LoginRoute
   NewsSlugRoute: typeof NewsSlugRoute
   ApiPublicContactRoute: typeof ApiPublicContactRoute
+  ApiPublicNewsRoute: typeof ApiPublicNewsRoute
 }
 
 declare module '@tanstack/react-router' {
@@ -218,6 +231,13 @@ declare module '@tanstack/react-router' {
       fullPath: '/admin/'
       preLoaderRoute: typeof AuthenticatedAdminIndexRouteImport
       parentRoute: typeof AuthenticatedAdminRoute
+    }
+    '/api/public/news': {
+      id: '/api/public/news'
+      path: '/api/public/news'
+      fullPath: '/api/public/news'
+      preLoaderRoute: typeof ApiPublicNewsRouteImport
+      parentRoute: typeof rootRouteImport
     }
     '/api/public/contact': {
       id: '/api/public/contact'
@@ -303,7 +323,18 @@ const rootRouteChildren: RootRouteChildren = {
   LoginRoute: LoginRoute,
   NewsSlugRoute: NewsSlugRoute,
   ApiPublicContactRoute: ApiPublicContactRoute,
+  ApiPublicNewsRoute: ApiPublicNewsRoute,
 }
 export const routeTree = rootRouteImport
   ._addFileChildren(rootRouteChildren)
   ._addFileTypes<FileRouteTypes>()
+
+import type { getRouter } from './router.tsx'
+import type { startInstance } from './start.ts'
+declare module '@tanstack/react-start' {
+  interface Register {
+    ssr: true
+    router: Awaited<ReturnType<typeof getRouter>>
+    config: Awaited<ReturnType<typeof startInstance.getOptions>>
+  }
+}
