@@ -17,7 +17,7 @@
   --bsg-green-700: #4A7322;   /* Hover / pressed */
   --bsg-green-300: #629630;   /* Tints, illustration light */
   --bsg-green-100: #E3E8D5;   /* Pale wash — cover bg, section bands */
-  --bsg-green-deep: #106B30;  /* Darker variant used in sector icons */
+  --bsg-green-deep: #629630;  /* Darker variant used in sector icons */
 
   /* Sub-brand accents — appear only on the sectors page (p5).
      Reserved for the Squisitus / Padel Best Village family + sector keys. */
