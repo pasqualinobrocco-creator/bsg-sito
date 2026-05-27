@@ -780,7 +780,7 @@ select, [type="submit"] { cursor: none; }
 .case:hover .case-tag,
 .case:hover .case-meta,
 .case:hover .case-meta b { color: #F5F5EF; }
-.case:hover .case-key { background: transparent; color: #F5F5EF; border-color: rgba(245,245,239,0.4); }
+.case:hover .case-key { background: transparent; }
 
 /* Full-bleed background image with protective gradient — legibility preserved */
 .case-preview {
