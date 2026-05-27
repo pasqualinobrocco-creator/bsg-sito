@@ -353,6 +353,18 @@
 
   <script src="assets/motion.js"></script>
   <script src="tweaks.js"></script>
+  <div class="article-modal" id="article-modal" role="dialog" aria-modal="true" aria-labelledby="article-modal-title" aria-hidden="true">
+    <div class="article-modal__panel">
+      <button type="button" class="article-modal__close" aria-label="Chiudi articolo" data-article-close>×</button>
+      <div class="article-modal__cover" data-article-cover hidden></div>
+      <div>
+        <span class="article-modal__cat" data-article-cat></span>
+        <span class="article-modal__date" data-article-date></span>
+      </div>
+      <h2 class="article-modal__title" id="article-modal-title" data-article-title></h2>
+      <div class="article-modal__body" data-article-body></div>
+    </div>
+  </div>
 <script>
 (function(){
   var btn = document.querySelector('[data-nav-toggle]');
@@ -365,6 +377,51 @@
   });
   nav.querySelectorAll('a').forEach(function(a){ a.addEventListener('click', close); });
   window.addEventListener('resize', function(){ if(window.innerWidth >= 1024) close(); });
+})();
+</script>
+<script>
+(function(){
+  var modal = document.getElementById('article-modal');
+  if(!modal) return;
+  var elTitle = modal.querySelector('[data-article-title]');
+  var elDate  = modal.querySelector('[data-article-date]');
+  var elCat   = modal.querySelector('[data-article-cat]');
+  var elBody  = modal.querySelector('[data-article-body]');
+  var elCover = modal.querySelector('[data-article-cover]');
+
+  function bodyFor(title, cat){
+    return '<p class="lede">'+title+'</p>'+
+      '<p>Roma — Il team BSG racconta in questo '+ (cat||'articolo').toLowerCase() +' il dietro le quinte del progetto, le scelte strategiche di pianificazione e i risultati misurati sul campo. Una lettura pensata per chi vuole capire come la centrale media indipendente trasforma un brief in impatto reale.</p>'+
+      '<p>Dalla selezione degli impianti OOH alla calibrazione del mix con DOOH e digital, ogni passaggio è stato costruito attorno al pubblico di riferimento: copertura, frequenza utile e qualità del contatto restano i nostri KPI nord.</p>'+
+      '<p>Nelle prossime settimane pubblicheremo gli aggiornamenti sui risultati post-campagna, con i dati di awareness, recall e traffic lift raccolti dai partner di misurazione. Per richieste stampa: <a href="mailto:press@bsg.it">press@bsg.it</a>.</p>';
+  }
+  function open(card){
+    var title = card.getAttribute('data-title') || '';
+    var date  = card.getAttribute('data-date') || '';
+    var cat   = card.getAttribute('data-cat') || '';
+    var cover = card.getAttribute('data-cover') || '';
+    elTitle.textContent = title;
+    elDate.textContent  = date;
+    elCat.textContent   = cat;
+    elBody.innerHTML    = bodyFor(title, cat);
+    if(cover){ elCover.style.backgroundImage = "url('"+cover+"')"; elCover.hidden = false; }
+    else { elCover.hidden = true; elCover.style.backgroundImage=''; }
+    modal.classList.add('is-open');
+    modal.setAttribute('aria-hidden','false');
+    document.body.classList.add('modal-open');
+    modal.scrollTop = 0;
+  }
+  function close(){
+    modal.classList.remove('is-open');
+    modal.setAttribute('aria-hidden','true');
+    document.body.classList.remove('modal-open');
+  }
+  document.querySelectorAll('[data-article]').forEach(function(a){
+    a.addEventListener('click', function(e){ e.preventDefault(); open(a); });
+  });
+  modal.addEventListener('click', function(e){ if(e.target === modal) close(); });
+  modal.querySelector('[data-article-close]').addEventListener('click', close);
+  document.addEventListener('keydown', function(e){ if(e.key === 'Escape') close(); });
 })();
 </script>
 </body>
