@@ -533,6 +533,18 @@ select, [type="submit"] { cursor: none; }
   background: var(--bsg-green-500);
 }
 
+/* Light-theme contrast fixes for Universo section */
+.theme-light .universo .eyebrow,
+.theme-light .universo .eyebrow::before {
+  color: var(--bsg-green-deep);
+}
+.theme-light .universo .eyebrow::before {
+  background: var(--bsg-green-deep);
+}
+.theme-light .universo .section-head em {
+  color: var(--bsg-green-deep);
+}
+
 .brands {
   display: grid;
   grid-template-columns: 1fr;
