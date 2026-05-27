@@ -635,6 +635,19 @@ select, [type="submit"] { cursor: none; }
   padding-left: clamp(24px, 6vw, 96px);
   padding-right: clamp(24px, 6vw, 96px);
 }
+@media (min-width: 900px) {
+  .universo .brands .brand-row {
+    grid-template-columns: 180px minmax(0, 1.4fr) minmax(0, 1fr) 60px;
+    gap: 48px;
+    align-items: center;
+  }
+  .universo .brands .brand-row .brand-name {
+    font-size: clamp(40px, 4.2vw, 72px);
+  }
+  .universo .brands .brand-row .brand-desc {
+    max-width: 60ch;
+  }
+}
 
 /* ---------- Servizi ---------- */
 .services {
