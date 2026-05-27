@@ -598,10 +598,11 @@ select, [type="submit"] { cursor: none; }
 .brand-row:hover .brand-cta { background: var(--brand-accent, var(--bsg-green-500)); color: #fff; border-color: transparent; transform: rotate(-45deg); }
 
 .brand-row.bsg     { --brand-accent: var(--bsg-green-300); }
-.brand-row.padel-best  { --brand-accent: #4A6EBF; }
-.brand-row.padel-media { --brand-accent: #6FB1FF; }
-.brand-row.squisitus   { --brand-accent: #E04E78; }
-.brand-row.excellere   { --brand-accent: #E1B340; }
+.brand-row.bsg         { --brand-accent: #629630; }
+.brand-row.squisitus   { --brand-accent: #a71735; }
+.brand-row.padel-best  { --brand-accent: #0099e5; }
+.brand-row.padel-media { --brand-accent: #1f5da8; }
+.brand-row.excellere   { --brand-accent: #d51168; }
 
 /* ---------- Servizi ---------- */
 .services {
