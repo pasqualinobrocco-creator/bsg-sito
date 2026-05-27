@@ -773,6 +773,15 @@ select, [type="submit"] { cursor: none; }
 }
 .case:hover .case-arrow { background: var(--bsg-green-500); border-color: var(--bsg-green-500); color: #0A0D08; transform: rotate(-45deg); }
 
+/* On hover the dark image overlay covers the card — lift text to light tones for legibility */
+.case:hover .case-num,
+.case:hover h3,
+.case:hover h3 small,
+.case:hover .case-tag,
+.case:hover .case-meta,
+.case:hover .case-meta b { color: #F5F5EF; }
+.case:hover .case-key { background: transparent; }
+
 /* Full-bleed background image with protective gradient — legibility preserved */
 .case-preview {
   position: absolute;
