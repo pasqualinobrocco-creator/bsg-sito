@@ -20,8 +20,8 @@
   function apply() {
     const r = document.documentElement;
     r.style.setProperty("--bsg-green-500", tweaks.accent);
-    // derive a lighter tint for "300"
-    r.style.setProperty("--bsg-green-300", lighten(tweaks.accent, 0.32));
+    // keep "300" equal to the accent (no lightening)
+    r.style.setProperty("--bsg-green-300", tweaks.accent);
     r.style.setProperty("--bsg-green-700", darken(tweaks.accent, 0.18));
 
     // marquee speed
