@@ -922,12 +922,12 @@ select, [type="submit"] { cursor: none; }
   height: 44px;
   width: auto;
   max-width: none;
-  filter: brightness(0) invert(1);
-  opacity: 0.82;
+  filter: none;
+  opacity: 1;
   transition: opacity var(--dur-base) var(--ease-out), filter var(--dur-base) var(--ease-out);
 }
 .clients-band__item:hover img { opacity: 1; filter: none; }
-.theme-light .clients-band__item img { filter: brightness(0); opacity: 0.75; }
+.theme-light .clients-band__item img { filter: none; opacity: 1; }
 .theme-light .clients-band__item:hover img { filter: none; opacity: 1; }
 
 /* ---------- News ---------- */
