@@ -650,5 +650,30 @@
   window.addEventListener('resize', function(){ if(window.innerWidth >= 1024) close(); });
 })();
 </script>
+<script>
+(function(){
+  var toggle = document.querySelector('[data-cases-toggle]');
+  var cases = document.querySelector('[data-cases]');
+  if(!toggle || !cases) return;
+  var labelEl = toggle.querySelector('.cases-toggle__label');
+  toggle.addEventListener('click', function(){
+    var open = toggle.getAttribute('aria-expanded') === 'true';
+    if(open){
+      cases.querySelectorAll('.case--extra').forEach(function(c){ c.classList.remove('is-visible'); });
+      setTimeout(function(){ cases.classList.remove('is-expanded'); }, 380);
+      toggle.setAttribute('aria-expanded','false');
+      if(labelEl) labelEl.textContent = 'Scopri altre campagne';
+    } else {
+      cases.classList.add('is-expanded');
+      var extras = cases.querySelectorAll('.case--extra');
+      extras.forEach(function(c, i){
+        setTimeout(function(){ c.classList.add('is-visible'); }, 60 + i * 110);
+      });
+      toggle.setAttribute('aria-expanded','true');
+      if(labelEl) labelEl.textContent = 'Mostra meno';
+    }
+  });
+})();
+</script>
 </body>
 </html>
