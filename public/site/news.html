@@ -186,6 +186,12 @@
     <section class="section">
       <div class="wrap">
 
+        <div data-news-dynamic hidden>
+          <a class="news-hero-card reveal" data-news-hero href="#"></a>
+          <div data-news-list style="display: grid; grid-template-columns: 1fr; gap: 0;"></div>
+        </div>
+
+        <div data-news-static>
         <a class="news-hero-card reveal" href="#" data-article
            data-title="BSG firma la nuova edizione di Padel Best Village 2026 a Roma EUR."
            data-date="04 Maggio 2026" data-cat="In evidenza · Comunicato"
@@ -292,6 +298,7 @@
             <span class="arrow"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="13 6 19 12 13 18"/></svg></span>
           </a>
 
+        </div>
         </div>
 
         <div style="margin-top: 64px; display: flex; gap: 12px; justify-content: center; align-items: center; font-family: var(--font-display); font-weight: 500; font-size: 14px; color: var(--fg-muted);">
@@ -422,6 +429,75 @@
   modal.addEventListener('click', function(e){ if(e.target === modal) close(); });
   modal.querySelector('[data-article-close]').addEventListener('click', close);
   document.addEventListener('keydown', function(e){ if(e.key === 'Escape') close(); });
+})();
+</script>
+<script>
+(function(){
+  var wrap = document.querySelector('[data-news-dynamic]');
+  var staticWrap = document.querySelector('[data-news-static]');
+  var hero = wrap && wrap.querySelector('[data-news-hero]');
+  var list = wrap && wrap.querySelector('[data-news-list]');
+  if(!wrap || !hero || !list) return;
+
+  function esc(s){ return String(s == null ? '' : s).replace(/[&<>"']/g, function(c){ return ({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'})[c]; }); }
+  function fmtFull(d){
+    if(!d) return '';
+    var dt = new Date(d); if(isNaN(dt)) return '';
+    var m = ['Gennaio','Febbraio','Marzo','Aprile','Maggio','Giugno','Luglio','Agosto','Settembre','Ottobre','Novembre','Dicembre'];
+    return ('0'+dt.getDate()).slice(-2)+' '+m[dt.getMonth()]+' '+dt.getFullYear();
+  }
+  function fmtShort(d){
+    if(!d) return '';
+    var dt = new Date(d); if(isNaN(dt)) return '';
+    var m = ['Gen','Feb','Mar','Apr','Mag','Giu','Lug','Ago','Set','Ott','Nov','Dic'];
+    return ('0'+dt.getDate()).slice(-2)+' '+m[dt.getMonth()]+' '+dt.getFullYear();
+  }
+  function shortCat(c){
+    if(!c) return '';
+    return c.split('·')[0].trim().slice(0,16);
+  }
+
+  fetch('/api/public/news', { headers: { 'Accept': 'application/json' } })
+    .then(function(r){ return r.ok ? r.json() : { news: [] }; })
+    .then(function(payload){
+      var items = (payload && payload.news) || [];
+      if(!items.length) return; // keep static fallback
+
+      var first = items[0];
+      var rest  = items.slice(1);
+
+      // Hero
+      var heroCover = first.cover_url ? '<div class="cover" style="background-image: url(\''+esc(first.cover_url)+'\');"></div>' : '<div class="cover" style="background: var(--bg-subtle);"></div>';
+      hero.href = '/news/' + encodeURIComponent(first.slug);
+      hero.innerHTML = heroCover +
+        '<div>'+
+          (first.category ? '<span class="news-cat" style="background: var(--bsg-green-100); color: var(--bsg-green-deep);">'+esc(first.category)+'</span>' : '') +
+          '<h2>'+esc(first.title)+'</h2>' +
+          (first.excerpt ? '<p>'+esc(first.excerpt)+'</p>' : '') +
+          '<div style="display: flex; align-items: center; gap: 16px;">' +
+            '<span style="font-family: var(--font-display); font-weight: 600; font-size: 13px;">'+esc(fmtFull(first.published_at))+'</span>' +
+            '<span style="font-family: var(--font-display); font-weight: 600; font-size: 13px; color: var(--bsg-green-500);">Leggi →</span>' +
+          '</div>' +
+        '</div>';
+
+      // List
+      var arrowSvg = '<svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="13 6 19 12 13 18"/></svg>';
+      list.innerHTML = rest.map(function(n){
+        return '<a class="news-row reveal" href="/news/'+encodeURIComponent(n.slug)+'" data-hover>' +
+                 '<div class="date">'+esc(fmtShort(n.published_at))+' <small>'+esc(shortCat(n.category))+'</small></div>' +
+                 '<div>'+
+                   '<h3>'+esc(n.title)+'</h3>' +
+                   (n.category ? '<span class="category">'+esc(n.category)+'</span>' : '') +
+                 '</div>' +
+                 '<span class="arrow">'+arrowSvg+'</span>' +
+               '</a>';
+      }).join('');
+
+      // Swap: hide static, show dynamic
+      if(staticWrap) staticWrap.style.display = 'none';
+      wrap.hidden = false;
+    })
+    .catch(function(err){ console.warn('[news] load failed, keeping static fallback', err); });
 })();
 </script>
 </body>
