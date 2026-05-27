@@ -129,7 +129,7 @@ const s: Record<string, React.CSSProperties> = {
   },
   primaryBtn: {
     padding: "12px 20px",
-    background: "#639730",
+    background: "#629630",
     color: "#0A0D08",
     border: "none",
     borderRadius: 999,
@@ -190,7 +190,7 @@ const s: Record<string, React.CSSProperties> = {
     fontWeight: 500,
   },
   navItemActive: {
-    background: "#639730",
+    background: "#629630",
     color: "#0A0D08",
     fontWeight: 700,
   },
