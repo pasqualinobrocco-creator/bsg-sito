@@ -622,6 +622,20 @@ select, [type="submit"] { cursor: none; }
 .brand-row.padel-media { --brand-accent: #1f5da8; }
 .brand-row.excellere   { --brand-accent: #d51168; }
 
+/* Full-bleed brand rows: escape the .wrap container and span viewport width */
+.universo .brands {
+  width: 100vw;
+  position: relative;
+  left: 50%;
+  right: 50%;
+  margin-left: -50vw;
+  margin-right: -50vw;
+}
+.universo .brands .brand-row {
+  padding-left: clamp(24px, 6vw, 96px);
+  padding-right: clamp(24px, 6vw, 96px);
+}
+
 /* ---------- Servizi ---------- */
 .services {
   display: grid;
