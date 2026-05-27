@@ -74,7 +74,7 @@ function AdminLayout() {
     <div style={s.shell}>
       <aside style={s.sidebar}>
         <Link to="/" style={s.brand}>
-          bsg<span style={{ color: "#639730" }}>.</span>
+          bsg<span style={{ color: "#629630" }}>.</span>
           <span style={s.brandMeta}>admin</span>
         </Link>
         <nav style={s.nav}>
