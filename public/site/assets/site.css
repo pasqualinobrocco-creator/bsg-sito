@@ -814,9 +814,9 @@ select, [type="submit"] { cursor: none; }
   inset: 0;
   background: linear-gradient(
     90deg,
-    rgba(10,13,8,0.95) 0%,
-    rgba(10,13,8,0.90) 50%,
-    rgba(10,13,8,0.55) 100%
+    rgba(10,13,8,0.96) 0%,
+    rgba(10,13,8,0.92) 60%,
+    rgba(10,13,8,0.85) 100%
   );
 }
 .case:hover .case-preview { opacity: 1; transform: scale(1); }
