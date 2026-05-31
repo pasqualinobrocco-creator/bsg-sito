@@ -292,6 +292,10 @@
              '<span class="arrow">'+arrowSvg+'</span>' +
            '</a>';
   }).join('');
+  requestAnimationFrame(function(){
+    hero.classList.add('is-in');
+    list.querySelectorAll('.reveal').forEach(function(el){ el.classList.add('is-in'); });
+  });
 })();
 </script>
 </body>
