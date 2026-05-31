@@ -308,5 +308,31 @@
   window.addEventListener('resize', function(){ if(window.innerWidth >= 1024) close(); });
 })();
 </script>
+<script>
+(function(){
+  document.querySelectorAll('[data-carousel]').forEach(function(car){
+    var track = car.querySelector('.svc-carousel-track');
+    var dots = car.querySelectorAll('.svc-dot');
+    if(!track || dots.length < 2) return;
+    var i = 0, n = dots.length, timer;
+    function go(k){
+      i = (k + n) % n;
+      track.style.transform = 'translateX(-' + (i*100) + '%)';
+      dots.forEach(function(d, idx){
+        d.classList.toggle('is-active', idx === i);
+        d.style.opacity = idx === i ? '0.95' : '0.5';
+      });
+    }
+    function start(){ stop(); timer = setInterval(function(){ go(i+1); }, 5000); }
+    function stop(){ if(timer) clearInterval(timer); }
+    dots.forEach(function(d){
+      d.addEventListener('click', function(){ go(parseInt(d.dataset.slide,10)||0); start(); });
+    });
+    car.addEventListener('mouseenter', stop);
+    car.addEventListener('mouseleave', start);
+    start();
+  });
+})();
+</script>
 </body>
 </html>
