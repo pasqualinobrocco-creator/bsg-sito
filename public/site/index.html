@@ -608,8 +608,28 @@
     @keyframes cuePulse { 0%, 100% { opacity: 1; } 50% { opacity: 0.3; } }
   </style>
 
+  <script src="assets/news-data.js"></script>
   <script src="assets/motion.js"></script>
   <script src="tweaks.js"></script>
+<script>
+(function(){
+  var grid = document.querySelector('[data-news-home]');
+  if(!grid || !window.BSG_NEWS) return;
+  function esc(s){ return String(s == null ? '' : s).replace(/[&<>"']/g, function(c){ return ({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'})[c]; }); }
+  var fmt = window.BSG_NEWS_FMT;
+  var items = window.BSG_NEWS.slice(0, 3);
+  grid.innerHTML = items.map(function(n, i){
+    var delay = i === 0 ? '' : ' reveal-delay-' + i;
+    return '<a class="news-card reveal'+delay+'" href="'+esc(n.url)+'" target="_blank" rel="noopener noreferrer" data-hover>' +
+             '<span class="news-cat">'+esc(n.category||'')+'</span>' +
+             '<h3>'+esc(n.title)+'</h3>' +
+             (n.excerpt ? '<p>'+esc(n.excerpt)+'</p>' : '') +
+             '<div class="news-date">'+esc(fmt.short(n.date))+'</div>' +
+             '<span class="news-arrow">Leggi \u2192</span>' +
+           '</a>';
+  }).join('');
+})();
+</script>
 <script>
 (function(){
   var btn = document.querySelector('[data-nav-toggle]');
