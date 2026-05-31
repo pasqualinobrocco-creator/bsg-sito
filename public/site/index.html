@@ -632,6 +632,11 @@
              '<span class="news-arrow">Leggi \u2192</span>' +
            '</a>';
   }).join('');
+  // I nodi sono creati dopo l'init dell'IntersectionObserver di motion.js:
+  // rendiamoli visibili subito aggiungendo manualmente la classe `is-in`.
+  requestAnimationFrame(function(){
+    grid.querySelectorAll('.reveal').forEach(function(el){ el.classList.add('is-in'); });
+  });
 })();
 </script>
 <script>
