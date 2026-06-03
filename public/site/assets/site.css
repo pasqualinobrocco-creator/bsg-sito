@@ -1329,7 +1329,7 @@ select, [type="submit"] { cursor: none; }
   font-family: var(--font-display);
   font-weight: var(--fw-black);
   font-size: clamp(48px, 9vw, 144px);
-  line-height: 0.9;
+  line-height: 0.82;
   letter-spacing: -0.04em;
   color: var(--fg-default);
 }
