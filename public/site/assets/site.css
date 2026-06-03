@@ -834,17 +834,6 @@ select, [type="submit"] { cursor: none; }
   font-size: 22px;
   letter-spacing: -0.01em;
 }
-.case .case-arrow {
-  display: none;
-  justify-self: end;
-  width: 44px; height: 44px;
-  border-radius: 999px;
-  border: 1px solid var(--border-default);
-  display: inline-flex; align-items: center; justify-content: center;
-  color: var(--fg-default);
-  transition: background var(--dur-base) var(--ease-out), border-color var(--dur-base) var(--ease-out), transform var(--dur-base) var(--ease-out);
-}
-.case:hover .case-arrow { background: var(--bsg-green-500); border-color: var(--bsg-green-500); color: #0A0D08; transform: rotate(-45deg); }
 
 /* On hover the dark image overlay covers the card — lift text to light tones for legibility */
 .case:hover .case-num,
