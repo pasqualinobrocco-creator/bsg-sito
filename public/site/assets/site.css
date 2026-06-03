@@ -1678,3 +1678,7 @@ html.lenis-enabled { scroll-behavior: auto; }
 .org-subgroup+.org-subgroup{margin-top:4px}
 .org-cities{display:flex;gap:24px;justify-content:center;flex-wrap:wrap}
 .org-city{display:inline-flex;align-items:center;gap:8px;font-family:var(--font-display);font-weight:700;text-transform:uppercase;letter-spacing:.04em;font-size:13px;color:var(--bsg-green-500)}
+.brand-hero-video{width:100%;background:#000;margin:0 0 48px}
+.brand-hero-video__inner{position:relative;width:100%;padding-top:56.25%;overflow:hidden}
+.brand-hero-video__inner iframe{position:absolute;inset:0;width:100%;height:100%;border:0;display:block}
+@media (max-width:640px){.brand-hero-video{margin-bottom:28px}}
