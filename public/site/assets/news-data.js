@@ -30,7 +30,7 @@
       url: "https://www.eroidelgusto.it/importanti-risultati-a-marca-per-il-lancio-di-squisitus/"
     },
     {
-      title: "BSG Comunicazione e Marketing firma la campagna media per i 50 anni di MoaCasa",
+      title: "BSG Comunicazione & Marketing firma la campagna media per i 50 anni di MoaCasa",
       date: "2025-10-14",
       category: "Campagna",
       excerpt: "Pianificazione cross-mediale e creativit\u00e0 dedicata per celebrare mezzo secolo della fiera dell'arredo e del design.",
