@@ -587,7 +587,7 @@ select, [type="submit"] { cursor: none; }
 .brand-row .brand-cta  { grid-area: cta; }
 @media (min-width: 900px) {
   .brand-row {
-    grid-template-columns: 120px minmax(260px, 360px) 1fr 60px;
+    grid-template-columns: minmax(220px, 260px) minmax(260px, 360px) 1fr 60px;
     grid-template-areas: "num name desc cta";
     padding: 36px 32px;
     gap: 24px;
@@ -601,6 +601,10 @@ select, [type="submit"] { cursor: none; }
   font-size: 14px;
   letter-spacing: var(--tracking-eyebrow);
   color: var(--fg-muted);
+  line-height: 1.35;
+  overflow-wrap: anywhere;
+  word-break: break-word;
+  align-self: center;
 }
 .brand-row .brand-name {
   position: relative;
@@ -665,7 +669,7 @@ select, [type="submit"] { cursor: none; }
 }
 @media (min-width: 900px) {
   .universo .brands .brand-row {
-    grid-template-columns: 180px minmax(0, 1.4fr) minmax(0, 1fr) 60px;
+    grid-template-columns: minmax(240px, 280px) minmax(0, 1.4fr) minmax(0, 1fr) 60px;
     gap: 48px;
     align-items: center;
   }
