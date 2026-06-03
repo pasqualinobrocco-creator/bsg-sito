@@ -1682,3 +1682,9 @@ html.lenis-enabled { scroll-behavior: auto; }
 .brand-hero-video__inner{position:relative;width:100%;padding-top:56.25%;overflow:hidden}
 .brand-hero-video__inner iframe{position:absolute;inset:0;width:100%;height:100%;border:0;display:block}
 @media (max-width:640px){.brand-hero-video{margin-bottom:28px}}
+
+/* Brand patronage banner (small Regione Lazio logo) */
+.b-patronage{display:inline-block;margin:14px 0 4px;max-width:360px;background:#fff;padding:8px 12px;border-radius:8px;border:1px solid rgba(0,0,0,.08);transition:opacity .2s ease}
+.b-patronage:hover{opacity:.85}
+.b-patronage img{display:block;width:100%;height:auto}
+@media (max-width:640px){.b-patronage{max-width:100%}}
