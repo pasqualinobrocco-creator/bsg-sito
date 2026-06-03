@@ -13,6 +13,7 @@
       date: "2026-05-26",
       category: "Comunicato",
       excerpt: "Torna l'appuntamento con Casaidea: dieci giorni di tendenze, innovazione e nuovi linguaggi dell'abitare, con ingresso gratuito.",
+      image: "/__l5e/assets-v1/13225cad-0b47-4be8-9949-14d6ab115e14/casaidea-2026.jpg",
       url: "https://mediakey.it/news/tutto-pronto-per-casaidea-2026-unimmersione-gratuita-tra-tendenze-e-innovazione/"
     },
     {
