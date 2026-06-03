@@ -271,7 +271,7 @@
   hero.setAttribute('target','_blank');
   hero.setAttribute('rel','noopener noreferrer');
   hero.innerHTML =
-    '<div class="cover" style="background: var(--bg-subtle);"></div>' +
+    '<div class="cover" style="' + (first.image ? "background-image:url('"+esc(first.image)+"'); background-size:cover; background-position:center;" : 'background: var(--bg-subtle);') + '"></div>' +
     '<div>' +
       (first.category ? '<span class="news-cat" style="background: var(--bsg-green-100); color: var(--bsg-green-deep);">'+esc(first.category)+'</span>' : '') +
       '<h2>'+esc(first.title)+'</h2>' +
