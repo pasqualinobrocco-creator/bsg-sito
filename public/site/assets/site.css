@@ -142,18 +142,29 @@ select, [type="submit"] { cursor: none; }
   display: block;
 }
 .brand-meta {
-  display: none;
+  display: inline-flex;
   font-family: var(--font-body);
   font-weight: var(--fw-regular);
-  font-size: 11px;
+  font-size: clamp(9px, 1.2vw, 11px);
   letter-spacing: var(--tracking-eyebrow);
   text-transform: uppercase;
   color: var(--fg-muted);
   margin-left: 8px;
   padding-left: 12px;
   border-left: 1px solid var(--border-default);
+  white-space: nowrap;
+  flex: 0 1 auto;
+  min-width: 0;
+  overflow: hidden;
+  text-overflow: ellipsis;
 }
-@media (min-width: 900px) { .brand-meta { display: inline-flex; } }
+@media (min-width: 900px) {
+  .brand-meta {
+    font-size: 11px;
+    overflow: visible;
+  }
+}
+
 
 .site-nav {
   display: none;
