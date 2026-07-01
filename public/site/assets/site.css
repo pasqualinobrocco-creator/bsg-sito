@@ -1027,6 +1027,19 @@ select, [type="submit"] { cursor: none; }
   opacity: 1;
   transition: opacity var(--dur-base) var(--ease-out), filter var(--dur-base) var(--ease-out);
 }
+/* Ottica uniforme: compensa le proporzioni diverse dei loghi.
+   I loghi molto orizzontali usano altezza minore per non "dominare"
+   rispetto ai loghi quadrati/verticali. */
+.clients-band__item img.logo--ultra  { height: 26px; max-width: 180px; object-fit: contain; }
+.clients-band__item img.logo--wide   { height: 36px; max-width: 140px; object-fit: contain; }
+.clients-band__item img.logo--square { height: 54px; max-width: 90px;  object-fit: contain; }
+.clients-band__item img.logo--tall   { height: 58px; max-width: 70px;  object-fit: contain; }
+@media (max-width: 720px) {
+  .clients-band__item img.logo--ultra  { height: 20px; max-width: 140px; }
+  .clients-band__item img.logo--wide   { height: 28px; max-width: 110px; }
+  .clients-band__item img.logo--square { height: 42px; max-width: 70px;  }
+  .clients-band__item img.logo--tall   { height: 46px; max-width: 56px;  }
+}
 .clients-band__item:hover img { opacity: 1; filter: none; }
 .theme-light .clients-band__item img { filter: none; opacity: 1; }
 .theme-light .clients-band__item:hover img { filter: none; opacity: 1; }
