@@ -1529,13 +1529,11 @@ select, [type="submit"] { cursor: none; }
 }
 
 @media (min-width: 1024px) and (max-width: 1280px) {
-  .brand-meta {
-    display: none;
-  }
   .site-nav a {
     padding-inline: 10px;
   }
 }
+
 
 /* ---------- Tweaks panel positioning override (panel itself is fixed) ---------- */
 .tweaks-anchor { position: relative; }
