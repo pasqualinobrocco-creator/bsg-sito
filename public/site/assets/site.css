@@ -208,6 +208,7 @@ select, [type="submit"] { cursor: none; }
   overflow: hidden;
   height: 0;
   padding-top: 56.25%; /* 16:9, full width without cropping */
+  margin-top: var(--header-height, 88px); /* starts below the fixed header */
 }
 .hero-video iframe {
   position: absolute;
@@ -217,8 +218,9 @@ select, [type="submit"] { cursor: none; }
   border: 0;
 }
 @media (max-width: 768px) {
-  .hero-video { padding-top: 56.25%; height: 0; }
+  .hero-video { padding-top: 56.25%; height: 0; margin-top: var(--header-height, 88px); }
 }
+
 
 
 
