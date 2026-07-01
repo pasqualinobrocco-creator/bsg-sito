@@ -1611,6 +1611,31 @@ html, body { overflow-x: hidden; }
 .mobile-nav a:last-child { border-bottom: 0; }
 @media (min-width: 1024px) { .mobile-nav { display: none; } }
 
+@media (max-width: 1023px) {
+  .site-header .header-cta { display: none; }
+  .mobile-nav__cta {
+    display: inline-flex;
+    align-items: center;
+    gap: 10px;
+    padding: 12px 18px 12px 20px;
+    border-radius: var(--radius-pill);
+    border: 1px solid var(--border-strong);
+    font-family: var(--font-display);
+    font-weight: var(--fw-semi);
+    font-size: 14px;
+    letter-spacing: var(--tracking-snug);
+    color: var(--fg-default);
+    background: transparent;
+    margin-top: auto;
+    transition: background var(--dur-base) var(--ease-out), color var(--dur-base) var(--ease-out), border-color var(--dur-base) var(--ease-out);
+  }
+  .mobile-nav__cta:hover {
+    background: var(--bsg-green-500);
+    color: #0A0D08;
+    border-color: var(--bsg-green-500);
+  }
+}
+
 body.nav-open { overflow: hidden; }
 
 /* ---------- Mobile hero tweaks ---------- */
