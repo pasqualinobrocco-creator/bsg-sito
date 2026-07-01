@@ -291,7 +291,8 @@ select, [type="submit"] { cursor: none; }
 }
 .hero-title .row {
   display: block;
-  overflow: hidden;
+  overflow: visible;
+  clip-path: inset(-0.15em -100vmax 0 -100vmax);
   padding: 0.02em 0;
 }
 .hero-title .row > span {
