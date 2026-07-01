@@ -107,10 +107,11 @@ select, [type="submit"] { cursor: none; }
   justify-content: space-between;
   gap: clamp(12px, 2vw, 28px);
   padding: 18px clamp(20px, 4vw, 48px);
+  background: var(--bg-default);
   transition: background var(--dur-base) var(--ease-out),
               backdrop-filter var(--dur-base) var(--ease-out),
               border-color var(--dur-base) var(--ease-out);
-  border-bottom: 1px solid transparent;
+  border-bottom: 1px solid var(--border-default);
 }
 .site-header.is-stuck {
   background: color-mix(in srgb, var(--bg-default) 78%, transparent);
@@ -222,22 +223,6 @@ select, [type="submit"] { cursor: none; }
   .hero-video { height: 100vh; }
 }
 
-/* Header transparent over hero video (homepage) */
-body.has-hero-video .site-header:not(.is-stuck) {
-  background: transparent !important;
-  backdrop-filter: none !important;
-  -webkit-backdrop-filter: none !important;
-  border-bottom-color: transparent !important;
-}
-body.has-hero-video .site-header:not(.is-stuck) .brand,
-body.has-hero-video .site-header:not(.is-stuck) .brand-meta,
-body.has-hero-video .site-header:not(.is-stuck) .site-nav a,
-body.has-hero-video .site-header:not(.is-stuck) .header-cta {
-  color: #fff;
-}
-body.has-hero-video .site-header:not(.is-stuck) .header-cta {
-  border-color: rgba(255,255,255,0.6);
-}
 
 /* ---------- Hero ---------- */
 .hero {
