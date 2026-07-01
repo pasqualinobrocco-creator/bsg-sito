@@ -1000,16 +1000,18 @@ select, [type="submit"] { cursor: none; }
 }
 .clients-band__track {
   display: inline-flex;
-  gap: 64px;
+  gap: 0;
   white-space: nowrap;
   animation: marquee 50s linear infinite;
+  will-change: transform;
   align-items: center;
 }
 .clients-band__item {
   display: inline-flex;
   align-items: center;
+  justify-content: center;
   height: 72px;
-  padding: 0 36px;
+  padding: 0 52px;
   border-left: 1px solid var(--border-default);
   font-family: var(--font-display);
   font-weight: 700;
