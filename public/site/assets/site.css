@@ -119,6 +119,59 @@ select, [type="submit"] { cursor: none; }
   -webkit-backdrop-filter: blur(14px) saturate(1.2);
   border-bottom-color: var(--border-default);
 }
+
+/* Header transparent on top of the hero video */
+body.has-hero-video .site-header {
+  background: transparent;
+  border-bottom-color: rgba(255, 255, 255, 0.12);
+  color: #ffffff;
+}
+body.has-hero-video .site-header .brand,
+body.has-hero-video .site-header .site-nav a,
+body.has-hero-video .site-header .header-cta,
+body.has-hero-video .site-header .nav-toggle {
+  color: #ffffff;
+}
+body.has-hero-video .site-header .site-nav a:hover { color: var(--bsg-green-300); }
+body.has-hero-video .site-header .header-cta {
+  border-color: rgba(255, 255, 255, 0.35);
+}
+body.has-hero-video .site-header .header-cta:hover {
+  background: var(--bsg-green-500);
+  color: #0A0D08;
+  border-color: var(--bsg-green-500);
+}
+body.has-hero-video .site-header .nav-toggle { border-color: rgba(255, 255, 255, 0.35); }
+body.has-hero-video .site-header .brand-logo { filter: brightness(0) invert(1); }
+
+/* On scroll, switch to an opaque dark header so the light page content stays readable */
+body.has-hero-video .site-header.is-stuck {
+  background: var(--bg-inverse);
+  border-bottom-color: rgba(255, 255, 255, 0.08);
+  color: var(--fg-inverse);
+}
+body.has-hero-video .site-header.is-stuck .brand-logo { filter: none; }
+
+/* When the mobile drawer is open, flip the transparent header to dark text
+   so it remains readable over the light mobile-nav backdrop. */
+body.has-hero-video.nav-open .site-header,
+body.has-hero-video.nav-open .site-header .brand,
+body.has-hero-video.nav-open .site-header .site-nav a,
+body.has-hero-video.nav-open .site-header .header-cta,
+body.has-hero-video.nav-open .site-header .nav-toggle {
+  color: #1A1A1A;
+}
+body.has-hero-video.nav-open .site-header .brand-logo { filter: none; }
+body.has-hero-video.nav-open .site-header .header-cta,
+body.has-hero-video.nav-open .site-header .nav-toggle { border-color: rgba(0, 0, 0, 0.2); }
+body.has-hero-video.nav-open .site-header .site-nav a:hover { color: var(--bsg-green-500); }
+body.has-hero-video.nav-open .site-header .header-cta:hover {
+  background: var(--bsg-green-500);
+  color: #FFFFFF;
+  border-color: var(--bsg-green-500);
+}
+
+
 .brand {
   display: inline-flex;
   align-items: center;
