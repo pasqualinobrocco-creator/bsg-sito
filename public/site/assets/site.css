@@ -203,20 +203,40 @@ select, [type="submit"] { cursor: none; }
 .hero-video {
   width: 100%;
   position: relative;
-  aspect-ratio: 16 / 9;
-  max-height: 75vh;
   background: var(--bg-default);
   overflow: hidden;
+  height: 100vh;
 }
 .hero-video iframe {
   position: absolute;
-  inset: 0;
-  width: 100%;
-  height: 100%;
+  top: 50%;
+  left: 50%;
+  width: 100vw;
+  height: 56.25vw; /* 16:9 based on width */
+  min-height: 100vh;
+  min-width: 177.78vh; /* 16:9 based on height */
+  transform: translate(-50%, -50%);
   border: 0;
 }
 @media (max-width: 768px) {
-  .hero-video { max-height: 50vh; }
+  .hero-video { height: 100vh; }
+}
+
+/* Header transparent over hero video (homepage) */
+body.has-hero-video .site-header:not(.is-stuck) {
+  background: transparent !important;
+  backdrop-filter: none !important;
+  -webkit-backdrop-filter: none !important;
+  border-bottom-color: transparent !important;
+}
+body.has-hero-video .site-header:not(.is-stuck) .brand,
+body.has-hero-video .site-header:not(.is-stuck) .brand-meta,
+body.has-hero-video .site-header:not(.is-stuck) .site-nav a,
+body.has-hero-video .site-header:not(.is-stuck) .header-cta {
+  color: #fff;
+}
+body.has-hero-video .site-header:not(.is-stuck) .header-cta {
+  border-color: rgba(255,255,255,0.6);
 }
 
 /* ---------- Hero ---------- */
