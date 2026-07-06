@@ -1346,10 +1346,10 @@ select, [type="submit"] { cursor: none; }
 .footer-bottom {
   display: flex;
   flex-wrap: wrap;
-  gap: 16px;
+  gap: 24px;
   align-items: center;
-  justify-content: space-between;
-  padding-top: 24px;
+  justify-content: flex-start;
+  padding: 24px 80px 0 0;
   border-top: 1px solid var(--border-default);
   font-family: var(--font-body);
   font-size: 12px;
