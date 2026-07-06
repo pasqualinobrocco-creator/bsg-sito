@@ -8,19 +8,24 @@ export const Route = createFileRoute("/news/$slug")({
     if (!news) throw notFound();
     return { news };
   },
-  head: ({ loaderData }) => {
+  head: ({ loaderData, params }) => {
     const n = loaderData?.news;
     const title = n ? `${n.title} · BSG News` : "BSG News";
-    const desc = n?.excerpt ?? "News e comunicati BSG.";
+    const rawDesc = n?.excerpt ?? "News, comunicati e aggiornamenti dal mondo BSG: campagne, partnership e progetti dei brand del gruppo.";
+    const desc = rawDesc.length < 60 ? `${rawDesc} News e aggiornamenti dal gruppo BSG.` : rawDesc;
+    const canonical = `https://bsg-sito.lovable.app/news/${params.slug}`;
     return {
       meta: [
         { title },
         { name: "description", content: desc },
         { property: "og:title", content: title },
         { property: "og:description", content: desc },
+        { property: "og:type", content: "article" },
+        { property: "og:url", content: canonical },
         ...(n?.cover_url ? [{ property: "og:image", content: n.cover_url }] : []),
       ],
       links: [
+        { rel: "canonical", href: canonical },
         { rel: "stylesheet", href: "/site/assets/tokens.css" },
         { rel: "stylesheet", href: "/site/assets/site.css" },
         { rel: "icon", type: "image/svg+xml", href: "/favicons/favicon.svg" },

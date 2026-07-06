@@ -3,7 +3,14 @@ import { useEffect, useState } from "react";
 import { supabase } from "@/integrations/supabase/client";
 
 export const Route = createFileRoute("/login")({
-  head: () => ({ meta: [{ title: "Accesso · BSG admin" }] }),
+  head: () => ({
+    meta: [
+      { title: "Accesso · BSG admin" },
+      { name: "description", content: "Area riservata alla redazione BSG: accedi al pannello di gestione dei contenuti del sito." },
+      { name: "robots", content: "noindex, nofollow" },
+    ],
+    links: [{ rel: "canonical", href: "https://bsg-sito.lovable.app/login" }],
+  }),
   component: LoginPage,
 });
 
