@@ -3,18 +3,18 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Universo BSG — BSG, Squisitus, Excellere, Padel Media Communication, Padel Best Village</title>
-  <meta name="description" content="L'universo BSG: agenzia madre e quattro brand verticali — Squisitus, Excellere, Padel Media Communication e Padel Best Village. Un gruppo, cinque brand.">
+  <title>Universo BSG — BSG, Squisitus, Excellere, Padel Media Communication & Padel Best Village</title>
+  <meta name="description" content="L'universo BSG: agenzia madre e quattro brand verticali — Squisitus, Excellere, Padel Media Communication & Padel Best Village. Un gruppo, quattro brand.">
   <link rel="canonical" href="https://www.bsgsrl.com/universo">
   <meta property="og:type" content="website">
   <meta property="og:site_name" content="BSG">
-  <meta property="og:title" content="Universo BSG — BSG, Squisitus, Excellere, Padel Media Communication, Padel Best Village">
-  <meta property="og:description" content="L'universo BSG: agenzia madre e quattro brand verticali — Squisitus, Excellere, Padel Media Communication e Padel Best Village. Un gruppo, cinque brand.">
+  <meta property="og:title" content="Universo BSG — BSG, Squisitus, Excellere, Padel Media Communication & Padel Best Village">
+  <meta property="og:description" content="L'universo BSG: agenzia madre e quattro brand verticali — Squisitus, Excellere, Padel Media Communication & Padel Best Village. Un gruppo, quattro brand.">
   <meta property="og:url" content="https://www.bsgsrl.com/universo">
   <meta property="og:locale" content="it_IT">
   <meta name="twitter:card" content="summary_large_image">
-  <meta name="twitter:title" content="Universo BSG — BSG, Squisitus, Excellere, Padel Media Communication, Padel Best Village">
-  <meta name="twitter:description" content="L'universo BSG: agenzia madre e quattro brand verticali — Squisitus, Excellere, Padel Media Communication e Padel Best Village. Un gruppo, cinque brand.">
+  <meta name="twitter:title" content="Universo BSG — BSG, Squisitus, Excellere, Padel Media Communication & Padel Best Village">
+  <meta name="twitter:description" content="L'universo BSG: agenzia madre e quattro brand verticali — Squisitus, Excellere, Padel Media Communication & Padel Best Village. Un gruppo, quattro brand.">
   <link rel="stylesheet" href="assets/site.css">
   <link rel="icon" type="image/svg+xml" href="/favicons/favicon.svg">
   <link rel="icon" type="image/png" sizes="32x32" href="/favicons/favicon-32x32.png">
@@ -30,7 +30,7 @@
     .uni-hero h1 { font-family: var(--font-display); font-weight: 900; font-size: clamp(48px, 8vw, 128px); line-height: 0.92; letter-spacing: -0.04em; margin: 24px 0 32px; }
     .uni-hero h1 em { font-family: var(--font-accent); font-style: italic; font-weight: 300; color: var(--bsg-green-300); }
     .uni-hero .lede { font-size: clamp(16px, 1.2vw, 20px); line-height: 1.6; color: var(--fg-muted); max-width: 70ch; }
-    .uni-toc { display: grid; grid-template-columns: repeat(5, 1fr); gap: 1px; background: rgba(255,255,255,0.08); border-top: 1px solid rgba(255,255,255,0.08); border-bottom: 1px solid rgba(255,255,255,0.08); margin: 64px 0 0; }
+    .uni-toc { display: grid; grid-template-columns: repeat(4, 1fr); gap: 1px; background: rgba(255,255,255,0.08); border-top: 1px solid rgba(255,255,255,0.08); border-bottom: 1px solid rgba(255,255,255,0.08); margin: 64px 0 0; }
     .uni-toc a { display: flex; flex-direction: column; gap: 6px; padding: 24px 20px; background: var(--bg-default); color: var(--fg-default); text-decoration: none; transition: background .25s ease, color .25s ease; }
     .uni-toc a:hover { background: var(--bsg-green-500); color: #0A0D08; }
     .uni-toc a:hover .toc-num, .uni-toc a:hover .toc-meta { color: rgba(10,13,8,0.7); }
@@ -38,6 +38,11 @@
     .uni-toc .toc-name { font-family: var(--font-display); font-weight: 900; font-size: 22px; letter-spacing: -0.02em; }
     .uni-toc .toc-meta { font-size: 12px; color: var(--fg-muted); }
     @media (max-width: 900px) { .uni-toc { grid-template-columns: repeat(2, 1fr); } }
+
+    /* Duo hero video for combined Padel brand */
+    .brand-hero-video--duo { display: grid; grid-template-columns: 1fr 1fr; gap: 1px; background: #000; }
+    .brand-hero-video--duo .brand-hero-video__inner { padding-top: 56.25%; }
+    @media (max-width: 900px) { .brand-hero-video--duo { grid-template-columns: 1fr; } }
 
     .brand-section { padding: 96px 0; border-top: 1px solid rgba(255,255,255,0.08); position: relative; }
     .brand-section.invert { background: #E7E5E0; color: #0A0D08; }
@@ -83,6 +88,24 @@
     .b-logo--wide { max-width: 340px; }
     .b-logo--tall img { max-height: 110px; }
     .brand-section.invert .b-logo { background: #fff; box-shadow: 0 6px 18px rgba(10,13,8,0.08); }
+
+    /* BSG master brand section: green background with white text, always active */
+    .brand-section.bsg-master { background: #629630; color: #fff; }
+    .brand-section.bsg-master .b-num,
+    .brand-section.bsg-master .b-eyebrow,
+    .brand-section.bsg-master .b-title,
+    .brand-section.bsg-master .b-desc,
+    .brand-section.bsg-master p,
+    .brand-section.bsg-master .b-list li,
+    .brand-section.bsg-master .b-tag { color: #fff; }
+    .brand-section.bsg-master .b-list li::before { background: rgba(255,255,255,0.7); }
+    .brand-section.bsg-master .b-card { background: rgba(255,255,255,0.1); border-color: rgba(255,255,255,0.2); }
+    .brand-section.bsg-master .b-card h4 { color: #fff; }
+    .brand-section.bsg-master .b-stat { border-color: rgba(255,255,255,0.2); }
+    .brand-section.bsg-master .b-stat .num { color: #fff; }
+    .brand-section.bsg-master .b-stat .lbl { color: rgba(255,255,255,0.85); }
+    .brand-section.bsg-master .b-cta { background: #fff; color: #629630; }
+    .brand-section.bsg-master .b-cta:hover { background: rgba(255,255,255,0.92); }
     @media (max-width: 900px) { .b-logo { max-width: 220px; min-height: 80px; padding: 14px 18px; } .b-logo img { max-height: 60px; } }
 
     .b-patronage-text { margin: 28px 0 8px; padding: 24px 26px; background: rgba(10,13,8,0.04); border-left: 3px solid #4a6b22; border-radius: 4px; max-width: 60ch; }
@@ -93,7 +116,7 @@
 
   </style>
 
-  <script type="application/ld+json" data-bsg-schema="1">{"@context": "https://schema.org", "@graph": [{"@type": "Organization", "@id": "https://www.bsgsrl.com/#organization", "name": "BSG", "legalName": "BSG S.r.l.", "url": "https://www.bsgsrl.com/", "logo": "https://www.bsgsrl.com/assets/brand-logos/bsg.svg", "foundingDate": "1991", "description": "Centrale media indipendente: strategia, pianificazione media, OOH/DOOH ed eventi.", "areaServed": ["IT", "MC"], "sameAs": ["https://www.linkedin.com/company/bsgsrl/", "https://www.padelbest.net/", "https://excellerebsg.com/"], "address": [{"@type": "PostalAddress", "streetAddress": "Via Appia Nuova 677", "addressLocality": "Roma", "postalCode": "00179", "addressRegion": "RM", "addressCountry": "IT"}, {"@type": "PostalAddress", "streetAddress": "Via Alberto Mario 26", "addressLocality": "Milano", "postalCode": "20149", "addressRegion": "MI", "addressCountry": "IT"}], "contactPoint": [{"@type": "ContactPoint", "contactType": "customer service", "telephone": "+39-06-1234-5678", "email": "roma@bsg.it", "areaServed": "IT", "availableLanguage": ["it", "en"], "hoursAvailable": {"@type": "OpeningHoursSpecification", "dayOfWeek": ["Monday", "Tuesday", "Wednesday", "Thursday", "Friday"], "opens": "09:00", "closes": "18:30"}}, {"@type": "ContactPoint", "contactType": "sales", "telephone": "+39-02-8765-4321", "email": "milano@bsg.it", "areaServed": "IT", "availableLanguage": ["it", "en"], "hoursAvailable": {"@type": "OpeningHoursSpecification", "dayOfWeek": ["Monday", "Tuesday", "Wednesday", "Thursday", "Friday"], "opens": "09:00", "closes": "18:30"}}, {"@type": "ContactPoint", "contactType": "press", "email": "press@bsg.it", "areaServed": "IT", "availableLanguage": ["it", "en"]}, {"@type": "ContactPoint", "contactType": "HR", "email": "people@bsg.it", "areaServed": "IT", "availableLanguage": ["it", "en"]}]}, {"@type": "LocalBusiness", "@id": "https://www.bsgsrl.com/#localbusiness-roma", "name": "BSG — Sede di Roma", "image": "https://www.bsgsrl.com/assets/brand-logos/bsg.svg", "url": "https://www.bsgsrl.com/contatti.html", "telephone": "+39-06-1234-5678", "email": "roma@bsg.it", "priceRange": "€€€", "address": {"@type": "PostalAddress", "streetAddress": "Via Appia Nuova 677", "addressLocality": "Roma", "postalCode": "00179", "addressRegion": "RM", "addressCountry": "IT"}, "areaServed": ["IT", "MC"], "openingHoursSpecification": [{"@type": "OpeningHoursSpecification", "dayOfWeek": ["Monday", "Tuesday", "Wednesday", "Thursday", "Friday"], "opens": "09:00", "closes": "18:30"}], "parentOrganization": {"@id": "https://www.bsgsrl.com/#organization"}}, {"@type": "LocalBusiness", "@id": "https://www.bsgsrl.com/#localbusiness-milano", "name": "BSG — Sede di Milano", "image": "https://www.bsgsrl.com/assets/brand-logos/bsg.svg", "url": "https://www.bsgsrl.com/contatti.html", "telephone": "+39-02-8765-4321", "email": "milano@bsg.it", "priceRange": "€€€", "address": {"@type": "PostalAddress", "streetAddress": "Via Alberto Mario 26", "addressLocality": "Milano", "postalCode": "20149", "addressRegion": "MI", "addressCountry": "IT"}, "areaServed": ["IT", "MC"], "openingHoursSpecification": [{"@type": "OpeningHoursSpecification", "dayOfWeek": ["Monday", "Tuesday", "Wednesday", "Thursday", "Friday"], "opens": "09:00", "closes": "18:30"}], "parentOrganization": {"@id": "https://www.bsgsrl.com/#organization"}}, {"@type": "WebSite", "@id": "https://www.bsgsrl.com/#website", "url": "https://www.bsgsrl.com/", "name": "BSG", "inLanguage": "it-IT", "publisher": {"@id": "https://www.bsgsrl.com/#organization"}, "potentialAction": {"@type": "SearchAction", "target": "https://www.bsgsrl.com/?q={search_term_string}", "query-input": "required name=search_term_string"}}, {"@type": "CollectionPage", "@id": "https://www.bsgsrl.com/universo.html#webpage", "url": "https://www.bsgsrl.com/universo.html", "name": "Universo BSG — BSG, Squisitus, Excellere, Padel Media Communication, Padel Best Village", "isPartOf": {"@id": "https://www.bsgsrl.com/#website"}, "about": {"@id": "https://www.bsgsrl.com/#organization"}, "inLanguage": "it-IT", "description": "L'universo BSG: agenzia madre e quattro brand verticali — Squisitus, Excellere, Padel Media Communication e Padel Best Village. Un gruppo, cinque brand."}]}</script>
+  <script type="application/ld+json" data-bsg-schema="1">{"@context": "https://schema.org", "@graph": [{"@type": "Organization", "@id": "https://www.bsgsrl.com/#organization", "name": "BSG", "legalName": "BSG S.r.l.", "url": "https://www.bsgsrl.com/", "logo": "https://www.bsgsrl.com/assets/brand-logos/bsg.svg", "foundingDate": "1991", "description": "Centrale media indipendente: strategia, pianificazione media, OOH/DOOH ed eventi.", "areaServed": ["IT", "MC"], "sameAs": ["https://www.linkedin.com/company/bsgsrl/", "https://www.padelbest.net/", "https://excellerebsg.com/"], "address": [{"@type": "PostalAddress", "streetAddress": "Via Appia Nuova 677", "addressLocality": "Roma", "postalCode": "00179", "addressRegion": "RM", "addressCountry": "IT"}, {"@type": "PostalAddress", "streetAddress": "Via Alberto Mario 26", "addressLocality": "Milano", "postalCode": "20149", "addressRegion": "MI", "addressCountry": "IT"}], "contactPoint": [{"@type": "ContactPoint", "contactType": "customer service", "telephone": "+39-06-1234-5678", "email": "roma@bsg.it", "areaServed": "IT", "availableLanguage": ["it", "en"], "hoursAvailable": {"@type": "OpeningHoursSpecification", "dayOfWeek": ["Monday", "Tuesday", "Wednesday", "Thursday", "Friday"], "opens": "09:00", "closes": "18:30"}}, {"@type": "ContactPoint", "contactType": "sales", "telephone": "+39-02-8765-4321", "email": "milano@bsg.it", "areaServed": "IT", "availableLanguage": ["it", "en"], "hoursAvailable": {"@type": "OpeningHoursSpecification", "dayOfWeek": ["Monday", "Tuesday", "Wednesday", "Thursday", "Friday"], "opens": "09:00", "closes": "18:30"}}, {"@type": "ContactPoint", "contactType": "press", "email": "press@bsg.it", "areaServed": "IT", "availableLanguage": ["it", "en"]}, {"@type": "ContactPoint", "contactType": "HR", "email": "people@bsg.it", "areaServed": "IT", "availableLanguage": ["it", "en"]}]}, {"@type": "LocalBusiness", "@id": "https://www.bsgsrl.com/#localbusiness-roma", "name": "BSG — Sede di Roma", "image": "https://www.bsgsrl.com/assets/brand-logos/bsg.svg", "url": "https://www.bsgsrl.com/contatti.html", "telephone": "+39-06-1234-5678", "email": "roma@bsg.it", "priceRange": "€€€", "address": {"@type": "PostalAddress", "streetAddress": "Via Appia Nuova 677", "addressLocality": "Roma", "postalCode": "00179", "addressRegion": "RM", "addressCountry": "IT"}, "areaServed": ["IT", "MC"], "openingHoursSpecification": [{"@type": "OpeningHoursSpecification", "dayOfWeek": ["Monday", "Tuesday", "Wednesday", "Thursday", "Friday"], "opens": "09:00", "closes": "18:30"}], "parentOrganization": {"@id": "https://www.bsgsrl.com/#organization"}}, {"@type": "LocalBusiness", "@id": "https://www.bsgsrl.com/#localbusiness-milano", "name": "BSG — Sede di Milano", "image": "https://www.bsgsrl.com/assets/brand-logos/bsg.svg", "url": "https://www.bsgsrl.com/contatti.html", "telephone": "+39-02-8765-4321", "email": "milano@bsg.it", "priceRange": "€€€", "address": {"@type": "PostalAddress", "streetAddress": "Via Alberto Mario 26", "addressLocality": "Milano", "postalCode": "20149", "addressRegion": "MI", "addressCountry": "IT"}, "areaServed": ["IT", "MC"], "openingHoursSpecification": [{"@type": "OpeningHoursSpecification", "dayOfWeek": ["Monday", "Tuesday", "Wednesday", "Thursday", "Friday"], "opens": "09:00", "closes": "18:30"}], "parentOrganization": {"@id": "https://www.bsgsrl.com/#organization"}}, {"@type": "WebSite", "@id": "https://www.bsgsrl.com/#website", "url": "https://www.bsgsrl.com/", "name": "BSG", "inLanguage": "it-IT", "publisher": {"@id": "https://www.bsgsrl.com/#organization"}, "potentialAction": {"@type": "SearchAction", "target": "https://www.bsgsrl.com/?q={search_term_string}", "query-input": "required name=search_term_string"}}, {"@type": "CollectionPage", "@id": "https://www.bsgsrl.com/universo.html#webpage", "url": "https://www.bsgsrl.com/universo.html", "name": "Universo BSG — BSG, Squisitus, Excellere, Padel Media Communication, Padel Best Village", "isPartOf": {"@id": "https://www.bsgsrl.com/#website"}, "about": {"@id": "https://www.bsgsrl.com/#organization"}, "inLanguage": "it-IT", "description": "L'universo BSG: agenzia madre e quattro brand verticali — Squisitus, Excellere, Padel Media Communication & Padel Best Village. Un gruppo, quattro brand."}]}</script>
 </head>
 <body class="theme-dark" data-screen-label="Universo BSG">
 
@@ -131,25 +154,24 @@
       <div class="wrap">
         <div class="crumbs"><a href="index.html">Home</a> <span class="sep">/</span> <span class="current">Universo BSG</span></div>
         <span class="eyebrow">Universo BSG</span>
-        <h1>Un gruppo,<br><em>cinque brand</em>.</h1>
-        <p class="lede">Dall'agenzia madre — Agenzia di comunicazione&amp;marketing e centrale media indipendente dal 1991 e specialist sul territorio — nasce un'operazione di <strong>stretching marketing</strong>: BSG estende il proprio know-how in 5 format verticali, ciascuno con un'identità autonoma ma una stessa regia strategica. Sotto un solo tetto, cinque marchi che parlano la stessa lingua a pubblici diversi.</p>
+        <h1>Un gruppo,<br><em>quattro brand</em>.</h1>
+        <p class="lede">Dall'agenzia madre — Agenzia di comunicazione&amp;marketing e centrale media indipendente dal 1991 e specialist sul territorio — nasce un'operazione di <strong>stretching marketing</strong>: BSG estende il proprio know-how in 4 format verticali, ciascuno con un'identità autonoma ma una stessa regia strategica. Sotto un solo tetto, quattro marchi che parlano la stessa lingua a pubblici diversi.</p>
 
         <nav class="uni-toc" aria-label="Sezioni dell'universo">
           <a href="#bsg"><span class="toc-num">01</span><span class="toc-name">BSG</span><span class="toc-meta">Agenzia di comunicazione&amp;marketing</span></a>
           <a href="#squisitus"><span class="toc-num">02</span><span class="toc-name">Squisitus</span><span class="toc-meta">Exposition food &amp; lifestyle</span></a>
           <a href="#excellere"><span class="toc-num">03</span><span class="toc-name">Excellere</span><span class="toc-meta">Dipartimento eventi</span></a>
-          <a href="#padel-media"><span class="toc-num">04</span><span class="toc-name">Padel Media Communication</span><span class="toc-meta">Adv in verticale sul padel</span></a>
-          <a href="#padel-best"><span class="toc-num">05</span><span class="toc-name">Padel Best Village</span><span class="toc-meta">format torneo-evento</span></a>
+          <a href="#padel-media"><span class="toc-num">04</span><span class="toc-name">Padel Media &amp; Best Village</span><span class="toc-meta">Adv &amp; format torneo-evento</span></a>
         </nav>
       </div>
     </section>
 
     <!-- 01 BSG -->
-    <section class="brand-section" id="bsg">
+    <section class="brand-section bsg-master" id="bsg">
       <div class="wrap">
         <div class="b-head">
           <div>
-            <span class="b-num">01 / 05</span>
+            <span class="b-num">01 / 04</span>
             <span class="b-eyebrow">Agenzia di comunicazione&amp;marketing</span>
             <h2 class="b-title">BSG <em>Srl</em></h2>
           </div>
@@ -180,7 +202,7 @@
             <div class="b-stat"><span class="num">35</span><span class="lbl">anni sul mercato della comunicazione</span></div>
             <div class="b-stat"><span class="num">2</span><span class="lbl">sedi operative — Roma &amp; Milano</span></div>
             <div class="b-stat"><span class="num">360°</span><span class="lbl">approccio crossmediale integrato</span></div>
-            <div class="b-stat"><span class="num">5</span><span class="lbl">format verticali nell'universo BSG</span></div>
+            <div class="b-stat"><span class="num">4</span><span class="lbl">format verticali nell'universo BSG</span></div>
           </aside>
         </div>
       </div>
@@ -196,7 +218,7 @@
         <div class="b-head">
           <div>
             <div class="b-logo b-logo--tall"><img src="assets/brand-logos/squisitus.png" alt="Squisitus — Healthy · Sport · Tasty" loading="lazy"></div>
-            <span class="b-num">02 / 05</span>
+            <span class="b-num">02 / 04</span>
             <span class="b-eyebrow">Exposition food &amp; lifestyle</span>
             <h2 class="b-title"><em>Squisitus</em></h2>
           </div>
@@ -248,7 +270,7 @@
         <div class="b-head">
           <div>
             <div class="b-logo b-logo--wide"><img src="assets/brand-logos/excellere.svg" alt="Excellere BSG — La Rosa dell'Eccellenza" loading="lazy"></div>
-            <span class="b-num">03 / 05</span>
+            <span class="b-num">03 / 04</span>
             <span class="b-eyebrow">Network eventi · Advisory</span>
             <h2 class="b-title">Excellere<em> BSG</em></h2>
           </div>
@@ -286,55 +308,12 @@
     </section>
 
     
-<!-- 04 PADEL MEDIA -->
+<!-- 04 PADEL MEDIA & BEST VILLAGE -->
     <section class="brand-section invert" id="padel-media">
-      <div class="brand-hero-video">
+      <div class="brand-hero-video brand-hero-video--duo">
         <div class="brand-hero-video__inner">
           <iframe src="https://player.vimeo.com/video/1198007064?autoplay=1&loop=1&muted=1&background=1&dnt=1" frameborder="0" allow="autoplay; fullscreen; picture-in-picture" allowfullscreen title="Padel Media Communication — padel 3gg"></iframe>
         </div>
-      </div>
-      <div class="wrap">
-        <div class="b-head">
-          <div>
-            <div class="b-logo b-logo--wide"><img src="assets/brand-logos/padel-media-communication.svg" alt="Padel Media Communication" loading="lazy"></div>
-            <span class="b-num">04 / 05</span>
-            <span class="b-eyebrow">Adv in verticale sul padel</span>
-            <h2 class="b-title">Padel <em>Media Communication</em></h2>
-          </div>
-          <p class="b-desc">La prima agenzia pubblicitaria dedicata al padel e trasforma questo sport in un'opportunità di comunicazione per le aziende, creando format che uniscono brand, eventi e community. Esperienza in media, marketing e branding, unita a una profonda conoscenza del settore, per generare visibilità, engagement e business.</p>
-        </div>
-
-        <div class="b-grid">
-          <div>
-            <p style="font-size: 17px; line-height: 1.7; color: var(--fg-muted); max-width: 60ch;">Proponiamo la prima piattaforma italiana di comunicazione sul padel, offrendo soluzioni a 360° integrate "chiavi in mano" per le aziende: circuiti nazionali e estivi nei circoli, tornei e format su misura, sponsorizzazioni di atleti e una pianificazione media completa per raggiungere e amplificare il target padel.</p>
-            <ul class="b-list">
-              <li>Produzione editoriale &amp; storytelling sportivo</li>
-              <li>Regia e produzione video — match, format, branded content</li>
-              <li>Social media management e creator partnership</li>
-              <li>OOH dedicato sui circuiti dei club padel</li>
-              <li>Sponsorship strategy e attivazione tornei</li>
-            </ul>
-            <div class="b-tags">
-              <span class="b-tag">Vertical media</span>
-              <span class="b-tag">Sport &amp; brand</span>
-              <span class="b-tag">Chiavi in mano</span>
-            </div>
-            <a class="b-cta" href="https://www.padelmediacommunication.it" target="_blank" rel="noopener">Vai a padelmediacommunication.it
-              <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round"><line x1="7" y1="17" x2="17" y2="7"/><polyline points="8 7 17 7 17 16"/></svg>
-            </a>
-          </div>
-          <aside class="b-card">
-            <div><h4>Posizionamento</h4></div>
-            <div class="b-stat"><span class="num">1ª</span><span class="lbl">agenzia di comunicazione italiana 100% padel</span></div>
-            <div class="b-stat"><span class="num">360°</span><span class="lbl">canali integrati: editoriale, video, social, OOH</span></div>
-            <div class="b-stat"><span class="num">B2B</span><span class="lbl">brand &amp; sponsor del settore sport, lifestyle, lusso</span></div>
-          </aside>
-        </div>
-      </div>
-    </section>
-<!-- 05 PADEL BEST -->
-    <section class="brand-section" id="padel-best">
-      <div class="brand-hero-video">
         <div class="brand-hero-video__inner">
           <iframe src="https://player.vimeo.com/video/1198007065?autoplay=1&loop=1&muted=1&background=1&dnt=1" frameborder="0" allow="autoplay; fullscreen; picture-in-picture" allowfullscreen title="Padel Best Village — video"></iframe>
         </div>
@@ -342,39 +321,51 @@
       <div class="wrap">
         <div class="b-head">
           <div>
-            <div class="b-logo b-logo--wide"><img src="assets/brand-logos/padel-best.png" alt="Padel Best Village" loading="lazy"></div>
-            <span class="b-num">05 / 05</span>
-            <span class="b-eyebrow">format torneo-evento</span>
-            <h2 class="b-title">Padel <em>Best Village</em></h2>
+            <div style="display:flex; gap:18px; flex-wrap:wrap; margin-bottom:24px;">
+              <div class="b-logo b-logo--wide"><img src="assets/brand-logos/padel-media-communication.svg" alt="Padel Media Communication" loading="lazy"></div>
+              <div class="b-logo b-logo--wide"><img src="assets/brand-logos/padel-best.png" alt="Padel Best Village" loading="lazy"></div>
+            </div>
+            <span class="b-num">04 / 04</span>
+            <span class="b-eyebrow">Adv &amp; format torneo-evento</span>
+            <h2 class="b-title">Padel <em>Media</em> &amp; <em>Best Village</em></h2>
           </div>
-          <p class="b-desc">Padel Best è il grande summit del mondo del padel: un format esperienziale e itinerante, una "galassia poliedrica" dove competizione, intrattenimento, networking, brand activation e business si fondono in un'unica esperienza.</p>
+          <p class="b-desc">Due anime verticali sul mondo del padel: <strong>Padel Media Communication</strong> è la prima agenzia pubblicitaria dedicata al padel, che trasforma lo sport in opportunità di comunicazione per brand, eventi e community. <strong>Padel Best Village</strong> è il grande summit esperienziale e itinerante dove competizione, networking, brand activation e business si fondono in un'unica esperienza.</p>
         </div>
 
         <div class="b-grid">
           <div>
-            <p style="font-size: 17px; line-height: 1.7; max-width: 60ch;">Padel Best Village non è una fiera, ma un ecosistema esperienziale dove sponsor, partner e community si incontrano in un contesto dinamico di networking, business e intrattenimento. Cuore sportivo dell'evento è la Five Padel Cup: un format esclusivo con 5 tornei e match spettacolari ad alto coinvolgimento.</p>
+            <p style="font-size: 17px; line-height: 1.7; color: var(--fg-muted); max-width: 60ch;">Proponiamo la prima piattaforma italiana di comunicazione sul padel con soluzioni a 360° integrate "chiavi in mano": circuiti nei circoli, tornei e format su misura, sponsorizzazioni di atleti, produzione editoriale e video, social e OOH. A questo si aggiunge l'ecosistema esperienziale di Padel Best Village, con la Five Padel Cup, il Padel Forum e un format itinerante di sponsor activation B2B/B2C.</p>
             <ul class="b-list">
-              <li>Tornei tematici</li>
-              <li>Five Padel Cup</li>
-              <li>Brand village format</li>
-              <li>Format itinerante</li>
+              <li>Produzione editoriale &amp; storytelling sportivo</li>
+              <li>Regia e produzione video — match, format, branded content</li>
+              <li>Social media management e creator partnership</li>
+              <li>OOH dedicato sui circuiti dei club padel</li>
+              <li>Sponsorship strategy e attivazione tornei</li>
+              <li>Five Padel Cup e tornei tematici</li>
               <li>Padel Forum: talk con esperti, aziende, atleti, coach e celebrities</li>
-              <li>Hospitality, networking serale, intrattenimento dal vivo</li>
+              <li>Format itinerante B2B + B2C</li>
             </ul>
             <div class="b-tags">
-              <span class="b-tag">B2B + B2C</span>
+              <span class="b-tag">Vertical media</span>
+              <span class="b-tag">Sport &amp; brand</span>
               <span class="b-tag">Itinerante</span>
               <span class="b-tag">Sponsor activation</span>
             </div>
-            <a class="b-cta" href="https://www.padelbest.net" target="_blank" rel="noopener">Vai a padelbest.net
-              <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round"><line x1="7" y1="17" x2="17" y2="7"/><polyline points="8 7 17 7 17 16"/></svg>
-            </a>
+            <div style="display:flex; gap:14px; flex-wrap:wrap; margin-top:28px;">
+              <a class="b-cta" href="https://www.padelmediacommunication.it" target="_blank" rel="noopener">Padel Media Communication
+                <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round"><line x1="7" y1="17" x2="17" y2="7"/><polyline points="8 7 17 7 17 16"/></svg>
+              </a>
+              <a class="b-cta" href="https://www.padelbest.net" target="_blank" rel="noopener">Padel Best Village
+                <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round"><line x1="7" y1="17" x2="17" y2="7"/><polyline points="8 7 17 7 17 16"/></svg>
+              </a>
+            </div>
           </div>
           <aside class="b-card">
-            <div><h4>Edizione 2026</h4></div>
-            <div class="b-stat"><span class="num">MC</span><span class="lbl">Monte-Carlo · Grimaldi Forum — prima edizione internazionale</span></div>
-            <div class="b-stat"><span class="num">2</span><span class="lbl">eventi serali</span></div>
-            <div class="b-stat"><span class="num">2°</span><span class="lbl">edizione consecutiva del format</span></div>
+            <div><h4>Posizionamento</h4></div>
+            <div class="b-stat"><span class="num">1ª</span><span class="lbl">agenzia di comunicazione italiana 100% padel</span></div>
+            <div class="b-stat"><span class="num">360°</span><span class="lbl">canali integrati: editoriale, video, social, OOH</span></div>
+            <div class="b-stat"><span class="num">MC</span><span class="lbl">Monte-Carlo · Grimaldi Forum — edizione internazionale</span></div>
+            <div class="b-stat"><span class="num">B2B+B2C</span><span class="lbl">brand, sponsor e community del settore padel</span></div>
           </aside>
         </div>
       </div>
@@ -410,8 +401,7 @@
               <li><a href="universo.html#bsg">BSG</a></li>
               <li><a href="universo.html#squisitus">Squisitus</a></li>
               <li><a href="universo.html#excellere">Excellere</a></li>
-              <li><a href="universo.html#padel-media">Padel Media Communication</a></li>
-              <li><a href="universo.html#padel-best">Padel Best Village</a></li>
+              <li><a href="universo.html#padel-media">Padel Media &amp; Best Village</a></li>
             </ul>
           </div>
           <div class="footer-col">
