@@ -726,35 +726,7 @@ select, [type="submit"] { cursor: none; }
 .brand-row .brand-name.brand-name--stacked .brand-name__line {
   display: block;
 }
-@media (min-width: 900px) {
-  .universo .brands .brand-row.padel-media {
-    grid-template-columns: minmax(200px, 230px) minmax(260px, 340px) minmax(360px, 1.8fr) 60px;
-    grid-template-areas: "num name desc cta";
-    gap: 24px 48px;
-  }
-  .universo .brands .brand-row.padel-media .brand-name {
-    font-size: clamp(24px, 2.1vw, 38px);
-    line-height: 1.05;
-    word-break: normal;
-    overflow-wrap: normal;
-    min-width: 0;
-  }
-  .universo .brands .brand-row.padel-media .brand-name .brand-name__sub {
-    font-size: 0.58em;
-    margin-top: 0.22em;
-  }
-  .universo .brands .brand-row.padel-media .brand-desc {
-    max-width: none;
-    min-width: 0;
-    padding-left: 8px;
-  }
-}
-@media (min-width: 1200px) {
-  .universo .brands .brand-row.padel-media {
-    grid-template-columns: minmax(210px, 240px) minmax(280px, 360px) minmax(420px, 2fr) 60px;
-    gap: 24px 56px;
-  }
-}
+
 
 /* BSG master brand row: green background with white text, always active */
 .brand-row.bsg {
@@ -810,6 +782,32 @@ select, [type="submit"] { cursor: none; }
   }
   .universo .brands .brand-row .brand-desc {
     max-width: 60ch;
+  }
+}
+
+/* Padel Media combined row: same grid as siblings, scaled type so nothing overlaps */
+@media (max-width: 899px) {
+  .brand-row.padel-media .brand-name {
+    font-size: clamp(26px, 7vw, 40px);
+    line-height: 1.05;
+    word-break: normal;
+    overflow-wrap: anywhere;
+  }
+  .brand-row.padel-media .brand-name .brand-name__sub {
+    font-size: 0.55em;
+    margin-top: 0.2em;
+  }
+}
+@media (min-width: 900px) {
+  .universo .brands .brand-row.padel-media .brand-name {
+    font-size: clamp(30px, 3.2vw, 52px);
+    line-height: 1.05;
+    word-break: normal;
+    overflow-wrap: normal;
+  }
+  .universo .brands .brand-row.padel-media .brand-name .brand-name__sub {
+    font-size: 0.55em;
+    margin-top: 0.15em;
   }
 }
 
