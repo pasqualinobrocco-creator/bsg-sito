@@ -716,22 +716,43 @@ select, [type="submit"] { cursor: none; }
 .brand-row.padel-media { --brand-accent: #1f5da8; }
 .brand-row.excellere   { --brand-accent: #d51168; }
 
-/* Combined Padel row: give the long name its own wider column */
+/* Combined Padel row: balance long name vs description so they don't overlap */
+.brand-row .brand-name.brand-name--stacked {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  line-height: 1.05;
+}
+.brand-row .brand-name.brand-name--stacked .brand-name__line {
+  display: block;
+}
 @media (min-width: 900px) {
   .universo .brands .brand-row.padel-media {
-    grid-template-columns: minmax(220px, 260px) minmax(700px, 2.4fr) minmax(160px, 0.75fr) 60px;
+    grid-template-columns: minmax(200px, 230px) minmax(260px, 340px) minmax(360px, 1.8fr) 60px;
     grid-template-areas: "num name desc cta";
-    gap: 24px 32px;
+    gap: 24px 48px;
   }
   .universo .brands .brand-row.padel-media .brand-name {
-    font-size: clamp(26px, 2.4vw, 44px);
+    font-size: clamp(24px, 2.1vw, 38px);
+    line-height: 1.05;
+    word-break: normal;
+    overflow-wrap: normal;
+    min-width: 0;
   }
   .universo .brands .brand-row.padel-media .brand-name .brand-name__sub {
-    font-size: 0.6em;
-    margin-top: 0.18em;
+    font-size: 0.58em;
+    margin-top: 0.22em;
   }
   .universo .brands .brand-row.padel-media .brand-desc {
-    max-width: 46ch;
+    max-width: none;
+    min-width: 0;
+    padding-left: 8px;
+  }
+}
+@media (min-width: 1200px) {
+  .universo .brands .brand-row.padel-media {
+    grid-template-columns: minmax(210px, 240px) minmax(280px, 360px) minmax(420px, 2fr) 60px;
+    gap: 24px 56px;
   }
 }
 
