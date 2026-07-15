@@ -210,7 +210,12 @@ def fetch_api():
                 "url": "https://bsg-sito.lovable.app/news/" + (n.get("slug") or ""),
             }
             if n.get("cover_url"):
-                item["image"] = n["cover_url"]
+                cu = n["cover_url"]
+                if cu.startswith("/site/"):
+                    cu = cu[5:]
+                elif cu.startswith("/"):
+                    cu = "https://bsg-sito.lovable.app" + cu
+                item["image"] = cu
             out.append(item)
         return out
     except Exception as e:
