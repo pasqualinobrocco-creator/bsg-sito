@@ -716,22 +716,34 @@ select, [type="submit"] { cursor: none; }
 .brand-row.padel-media { --brand-accent: #1f5da8; }
 .brand-row.excellere   { --brand-accent: #d51168; }
 
-/* Combined Padel row: give the long name its own wider column */
+/* Combined Padel row: balance long name vs description so they don't overlap */
 @media (min-width: 900px) {
   .universo .brands .brand-row.padel-media {
-    grid-template-columns: minmax(220px, 260px) minmax(700px, 2.4fr) minmax(160px, 0.75fr) 60px;
+    grid-template-columns: minmax(200px, 230px) minmax(300px, 420px) minmax(340px, 1.6fr) 60px;
     grid-template-areas: "num name desc cta";
-    gap: 24px 32px;
+    gap: 24px 48px;
   }
   .universo .brands .brand-row.padel-media .brand-name {
-    font-size: clamp(26px, 2.4vw, 44px);
+    font-size: clamp(22px, 1.9vw, 34px);
+    line-height: 1.05;
+    word-break: normal;
+    overflow-wrap: normal;
+    min-width: 0;
   }
   .universo .brands .brand-row.padel-media .brand-name .brand-name__sub {
-    font-size: 0.6em;
-    margin-top: 0.18em;
+    font-size: 0.62em;
+    margin-top: 0.22em;
   }
   .universo .brands .brand-row.padel-media .brand-desc {
-    max-width: 46ch;
+    max-width: none;
+    min-width: 0;
+    padding-left: 12px;
+  }
+}
+@media (min-width: 1200px) {
+  .universo .brands .brand-row.padel-media {
+    grid-template-columns: minmax(210px, 240px) minmax(320px, 460px) minmax(380px, 1.8fr) 60px;
+    gap: 24px 64px;
   }
 }
 
