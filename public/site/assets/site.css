@@ -675,6 +675,14 @@ select, [type="submit"] { cursor: none; }
   overflow-wrap: anywhere;
   transition: transform var(--dur-base) var(--ease-out), color var(--dur-base) var(--ease-out);
 }
+.brand-row .brand-name .brand-name__sub {
+  display: block;
+  font-size: 0.55em;
+  line-height: 1.1;
+  margin-top: 0.12em;
+  letter-spacing: -0.02em;
+  opacity: 0.85;
+}
 .brand-row .brand-desc {
   position: relative;
   z-index: 2;
@@ -707,6 +715,25 @@ select, [type="submit"] { cursor: none; }
 .brand-row.padel-best  { --brand-accent: #0099e5; }
 .brand-row.padel-media { --brand-accent: #1f5da8; }
 .brand-row.excellere   { --brand-accent: #d51168; }
+
+/* Combined Padel row: give the long name its own wider column */
+@media (min-width: 900px) {
+  .brand-row.padel-media {
+    grid-template-columns: minmax(220px, 260px) minmax(320px, 1.3fr) minmax(280px, 1fr) 60px;
+    grid-template-areas: "num name desc cta";
+    gap: 24px 32px;
+  }
+  .brand-row.padel-media .brand-name {
+    font-size: clamp(32px, 3.2vw, 54px);
+  }
+  .brand-row.padel-media .brand-name .brand-name__sub {
+    font-size: 0.58em;
+    margin-top: 0.16em;
+  }
+  .brand-row.padel-media .brand-desc {
+    max-width: 60ch;
+  }
+}
 
 /* BSG master brand row: green background with white text, always active */
 .brand-row.bsg {
