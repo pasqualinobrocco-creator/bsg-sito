@@ -34,6 +34,11 @@
     .uni-toc a { display: flex; flex-direction: column; gap: 6px; padding: 24px 20px; background: var(--bg-default); color: var(--fg-default); text-decoration: none; transition: background .25s ease, color .25s ease; }
     .uni-toc a:hover { background: var(--bsg-green-500); color: #0A0D08; }
     .uni-toc a:hover .toc-num, .uni-toc a:hover .toc-meta { color: rgba(10,13,8,0.7); }
+    .uni-toc a.toc-bsg { background: #629630; color: #fff; }
+    .uni-toc a.toc-bsg .toc-num { color: #fff; }
+    .uni-toc a.toc-bsg .toc-meta { color: rgba(255,255,255,0.85); }
+    .uni-toc a.toc-bsg:hover { background: #4e7826; color: #fff; }
+    .uni-toc a.toc-bsg:hover .toc-num, .uni-toc a.toc-bsg:hover .toc-meta { color: rgba(255,255,255,0.9); }
     .uni-toc .toc-num { font-family: var(--font-display); font-weight: 700; font-size: 11px; letter-spacing: 0.12em; text-transform: uppercase; color: var(--bsg-green-300); }
     .uni-toc .toc-name { font-family: var(--font-display); font-weight: 900; font-size: 22px; letter-spacing: -0.02em; }
     .uni-toc .toc-meta { font-size: 12px; color: var(--fg-muted); }
@@ -90,22 +95,6 @@
     .brand-section.invert .b-logo { background: #fff; box-shadow: 0 6px 18px rgba(10,13,8,0.08); }
 
     /* BSG master brand section: green background with white text, always active */
-    .brand-section.bsg-master { background: #629630; color: #fff; }
-    .brand-section.bsg-master .b-num,
-    .brand-section.bsg-master .b-eyebrow,
-    .brand-section.bsg-master .b-title,
-    .brand-section.bsg-master .b-desc,
-    .brand-section.bsg-master p,
-    .brand-section.bsg-master .b-list li,
-    .brand-section.bsg-master .b-tag { color: #fff; }
-    .brand-section.bsg-master .b-list li::before { background: rgba(255,255,255,0.7); }
-    .brand-section.bsg-master .b-card { background: rgba(255,255,255,0.1); border-color: rgba(255,255,255,0.2); }
-    .brand-section.bsg-master .b-card h4 { color: #fff; }
-    .brand-section.bsg-master .b-stat { border-color: rgba(255,255,255,0.2); }
-    .brand-section.bsg-master .b-stat .num { color: #fff; }
-    .brand-section.bsg-master .b-stat .lbl { color: rgba(255,255,255,0.85); }
-    .brand-section.bsg-master .b-cta { background: #fff; color: #629630; }
-    .brand-section.bsg-master .b-cta:hover { background: rgba(255,255,255,0.92); }
     @media (max-width: 900px) { .b-logo { max-width: 220px; min-height: 80px; padding: 14px 18px; } .b-logo img { max-height: 60px; } }
 
     .b-patronage-text { margin: 28px 0 8px; padding: 24px 26px; background: rgba(10,13,8,0.04); border-left: 3px solid #4a6b22; border-radius: 4px; max-width: 60ch; }
