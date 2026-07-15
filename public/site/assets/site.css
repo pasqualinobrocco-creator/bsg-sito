@@ -718,19 +718,19 @@ select, [type="submit"] { cursor: none; }
 
 /* Combined Padel row: give the long name its own wider column */
 @media (min-width: 900px) {
-  .brand-row.padel-media {
+  .universo .brands .brand-row.padel-media {
     grid-template-columns: minmax(220px, 260px) minmax(620px, 2.1fr) minmax(180px, 0.85fr) 60px;
     grid-template-areas: "num name desc cta";
     gap: 24px 32px;
   }
-  .brand-row.padel-media .brand-name {
+  .universo .brands .brand-row.padel-media .brand-name {
     font-size: clamp(24px, 2.2vw, 40px);
   }
-  .brand-row.padel-media .brand-name .brand-name__sub {
+  .universo .brands .brand-row.padel-media .brand-name .brand-name__sub {
     font-size: 0.62em;
     margin-top: 0.2em;
   }
-  .brand-row.padel-media .brand-desc {
+  .universo .brands .brand-row.padel-media .brand-desc {
     max-width: 48ch;
   }
 }
