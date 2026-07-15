@@ -684,12 +684,41 @@ select, [type="submit"] { cursor: none; }
 .brand-row:hover .brand-name { color: var(--brand-accent, var(--bsg-green-300)); transform: translateX(6px); }
 .brand-row:hover .brand-cta { background: var(--brand-accent, var(--bsg-green-500)); color: #fff; border-color: transparent; transform: rotate(-45deg); }
 
-.brand-row.bsg     { --brand-accent: var(--bsg-green-300); }
 .brand-row.bsg         { --brand-accent: #629630; }
 .brand-row.squisitus   { --brand-accent: #a71735; }
 .brand-row.padel-best  { --brand-accent: #0099e5; }
 .brand-row.padel-media { --brand-accent: #1f5da8; }
 .brand-row.excellere   { --brand-accent: #d51168; }
+
+/* BSG master brand row: green background with white text, always active */
+.brand-row.bsg {
+  background: #629630;
+  color: #fff;
+}
+.brand-row.bsg .brand-num,
+.brand-row.bsg .brand-name,
+.brand-row.bsg .brand-desc {
+  color: #fff;
+}
+.brand-row.bsg .brand-desc {
+  opacity: 0.9;
+}
+.brand-row.bsg .brand-cta {
+  background: #629630;
+  color: #fff;
+  border-color: rgba(255,255,255,0.55);
+}
+.brand-row.bsg:hover {
+  background: #4e7826;
+}
+.brand-row.bsg:hover .brand-name {
+  color: #fff;
+}
+.brand-row.bsg:hover .brand-cta {
+  background: #fff;
+  color: #629630;
+  border-color: #fff;
+}
 
 /* Full-bleed brand rows: escape the .wrap container and span viewport width */
 .universo .brands {
