@@ -719,7 +719,7 @@ select, [type="submit"] { cursor: none; }
 /* Combined Padel row: give the long name its own wider column */
 @media (min-width: 900px) {
   .brand-row.padel-media {
-    grid-template-columns: minmax(220px, 260px) minmax(520px, 1.9fr) minmax(220px, 1fr) 60px;
+    grid-template-columns: minmax(220px, 260px) minmax(620px, 2.1fr) minmax(180px, 0.85fr) 60px;
     grid-template-areas: "num name desc cta";
     gap: 24px 32px;
   }
@@ -731,7 +731,7 @@ select, [type="submit"] { cursor: none; }
     margin-top: 0.2em;
   }
   .brand-row.padel-media .brand-desc {
-    max-width: 54ch;
+    max-width: 48ch;
   }
 }
 
