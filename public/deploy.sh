@@ -195,7 +195,8 @@ BASE = [
 
 def fetch_api():
     try:
-        with urllib.request.urlopen(API, timeout=30) as r:
+        req = urllib.request.Request(API, headers={"User-Agent": "Mozilla/5.0 (X11; Linux x86_64) BSGNewsSync/1.0"})
+        with urllib.request.urlopen(req, timeout=30) as r:
             data = json.load(r)
         out = []
         for n in data.get("news") or []:
