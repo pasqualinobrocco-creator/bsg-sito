@@ -788,23 +788,38 @@ select, [type="submit"] { cursor: none; }
 .brands .brand-group .brand-row.in-group:hover {
   background: rgba(0,0,0,0.03);
 }
-/* Connecting green bar under the first index number */
-.brands .brand-group .brand-row.in-group:first-child .brand-index {
+/* Connecting green bar between the two grouped index numbers */
+.brands .brand-group .brand-row.in-group:first-child .brand-index,
+.brands .brand-group .brand-row.in-group + .brand-row.in-group .brand-index {
   position: relative;
 }
 .brands .brand-group .brand-row.in-group:first-child .brand-index::after {
   content: "";
   position: absolute;
   left: 50%;
-  top: 100%;
+  top: 90%;
   transform: translateX(-50%);
   width: 3px;
-  height: calc(var(--brand-row-h, 140px) - 40px);
+  height: 100%;
   background: var(--bsg-green-500, #629630);
   border-radius: 2px;
+  z-index: 1;
+}
+.brands .brand-group .brand-row.in-group + .brand-row.in-group .brand-index::before {
+  content: "";
+  position: absolute;
+  left: 50%;
+  bottom: 90%;
+  transform: translateX(-50%);
+  width: 3px;
+  height: 40%;
+  background: var(--bsg-green-500, #629630);
+  border-radius: 2px;
+  z-index: 1;
 }
 @media (max-width: 899px) {
-  .brands .brand-group .brand-row.in-group:first-child .brand-index::after { display: none; }
+  .brands .brand-group .brand-row.in-group:first-child .brand-index::after,
+  .brands .brand-group .brand-row.in-group + .brand-row.in-group .brand-index::before { display: none; }
 }
 /* Minus CTA variant: no rotation on hover, keeps neutral look */
 .brand-row .brand-cta.brand-cta--minus {
