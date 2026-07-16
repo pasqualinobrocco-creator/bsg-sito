@@ -30,19 +30,27 @@
     .uni-hero h1 { font-family: var(--font-display); font-weight: 900; font-size: clamp(48px, 8vw, 128px); line-height: 0.92; letter-spacing: -0.04em; margin: 24px 0 32px; }
     .uni-hero h1 em { font-family: var(--font-accent); font-style: italic; font-weight: 300; color: var(--bsg-green-300); }
     .uni-hero .lede { font-size: clamp(16px, 1.2vw, 20px); line-height: 1.6; color: var(--fg-muted); max-width: 70ch; }
-    .uni-toc { display: grid; grid-template-columns: repeat(5, 1fr); gap: 1px; background: rgba(255,255,255,0.08); border-top: 1px solid rgba(255,255,255,0.08); border-bottom: 1px solid rgba(255,255,255,0.08); margin: 64px 0 0; }
-    .uni-toc a { display: flex; flex-direction: column; gap: 6px; padding: 24px 20px; background: var(--bg-default); color: var(--fg-default); text-decoration: none; transition: background .25s ease, color .25s ease; }
-    .uni-toc a:hover { background: var(--bsg-green-500); color: #0A0D08; }
-    .uni-toc a:hover .toc-num, .uni-toc a:hover .toc-meta { color: rgba(10,13,8,0.7); }
-    .uni-toc a.toc-bsg { background: #629630; color: #fff; }
-    .uni-toc a.toc-bsg .toc-num { color: #fff; }
-    .uni-toc a.toc-bsg .toc-meta { color: rgba(255,255,255,0.85); }
-    .uni-toc a.toc-bsg:hover { background: #4e7826; color: #fff; }
-    .uni-toc a.toc-bsg:hover .toc-num, .uni-toc a.toc-bsg:hover .toc-meta { color: rgba(255,255,255,0.9); }
-    .uni-toc .toc-num { font-family: var(--font-display); font-weight: 700; font-size: 11px; letter-spacing: 0.12em; text-transform: uppercase; color: var(--bsg-green-300); }
-    .uni-toc .toc-name { font-family: var(--font-display); font-weight: 900; font-size: 22px; letter-spacing: -0.02em; }
-    .uni-toc .toc-meta { font-size: 12px; color: var(--fg-muted); }
-    @media (max-width: 900px) { .uni-toc { grid-template-columns: repeat(auto-fit, minmax(150px, 1fr)); } }
+    .uni-toc { display: grid; grid-template-columns: repeat(4, 1fr); gap: 16px; margin: 64px 0 0; align-items: stretch; }
+    .uni-toc a, .toc-group { display: block; text-decoration: none; border-radius: 14px; padding: 22px 24px; color: var(--fg-default); background: transparent; border: 1px solid rgba(255,255,255,0.12); transition: background .25s ease, border-color .25s ease, transform .25s ease; position: relative; }
+    .uni-toc a { display: grid; grid-template-columns: 1fr auto; align-items: end; gap: 8px 16px; min-height: 148px; }
+    .uni-toc a .toc-num { grid-column: 1; align-self: start; font-family: var(--font-display); font-weight: 700; font-size: 12px; letter-spacing: 0.12em; color: var(--bsg-green-300); }
+    .uni-toc a .toc-arrow { grid-column: 2; grid-row: 1 / span 3; align-self: start; justify-self: end; width: 22px; height: 22px; color: currentColor; opacity: .9; }
+    .uni-toc a .toc-name { grid-column: 1; font-family: var(--font-display); font-weight: 900; font-size: 22px; line-height: 1.1; letter-spacing: -0.01em; }
+    .uni-toc a .toc-meta { grid-column: 1; font-size: 13px; color: var(--fg-muted); }
+    .uni-toc a:hover { border-color: rgba(255,255,255,0.28); transform: translateY(-2px); }
+    .uni-toc a.toc-bsg { background: #629630; border-color: #629630; color: #fff; }
+    .uni-toc a.toc-bsg .toc-num { color: rgba(255,255,255,0.9); }
+    .uni-toc a.toc-bsg .toc-meta { color: rgba(255,255,255,0.9); }
+    .uni-toc a.toc-bsg:hover { background: #4e7826; border-color: #4e7826; }
+
+    /* Grouped 03 + 04 (Padel) */
+    .toc-group { padding: 14px; background: rgba(255,255,255,0.04); border-color: rgba(255,255,255,0.10); display: grid; gap: 10px; position: relative; }
+    .toc-group a { border: 0; padding: 14px 16px; background: transparent; min-height: 0; border-radius: 10px; }
+    .toc-group a:hover { background: rgba(255,255,255,0.05); transform: none; }
+    .toc-group::before { content: ''; position: absolute; left: 34px; top: 46px; bottom: 46px; width: 2px; background: var(--bsg-green-500); border-radius: 2px; }
+
+    @media (max-width: 900px) { .uni-toc { grid-template-columns: 1fr 1fr; } }
+    @media (max-width: 560px) { .uni-toc { grid-template-columns: 1fr; } }
 
     /* Duo hero video for combined Padel brand */
     .brand-hero-video--duo { display: grid; grid-template-columns: 1fr 1fr; gap: 1px; background: #000; }
@@ -147,11 +155,13 @@
         <p class="lede">Dall'agenzia madre — Agenzia di comunicazione&amp;marketing e centrale media indipendente dal 1991 e specialist sul territorio — nasce un'operazione di <strong>stretching marketing</strong>: BSG estende il proprio know-how in 5 format verticali, ciascuno con un'identità autonoma ma una stessa regia strategica. Sotto un solo tetto, cinque marchi che parlano la stessa lingua a pubblici diversi.</p>
 
         <nav class="uni-toc" aria-label="Sezioni dell'universo">
-          <a href="#bsg" class="toc-bsg"><span class="toc-num">01</span><span class="toc-name">BSG</span><span class="toc-meta">Agenzia di comunicazione&amp;marketing</span></a>
-          <a href="#squisitus"><span class="toc-num">02</span><span class="toc-name">Squisitus</span><span class="toc-meta">Exposition food &amp; lifestyle</span></a>
-          <a href="#padel-media"><span class="toc-num">03</span><span class="toc-name">Padel Media Communication</span><span class="toc-meta">Adv in verticale sul padel</span></a>
-          <a href="#padel-best"><span class="toc-num">04</span><span class="toc-name">Padel Best Village</span><span class="toc-meta">Format torneo-evento</span></a>
-          <a href="#excellere"><span class="toc-num">05</span><span class="toc-name">Excellere</span><span class="toc-meta">Dipartimento eventi</span></a>
+          <a href="#bsg" class="toc-bsg"><span class="toc-num">01</span><span class="toc-name">BSG</span><span class="toc-meta">Agenzia di comunicazione &amp; marketing</span><svg class="toc-arrow" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg></a>
+          <a href="#squisitus"><span class="toc-num">02</span><span class="toc-name">Squisitus</span><span class="toc-meta">Exposition food &amp; lifestyle</span><svg class="toc-arrow" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg></a>
+          <div class="toc-group">
+            <a href="#padel-media"><span class="toc-num">03</span><span class="toc-name">Padel Media<br>Communication</span><span class="toc-meta">Adv in verticale sul padel</span><svg class="toc-arrow" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><line x1="5" y1="12" x2="19" y2="12"/></svg></a>
+            <a href="#padel-best"><span class="toc-num">04</span><span class="toc-name">Padel Best Village</span><span class="toc-meta">Format torneo-evento</span><svg class="toc-arrow" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg></a>
+          </div>
+          <a href="#excellere"><span class="toc-num">05</span><span class="toc-name">Excellere</span><span class="toc-meta">Dipartimento eventi</span><svg class="toc-arrow" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg></a>
         </nav>
       </div>
     </section>
