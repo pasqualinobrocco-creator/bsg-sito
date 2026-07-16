@@ -769,6 +769,54 @@ select, [type="submit"] { cursor: none; }
   border-color: #fff;
 }
 
+/* Grouped rows (es. Padel Media + Padel Best Village) */
+.brands .brand-group {
+  position: relative;
+  background: var(--bg-subtle, #f3f4f2);
+  border-radius: 18px;
+  margin: 4px 0;
+  padding: 4px 0;
+  overflow: hidden;
+}
+.brands .brand-group .brand-row.in-group {
+  border-top: 0;
+  background: transparent;
+}
+.brands .brand-group .brand-row.in-group + .brand-row.in-group {
+  border-top: 1px dashed var(--border-default);
+}
+.brands .brand-group .brand-row.in-group:hover {
+  background: rgba(0,0,0,0.03);
+}
+/* Connecting green bar under the first index number */
+.brands .brand-group .brand-row.in-group:first-child .brand-index {
+  position: relative;
+}
+.brands .brand-group .brand-row.in-group:first-child .brand-index::after {
+  content: "";
+  position: absolute;
+  left: 50%;
+  bottom: -28px;
+  transform: translateX(-50%);
+  width: 2px;
+  height: 40px;
+  background: var(--bsg-green-300);
+  opacity: 0.8;
+}
+@media (max-width: 899px) {
+  .brands .brand-group .brand-row.in-group:first-child .brand-index::after { display: none; }
+}
+/* Minus CTA variant: no rotation on hover, keeps neutral look */
+.brand-row .brand-cta.brand-cta--minus {
+  color: var(--fg-muted);
+}
+.brand-row:hover .brand-cta.brand-cta--minus {
+  background: transparent;
+  color: var(--fg-default);
+  border-color: var(--border-strong);
+  transform: none;
+}
+
 /* Full-bleed brand rows: escape the .wrap container and span viewport width */
 .universo .brands {
   width: 100vw;
