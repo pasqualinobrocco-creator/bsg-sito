@@ -796,12 +796,12 @@ select, [type="submit"] { cursor: none; }
   content: "";
   position: absolute;
   left: 50%;
-  bottom: -28px;
+  top: 100%;
   transform: translateX(-50%);
-  width: 2px;
-  height: 40px;
-  background: var(--bsg-green-300);
-  opacity: 0.8;
+  width: 3px;
+  height: calc(var(--brand-row-h, 140px) - 40px);
+  background: var(--bsg-green-500, #629630);
+  border-radius: 2px;
 }
 @media (max-width: 899px) {
   .brands .brand-group .brand-row.in-group:first-child .brand-index::after { display: none; }
