@@ -746,63 +746,45 @@ select, [type="submit"] { cursor: none; }
 /* Grouped rows (es. Padel Media + Padel Best Village) */
 .brands .brand-group {
   position: relative;
-  background: var(--bg-subtle, #f3f4f2);
-  border-radius: 18px;
-  margin: 4px 0;
-  padding: 4px 0;
-  overflow: hidden;
+  background: transparent;
 }
 .brands .brand-group .brand-row.in-group {
   border-top: 0;
   background: transparent;
 }
 .brands .brand-group .brand-row.in-group + .brand-row.in-group {
-  border-top: 1px dashed var(--border-default);
+  border-top: 1px solid var(--border-default);
 }
-.brands .brand-group .brand-row.in-group:hover {
-  background: rgba(0,0,0,0.03);
-}
-/* Connecting green bar between the two grouped index numbers */
-.brands .brand-group .brand-row.in-group:first-child .brand-index,
-.brands .brand-group .brand-row.in-group + .brand-row.in-group .brand-index {
-  position: relative;
-}
-.brands .brand-group .brand-row.in-group:first-child .brand-index::after {
+/* Vertical connector from 03 index down to Padel Best Village (desktop only, when expanded) */
+.brands .brand-group.is-open .brand-row.padel-media .brand-index { position: relative; }
+.brands .brand-group.is-open .brand-row.padel-media .brand-index::after {
   content: "";
   position: absolute;
   left: 50%;
-  top: 90%;
+  top: 100%;
   transform: translateX(-50%);
   width: 3px;
-  height: 100%;
+  height: 220px;
   background: var(--bsg-green-500, #629630);
   border-radius: 2px;
   z-index: 1;
-}
-.brands .brand-group .brand-row.in-group + .brand-row.in-group .brand-index::before {
-  content: "";
-  position: absolute;
-  left: 50%;
-  bottom: 90%;
-  transform: translateX(-50%);
-  width: 3px;
-  height: 40%;
-  background: var(--bsg-green-500, #629630);
-  border-radius: 2px;
-  z-index: 1;
+  pointer-events: none;
 }
 @media (max-width: 899px) {
-  .brands .brand-group .brand-row.in-group:first-child .brand-index::after,
-  .brands .brand-group .brand-row.in-group + .brand-row.in-group .brand-index::before { display: none; }
+  .brands .brand-group.is-open .brand-row.padel-media .brand-index::after { display: none; }
 }
-/* Minus CTA variant: no rotation on hover, keeps neutral look */
-.brand-row .brand-cta.brand-cta--minus {
-  color: var(--fg-muted);
-}
-.brand-row:hover .brand-cta.brand-cta--minus {
+/* Toggle CTA button — plus/minus icons swap based on aria-expanded */
+.brand-row .brand-cta.brand-cta--toggle {
+  cursor: pointer;
   background: transparent;
-  color: var(--fg-default);
-  border-color: var(--border-strong);
+  padding: 0;
+  font: inherit;
+}
+.brand-cta--toggle .icon-minus { display: none; }
+.brand-cta--toggle[aria-expanded="true"] .icon-plus { display: none; }
+.brand-cta--toggle[aria-expanded="true"] .icon-minus { display: inline-block; }
+/* Neutralize the row's hover rotation on the toggle button */
+.brand-row:hover .brand-cta.brand-cta--toggle {
   transform: none;
 }
 
