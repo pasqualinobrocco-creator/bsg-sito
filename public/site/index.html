@@ -549,5 +549,22 @@
   window.addEventListener('resize', function(){ if(window.innerWidth >= 1024) close(); });
 })();
 </script>
+<script>
+(function(){
+  var toggle = document.querySelector('[data-padel-toggle]');
+  var row = document.getElementById('padel-best-row');
+  var group = document.querySelector('[data-padel-group]');
+  if(!toggle || !row || !group) return;
+  toggle.addEventListener('click', function(e){
+    e.preventDefault();
+    e.stopPropagation();
+    var open = toggle.getAttribute('aria-expanded') === 'true';
+    toggle.setAttribute('aria-expanded', open ? 'false' : 'true');
+    toggle.setAttribute('aria-label', open ? 'Mostra Padel Best Village' : 'Nascondi Padel Best Village');
+    if(open){ row.setAttribute('hidden',''); group.classList.remove('is-open'); }
+    else { row.removeAttribute('hidden'); group.classList.add('is-open'); }
+  });
+})();
+</script>
 </body>
 </html>
