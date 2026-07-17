@@ -707,7 +707,7 @@ select, [type="submit"] { cursor: none; }
 .brand-row:hover .brand-cta { background: var(--brand-accent, var(--bsg-green-500)); color: #fff; border-color: transparent; transform: rotate(-45deg); }
 
 .brand-row.bsg         { --brand-accent: #629630; }
-.brand-row.squisitus   { --brand-accent: #a71735; }
+.brand-row.squisitus   { --brand-accent: #a71735; border-bottom: 1px solid var(--border-default); }
 .brand-row.padel-best  { --brand-accent: #0099e5; }
 .brand-row.padel-media { --brand-accent: #1f5da8; }
 .brand-row.excellere   { --brand-accent: #d51168; }
@@ -753,12 +753,13 @@ select, [type="submit"] { cursor: none; }
   border-top: 0;
   background: transparent;
 }
-/* Divider above Padel Best Village: visible only when the row is expanded */
+/* No top divider above Padel Best Village, even when expanded */
 .brand-row.padel-best.in-group {
   border-top: 0;
 }
-.brand-row.padel-best.in-group.is-visible {
-  border-top: 1px solid var(--border-default);
+/* Row 03 gets the same gray hover background as the other brand rows */
+.brand-row.padel-media.in-group:hover {
+  background: var(--bg-subtle);
 }
 /* Vertical connector from 03 index down to Padel Best Village (desktop only, when expanded) */
 .brands .brand-group.is-open .brand-row.padel-media .brand-index { position: relative; }
