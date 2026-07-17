@@ -610,6 +610,7 @@ select, [type="submit"] { cursor: none; }
   background: transparent;
   transition: background var(--dur-base) var(--ease-out);
 }
+.brand-row[hidden] { display: none; }
 .brand-row .brand-index { grid-area: index; }
 .brand-row .brand-title { grid-area: title; }
 .brand-row .brand-desc { grid-area: desc; }
@@ -752,7 +753,11 @@ select, [type="submit"] { cursor: none; }
   border-top: 0;
   background: transparent;
 }
-.brands .brand-group .brand-row.in-group + .brand-row.in-group {
+/* Divider above Padel Best Village: visible only when the row is expanded */
+.brand-row.padel-best.in-group {
+  border-top: 0;
+}
+.brand-row.padel-best.in-group.is-visible {
   border-top: 1px solid var(--border-default);
 }
 /* Vertical connector from 03 index down to Padel Best Village (desktop only, when expanded) */
@@ -779,13 +784,22 @@ select, [type="submit"] { cursor: none; }
   background: transparent;
   padding: 0;
   font: inherit;
+  position: relative;
 }
 .brand-cta--toggle .icon-minus { display: none; }
 .brand-cta--toggle[aria-expanded="true"] .icon-plus { display: none; }
 .brand-cta--toggle[aria-expanded="true"] .icon-minus { display: inline-block; }
-/* Neutralize the row's hover rotation on the toggle button */
-.brand-row:hover .brand-cta.brand-cta--toggle {
+/* Neutralize the row's hover rotation/background on the toggle button */
+.brand-row:hover .brand-cta.brand-cta--toggle,
+.brand-row.padel-media.in-group:hover .brand-cta.brand-cta--toggle {
   transform: none;
+  background: transparent;
+  color: var(--fg-default);
+  border-color: var(--border-strong);
+}
+/* Make the Padel Media row clickable like a link */
+.brand-row.padel-media.in-group {
+  cursor: pointer;
 }
 
 /* Full-bleed brand rows: escape the .wrap container and span viewport width */

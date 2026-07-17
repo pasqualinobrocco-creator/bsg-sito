@@ -202,7 +202,7 @@
           </a>
 
           <div class="brand-group padel-group" role="group" aria-label="Padel" data-padel-group>
-            <a class="brand-row padel-media in-group" href="universo.html#padel-media" role="listitem" data-hover>
+            <div class="brand-row padel-media in-group" role="listitem" data-hover data-padel-row>
               <span class="brand-index">03</span>
               <div class="brand-title">
                 <span class="brand-num">Adv in verticale sul padel</span>
@@ -213,7 +213,7 @@
                 <svg class="icon-plus" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><line x1="5" y1="12" x2="19" y2="12"/><line x1="12" y1="5" x2="12" y2="19"/></svg>
                 <svg class="icon-minus" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><line x1="5" y1="12" x2="19" y2="12"/></svg>
               </button>
-            </a>
+            </div>
             <a class="brand-row padel-best in-group" id="padel-best-row" href="universo.html#padel-best" role="listitem" data-hover hidden>
               <span class="brand-index" aria-hidden="true" style="visibility: hidden;">—</span>
               <div class="brand-title">
@@ -554,16 +554,33 @@
   var toggle = document.querySelector('[data-padel-toggle]');
   var row = document.getElementById('padel-best-row');
   var group = document.querySelector('[data-padel-group]');
+  var padelRow = document.querySelector('[data-padel-row]');
   if(!toggle || !row || !group) return;
+  function setOpen(open){
+    toggle.setAttribute('aria-expanded', open ? 'true' : 'false');
+    toggle.setAttribute('aria-label', open ? 'Nascondi Padel Best Village' : 'Mostra Padel Best Village');
+    if(open){
+      row.removeAttribute('hidden');
+      row.classList.add('is-visible');
+      group.classList.add('is-open');
+    } else {
+      row.setAttribute('hidden','');
+      row.classList.remove('is-visible');
+      group.classList.remove('is-open');
+    }
+  }
   toggle.addEventListener('click', function(e){
     e.preventDefault();
     e.stopPropagation();
     var open = toggle.getAttribute('aria-expanded') === 'true';
-    toggle.setAttribute('aria-expanded', open ? 'false' : 'true');
-    toggle.setAttribute('aria-label', open ? 'Mostra Padel Best Village' : 'Nascondi Padel Best Village');
-    if(open){ row.setAttribute('hidden',''); group.classList.remove('is-open'); }
-    else { row.removeAttribute('hidden'); group.classList.add('is-open'); }
+    setOpen(!open);
   });
+  if(padelRow){
+    padelRow.addEventListener('click', function(e){
+      if(e.target.closest('[data-padel-toggle]')) return;
+      window.location.href = 'universo.html#padel-media';
+    });
+  }
 })();
 </script>
 </body>
