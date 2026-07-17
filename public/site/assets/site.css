@@ -712,6 +712,17 @@ select, [type="submit"] { cursor: none; }
 .brand-row.padel-media { --brand-accent: #1f5da8; }
 .brand-row.excellere   { --brand-accent: #d51168; }
 
+/* Padel brand names: default text color, brand accent only on hover */
+.brand-row.padel-media .brand-name em,
+.brand-row.padel-best .brand-name em {
+  color: var(--fg-default);
+}
+.brand-row.padel-media:hover .brand-name em,
+.brand-row.padel-best:hover .brand-name em {
+  color: var(--brand-accent);
+}
+
+
 /* BSG master brand row: green background with white text, always active */
 .brand-row.bsg {
   background: #629630;
