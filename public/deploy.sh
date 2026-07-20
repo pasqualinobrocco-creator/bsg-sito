@@ -145,11 +145,15 @@ find "$DOCROOT" -maxdepth 2 -type f \( -name '*.html' -o -name '*.css' -o -name 
   -exec sed -i 's#"/__l5e/#"https://bsg-sito.lovable.app/__l5e/#g' {} +
 
 # Configurazione Nginx
-cat > /etc/nginx/sites-available/bsg <<'NGX'
+if grep -q letsencrypt /etc/nginx/sites-available/bsg 2>/dev/null; then
+  echo "Config Nginx con SSL gia' presente: non modificata"
+  systemctl reload nginx || true
+else
+  cat > /etc/nginx/sites-available/bsg <<'NGX'
 server {
     listen 80 default_server;
     listen [::]:80 default_server;
-    server_name bsgsrl.com www.bsgsrl.com _;
+    server_name bsgsrl.it www.bsgsrl.it bsgsrl.com www.bsgsrl.com _;
     root /var/www/bsg;
     index index.html;
 
@@ -167,9 +171,10 @@ server {
     gzip_types text/css application/javascript image/svg+xml text/plain application/json text/html;
 }
 NGX
-rm -f /etc/nginx/sites-enabled/default
-ln -sf /etc/nginx/sites-available/bsg /etc/nginx/sites-enabled/bsg
-nginx -t && systemctl enable nginx && systemctl restart nginx
+  rm -f /etc/nginx/sites-enabled/default
+  ln -sf /etc/nginx/sites-available/bsg /etc/nginx/sites-enabled/bsg
+  nginx -t && systemctl enable nginx && systemctl restart nginx
+fi
 
 # ---- Sincronizzazione news dal database (API Lovable/Supabase) ----
 cat > /usr/local/bin/bsg-news-sync <<'PYEOF'
