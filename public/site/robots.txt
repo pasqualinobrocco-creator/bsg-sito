@@ -1,4 +1,4 @@
 User-agent: *
 Allow: /
 
-Sitemap: https://www.bsgsrl.com/site/sitemap.xml
+Sitemap: https://www.bsgsrl.it/site/sitemap.xml
