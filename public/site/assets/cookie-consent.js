@@ -1,6 +1,17 @@
 (function(){
   var KEY = 'bsg-cookie-consent';
-  try { if(localStorage.getItem(KEY)) return; } catch(e){}
+  try {
+    var existing = localStorage.getItem(KEY);
+    if(existing){
+      try {
+        var parsed = JSON.parse(existing);
+        if(parsed && parsed.value === 'accept' && typeof gtag === 'function'){
+          gtag('consent', 'update', { 'analytics_storage': 'granted' });
+        }
+      } catch(e){}
+      return;
+    }
+  } catch(e){}
 
   var css = ''
     + '.cc-banner{position:fixed;left:16px;right:16px;bottom:16px;z-index:9998;'
@@ -47,6 +58,9 @@
 
   function save(val){
     try { localStorage.setItem(KEY, JSON.stringify({ value: val, ts: Date.now() })); } catch(e){}
+    if(val === 'accept' && typeof gtag === 'function'){
+      gtag('consent', 'update', { 'analytics_storage': 'granted' });
+    }
     bar.classList.remove('is-in');
     setTimeout(function(){ bar.remove(); }, 400);
   }
