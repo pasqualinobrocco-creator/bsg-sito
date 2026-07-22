@@ -113,6 +113,7 @@ site/assets/tokens.css
 site/chi-siamo.html
 site/contatti.html
 site/cookie.html
+site/google69a5d1e56a6c0747.html
 site/index.html
 site/news.html
 site/portfolio.html
