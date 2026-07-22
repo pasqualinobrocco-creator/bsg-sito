@@ -304,7 +304,7 @@
 /* ---------- WhatsApp floating button (auto-inject) ---------- */
 (function(){
   if (document.querySelector('.wa-float')) return;
-  var number = '390612345678'; // TODO: sostituire con numero reale (formato internazionale senza +)
+  var number = '393922639937'; // formato internazionale senza +
   var msg = encodeURIComponent('Ciao BSG, vorrei più informazioni.');
   var a = document.createElement('a');
   a.className = 'wa-float';
